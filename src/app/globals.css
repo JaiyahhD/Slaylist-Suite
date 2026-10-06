@@ -7023,3 +7023,905 @@ body {
 
 }
 
+/* =========================================================
+   PRETTY SMART™ // CURRENT ROTATION PAGE
+   ========================================================= */
+
+.current-rotation-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 4.5rem clamp(1.25rem, 4vw, 4.5rem) 7rem;
+  overflow: hidden;
+
+  color: var(--text-primary);
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(255, 62, 170, 0.16),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 92% 25%,
+      rgba(143, 99, 255, 0.14),
+      transparent 32rem
+    ),
+    radial-gradient(
+      circle at 55% 85%,
+      rgba(131, 221, 255, 0.07),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      #09070d 0%,
+      #160a18 48%,
+      #09070d 100%
+    );
+}
+
+.current-rotation-page::before {
+  content: "READING.SESSION // ACTIVE";
+
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+
+  color: rgba(131, 221, 255, 0.35);
+
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.current-rotation-hero {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: clamp(2.25rem, 5vw, 4.5rem);
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.18),
+      rgba(143, 99, 255, 0.12) 48%,
+      rgba(131, 221, 255, 0.07)
+    ),
+    rgba(22, 10, 24, 0.74);
+
+  backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.current-rotation-hero::before {
+  content: "CURRENT.EXPERIMENT";
+
+  position: absolute;
+  right: 2rem;
+  bottom: 1.5rem;
+
+  color: rgba(255, 145, 211, 0.1);
+
+  font-family: monospace;
+  font-size: clamp(1.3rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  pointer-events: none;
+}
+
+.current-rotation-hero::after {
+  content: "✦";
+
+  position: absolute;
+  top: 1.25rem;
+  right: 2rem;
+
+  color: rgba(255, 145, 211, 0.14);
+
+  font-size: clamp(3.5rem, 8vw, 7rem);
+
+  text-shadow:
+    0 0 35px rgba(255, 62, 170, 0.25);
+
+  pointer-events: none;
+}
+
+.current-rotation-hero .eyebrow,
+.current-rotation-section-heading .eyebrow {
+  margin: 0 0 0.85rem;
+
+  color: var(--ice-blue);
+
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.current-rotation-hero h1 {
+  max-width: 900px;
+  margin: 0;
+
+  font-size: clamp(3.4rem, 8vw, 7rem);
+
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.current-rotation-hero h1 span {
+  display: block;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--electric-pink),
+      var(--bubblegum),
+      var(--digital-lavender),
+      var(--ice-blue)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.current-rotation-hero-copy {
+  position: relative;
+  z-index: 1;
+
+  max-width: 650px;
+  margin: 1.5rem 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.current-rotation-hero-status {
+  position: relative;
+  z-index: 1;
+
+  width: fit-content;
+  margin-top: 2rem;
+  padding: 0.8rem 1rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  border: 1px solid rgba(255, 145, 211, 0.24);
+  border-radius: 1rem;
+
+  background: rgba(9, 7, 13, 0.42);
+}
+
+.current-rotation-hero-status span {
+  color: var(--text-muted);
+
+  font-family: monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.current-rotation-hero-status strong {
+  color: var(--bubblegum);
+
+  font-size: 1.6rem;
+
+  text-shadow:
+    0 0 18px rgba(255, 62, 170, 0.3);
+}
+
+
+/* =========================================================
+   READING LAB
+   ========================================================= */
+
+.current-rotation-lab {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.current-rotation-section-heading {
+  margin-bottom: 1.5rem;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+}
+
+.current-rotation-section-heading h2 {
+  margin: 0;
+
+  font-size: clamp(2rem, 5vw, 3.5rem);
+
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.current-rotation-live-indicator {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  padding: 0.55rem 0.75rem;
+
+  border: 1px solid rgba(131, 221, 255, 0.22);
+  border-radius: 999px;
+
+  background: rgba(131, 221, 255, 0.055);
+
+  color: var(--ice-blue);
+
+  font-family: monospace;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.current-rotation-live-indicator i {
+  width: 0.45rem;
+  height: 0.45rem;
+
+  border-radius: 50%;
+
+  background: var(--ice-blue);
+
+  box-shadow:
+    0 0 12px rgba(131, 221, 255, 0.75);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.current-rotation-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.25rem;
+}
+
+
+/* =========================================================
+   ACTIVE BOOK CARD
+   ========================================================= */
+
+.current-rotation-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 390px;
+
+  display: grid;
+
+  grid-template-columns:
+    165px minmax(0, 1fr);
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.6rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.075),
+      rgba(143, 99, 255, 0.045) 48%,
+      rgba(22, 10, 24, 0.84)
+    );
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.24);
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.current-rotation-card:nth-child(2n) {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(143, 99, 255, 0.09),
+      rgba(131, 221, 255, 0.045),
+      rgba(22, 10, 24, 0.84)
+    );
+}
+
+.current-rotation-card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(255, 145, 211, 0.2);
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.32),
+    0 0 35px rgba(255, 62, 170, 0.04);
+}
+
+
+/* =========================================================
+   COVER
+   ========================================================= */
+
+.current-rotation-cover {
+  position: relative;
+
+  min-width: 0;
+  height: 100%;
+
+  display: flex;
+
+  overflow: hidden;
+
+  border-right:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 62, 170, 0.25),
+      rgba(143, 99, 255, 0.18),
+      rgba(38, 13, 41, 0.96)
+    );
+
+  color: var(--text-primary);
+
+  text-decoration: none;
+}
+
+.current-rotation-cover.has-real-cover {
+  background: var(--blackberry);
+}
+
+.current-rotation-real-cover {
+  width: 100%;
+  height: 100%;
+
+  min-height: 390px;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 300ms ease,
+    filter 300ms ease;
+}
+
+.current-rotation-cover.has-real-cover::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 68%,
+      rgba(9, 7, 13, 0.2)
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+@media (hover: hover) {
+  .current-rotation-cover.has-real-cover:hover
+  .current-rotation-real-cover {
+    transform: scale(1.035);
+  }
+}
+
+.current-rotation-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+
+  padding: 1.2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+
+  text-align: center;
+}
+
+.current-rotation-cover-placeholder span {
+  color: var(--bubblegum);
+
+  font-size: 2.3rem;
+
+  text-shadow:
+    0 0 22px rgba(255, 62, 170, 0.4);
+}
+
+.current-rotation-cover-placeholder strong {
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.current-rotation-card-content {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.current-rotation-card-content::after {
+  content: "READING.LOG // ACTIVE";
+
+  position: absolute;
+  right: 1.15rem;
+  bottom: 1rem;
+
+  color: rgba(201, 200, 216, 0.13);
+
+  font-family: monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.13em;
+
+  pointer-events: none;
+}
+
+.current-rotation-card-topline {
+  margin-bottom: 0.85rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 0.75rem;
+}
+
+.current-rotation-card-topline span {
+  color: var(--text-muted);
+
+  font-family: monospace;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.current-rotation-card-topline span:first-child {
+  color: var(--ice-blue);
+}
+
+.current-rotation-title-link {
+  width: fit-content;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.current-rotation-title-link h3 {
+  margin: 0;
+
+  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
+
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+
+  transition: color 180ms ease;
+}
+
+.current-rotation-title-link:hover h3 {
+  color: var(--bubblegum);
+}
+
+.current-rotation-author {
+  margin: 0.45rem 0 0;
+
+  color: var(--text-muted);
+
+  font-size: 0.82rem;
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.current-rotation-progress {
+  margin-top: 1.4rem;
+}
+
+.current-rotation-progress-track {
+  position: relative;
+
+  width: 100%;
+  height: 8px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+
+  background: rgba(9, 7, 13, 0.72);
+}
+
+.current-rotation-progress-fill {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--electric-pink),
+      var(--ultraviolet),
+      var(--ice-blue)
+    );
+
+  box-shadow:
+    0 0 16px rgba(255, 62, 170, 0.25);
+
+  transition: width 300ms ease;
+}
+
+.current-rotation-progress-data {
+  margin-top: 0.55rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
+.current-rotation-progress-data span,
+.current-rotation-progress-data strong {
+  font-family: monospace;
+  font-size: 0.59rem;
+  letter-spacing: 0.07em;
+}
+
+.current-rotation-progress-data span {
+  color: var(--text-muted);
+}
+
+.current-rotation-progress-data strong {
+  color: var(--bubblegum);
+}
+
+
+/* =========================================================
+   READING DATA
+   ========================================================= */
+
+.current-rotation-data-grid {
+  margin-top: 1.25rem;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 0.65rem;
+}
+
+.current-rotation-data-grid > div {
+  min-width: 0;
+
+  padding: 0.7rem 0.75rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0.8rem;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.current-rotation-data-grid span {
+  display: block;
+
+  margin-bottom: 0.3rem;
+
+  color: var(--text-muted);
+
+  font-family: monospace;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.current-rotation-data-grid strong {
+  display: block;
+
+  overflow: hidden;
+
+  color: var(--text-secondary);
+
+  font-size: 0.73rem;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.current-rotation-actions {
+  margin-top: auto;
+  padding-top: 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
+.current-rotation-actions button {
+  min-height: 38px;
+  padding: 0.65rem 0.8rem;
+
+  border: 1px solid rgba(255, 95, 189, 0.24);
+  border-radius: 0.75rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.12),
+      rgba(143, 99, 255, 0.08)
+    );
+
+  color: var(--text-muted);
+
+  font-family: monospace;
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+
+  cursor: not-allowed;
+
+  opacity: 0.62;
+}
+
+.current-rotation-actions a {
+  color: var(--ice-blue);
+
+  font-family: monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.current-rotation-actions a:hover {
+  color: var(--bubblegum);
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.current-rotation-empty {
+  min-height: 340px;
+  padding: 3rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border: 1px dashed rgba(255, 145, 211, 0.2);
+  border-radius: 1.6rem;
+
+  background: rgba(22, 10, 24, 0.55);
+}
+
+.current-rotation-empty > span {
+  color: var(--bubblegum);
+
+  font-size: 2.5rem;
+}
+
+.current-rotation-empty h2 {
+  margin: 0.75rem 0 0;
+
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.current-rotation-empty p {
+  margin: 0.75rem 0 0;
+
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .current-rotation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .current-rotation-card {
+    grid-template-columns:
+      180px minmax(0, 1fr);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 620px) {
+  .current-rotation-page {
+    padding: 2.75rem 1rem 5rem;
+  }
+
+  .current-rotation-page::before {
+    display: none;
+  }
+
+  .current-rotation-hero {
+    margin-bottom: 3rem;
+    padding: 2rem 1.35rem;
+
+    border-radius: 1.5rem;
+  }
+
+  .current-rotation-hero::before {
+    display: none;
+  }
+
+  .current-rotation-hero::after {
+    right: 1rem;
+  }
+
+  .current-rotation-hero h1 {
+    font-size:
+      clamp(3rem, 15vw, 4.7rem);
+  }
+
+  .current-rotation-section-heading {
+    align-items: center;
+  }
+
+  .current-rotation-card {
+    min-height: 315px;
+
+    grid-template-columns:
+      115px minmax(0, 1fr);
+
+    border-radius: 1.25rem;
+  }
+
+  .current-rotation-real-cover,
+  .current-rotation-cover-placeholder {
+    min-height: 315px;
+  }
+
+  .current-rotation-cover-placeholder {
+    padding: 0.65rem;
+  }
+
+  .current-rotation-cover-placeholder strong {
+    font-size: 0.68rem;
+  }
+
+  .current-rotation-card-content {
+    padding: 1.05rem;
+  }
+
+  .current-rotation-card-content::after {
+    display: none;
+  }
+
+  .current-rotation-card-topline {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.25rem;
+  }
+
+  .current-rotation-title-link h3 {
+    font-size: 1.15rem;
+  }
+
+  .current-rotation-data-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 0.45rem;
+  }
+
+  .current-rotation-data-grid > div {
+    padding: 0.55rem;
+  }
+
+  .current-rotation-data-grid strong {
+    font-size: 0.65rem;
+  }
+
+  .current-rotation-actions {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.7rem;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .current-rotation-card {
+    grid-template-columns:
+      95px minmax(0, 1fr);
+  }
+
+  .current-rotation-real-cover,
+  .current-rotation-cover-placeholder {
+    min-height: 330px;
+  }
+
+  .current-rotation-hero-status {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+}

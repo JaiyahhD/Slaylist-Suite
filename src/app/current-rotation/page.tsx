@@ -1,0 +1,445 @@
+import Link from "next/link";
+
+import type {
+  Book,
+  ReadingRecord,
+  Review,
+} from "@/types";
+
+import goodreadsLibrary from "@/data/goodreads-library.json";
+
+
+/* =========================================================
+   TYPES
+   ========================================================= */
+
+type GoodreadsLibraryRecord = {
+  book: Book;
+
+  readingRecord:
+    ReadingRecord | null;
+
+  review:
+    Review | null;
+
+  rawShelves: string[];
+
+  readCount: number;
+
+  wasTbbBuddyRead: boolean;
+};
+
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+function formatDate(
+  value?: string
+) {
+  if (!value) {
+    return "Not recorded";
+  }
+
+  const date =
+    new Date(value);
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+    return "Not recorded";
+  }
+
+  return new Intl.DateTimeFormat(
+    "en-US",
+    {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "UTC",
+    }
+  ).format(date);
+}
+
+
+function formatReadingMethod(
+  method?: ReadingRecord["readingMethod"]
+) {
+  if (!method) {
+    return "Not recorded";
+  }
+
+  switch (method) {
+    case "ebook":
+      return "Ebook";
+
+    case "audiobook":
+      return "Audiobook";
+
+    case "physical":
+      return "Physical";
+
+    default:
+      return method;
+  }
+}
+
+
+/* =========================================================
+   CURRENT ROTATION PAGE
+   ========================================================= */
+
+export default function CurrentRotationPage() {
+
+  const library =
+    goodreadsLibrary as GoodreadsLibraryRecord[];
+
+
+  const currentReads =
+    library.filter(
+      (record) =>
+        record.book.status ===
+        "currently-reading"
+    );
+
+
+  return (
+    <main className="current-rotation-page">
+
+      {/* ================================================
+          HERO
+          ================================================ */}
+
+      <section className="current-rotation-hero">
+
+        <p className="eyebrow">
+          THE SLAYLIST SUITE // ACTIVE READS
+        </p>
+
+        <h1>
+          Current
+          <span> Rotation.</span>
+        </h1>
+
+        <p className="current-rotation-hero-copy">
+          Books currently occupying tabs in my brain,
+          stealing my sleep, and undergoing active
+          literary experimentation.
+        </p>
+
+        <div className="current-rotation-hero-status">
+
+          <span>
+            ACTIVE EXPERIMENTS
+          </span>
+
+          <strong>
+            {currentReads.length}
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      {/* ================================================
+          ACTIVE READS
+          ================================================ */}
+
+      <section className="current-rotation-lab">
+
+        <div className="current-rotation-section-heading">
+
+          <div>
+
+            <p className="eyebrow">
+              READING LAB // LIVE
+            </p>
+
+            <h2>
+              On the Nightstand
+            </h2>
+
+          </div>
+
+          <span className="current-rotation-live-indicator">
+            <i />
+            LIVE
+          </span>
+
+        </div>
+
+
+        {currentReads.length > 0 ? (
+
+          <div className="current-rotation-grid">
+
+            {currentReads.map(
+              ({
+                book,
+                readingRecord,
+              }) => {
+
+                const progress =
+                  readingRecord
+                    ?.progressPercent ??
+                  0;
+
+                return (
+
+                  <article
+                    key={book.id}
+                    className="current-rotation-card"
+                  >
+
+                    {/* =========================
+                        COVER
+                        ========================= */}
+
+                    <Link
+                      href={`/books/${book.id}`}
+                      className={
+                        `current-rotation-cover ` +
+                        `${book.coverUrl
+                          ? "has-real-cover"
+                          : ""}`
+                      }
+                      aria-label={
+                        `Open ${book.title}`
+                      }
+                    >
+
+                      {book.coverUrl ? (
+
+                        <img
+                          src={book.coverUrl}
+                          alt={
+                            `Cover of ${book.title}`
+                          }
+                          className="current-rotation-real-cover"
+                        />
+
+                      ) : (
+
+                        <div className="current-rotation-cover-placeholder">
+
+                          <span>
+                            ✦
+                          </span>
+
+                          <strong>
+                            {book.title}
+                          </strong>
+
+                        </div>
+
+                      )}
+
+                    </Link>
+
+
+                    {/* =========================
+                        BOOK DATA
+                        ========================= */}
+
+                    <div className="current-rotation-card-content">
+
+                      <div className="current-rotation-card-topline">
+
+                        <span>
+                          CURRENT EXPERIMENT
+                        </span>
+
+                        <span>
+                          {progress}% COMPLETE
+                        </span>
+
+                      </div>
+
+
+                      <Link
+                        href={`/books/${book.id}`}
+                        className="current-rotation-title-link"
+                      >
+                        <h3>
+                          {book.title}
+                        </h3>
+                      </Link>
+
+
+                      <p className="current-rotation-author">
+                        {book.authors.join(", ")}
+                      </p>
+
+
+                      {/* =========================
+                          PROGRESS
+                          ========================= */}
+
+                      <div className="current-rotation-progress">
+
+                        <div className="current-rotation-progress-track">
+
+                          <div
+                            className="current-rotation-progress-fill"
+                            style={{
+                              width:
+                                `${Math.min(
+                                  100,
+                                  Math.max(
+                                    0,
+                                    progress
+                                  )
+                                )}%`,
+                            }}
+                          />
+
+                        </div>
+
+                        <div className="current-rotation-progress-data">
+
+                          <span>
+                            {readingRecord
+                              ?.currentPage
+                              ? (
+                                  book.pageCount
+                                    ? `PAGE ${readingRecord.currentPage} / ${book.pageCount}`
+                                    : `PAGE ${readingRecord.currentPage}`
+                                )
+                              : book.pageCount
+                                ? `${book.pageCount} PAGES TOTAL`
+                                : "PAGE DATA UNAVAILABLE"}
+                          </span>
+
+                          <strong>
+                            {progress}%
+                          </strong>
+
+                        </div>
+
+                      </div>
+
+
+                      {/* =========================
+                          READING DETAILS
+                          ========================= */}
+
+                      <div className="current-rotation-data-grid">
+
+                        <div>
+                          <span>
+                            FORMAT
+                          </span>
+
+                          <strong>
+                            {formatReadingMethod(
+                              readingRecord
+                                ?.readingMethod
+                            )}
+                          </strong>
+                        </div>
+
+
+                        <div>
+                          <span>
+                            STARTED
+                          </span>
+
+                          <strong>
+                            {formatDate(
+                              readingRecord
+                                ?.startedAt
+                            )}
+                          </strong>
+                        </div>
+
+
+                        <div>
+                          <span>
+                            READ #
+                          </span>
+
+                          <strong>
+                            {readingRecord
+                              ?.readingNumber ??
+                              1}
+                          </strong>
+                        </div>
+
+
+                        <div>
+                          <span>
+                            SOURCE
+                          </span>
+
+                          <strong>
+                            {book.source ===
+                            "goodreads"
+                              ? "Goodreads"
+                              : "Slaylist"}
+                          </strong>
+                        </div>
+
+                      </div>
+
+
+                      {/* =========================
+                          ACTIONS
+                          ========================= */}
+
+                      <div className="current-rotation-actions">
+
+                        <button
+                          type="button"
+                          disabled
+                          title="Progress editing is coming in the next step."
+                        >
+                          + UPDATE PROGRESS
+                        </button>
+
+                        <Link
+                          href={`/books/${book.id}`}
+                        >
+                          OPEN DOSSIER →
+                        </Link>
+
+                      </div>
+
+                    </div>
+
+                  </article>
+
+                );
+              }
+            )}
+
+          </div>
+
+        ) : (
+
+          <div className="current-rotation-empty">
+
+            <span>
+              ✦
+            </span>
+
+            <h2>
+              The lab is suspiciously quiet.
+            </h2>
+
+            <p>
+              No books are currently marked as
+              actively reading.
+            </p>
+
+          </div>
+
+        )}
+
+      </section>
+
+    </main>
+  );
+}
