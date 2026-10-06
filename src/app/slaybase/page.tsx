@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import {
   useMemo,
   useState,
@@ -129,7 +131,6 @@ const sortOptions: {
   },
 ];
 
-
 const bookAccents = [
   "pink",
   "violet",
@@ -143,7 +144,6 @@ const bookAccents = [
    ========================================================= */
 
 export default function SlaybasePage() {
-
   const [
     activeStatus,
     setActiveStatus,
@@ -205,28 +205,22 @@ export default function SlaybasePage() {
       []
     );
 
-
   const availableShelves =
     useMemo(() => {
-
       const shelves =
         new Set<string>();
 
       library.forEach(
         (record) => {
-
           record.rawShelves.forEach(
             (shelf) => {
-
               if (shelf.trim()) {
                 shelves.add(
                   shelf.trim()
                 );
               }
-
             }
           );
-
         }
       );
 
@@ -236,7 +230,6 @@ export default function SlaybasePage() {
           (a, b) =>
             a.localeCompare(b)
         );
-
     }, []);
 
 
@@ -257,26 +250,21 @@ export default function SlaybasePage() {
 
   const filteredRecords =
     useMemo(() => {
-
       let results =
         [...library];
-
 
       /* -------------------------
          STATUS
          ------------------------- */
 
       if (activeStatus !== "all") {
-
         results =
           results.filter(
             (record) =>
               record.book.status ===
               activeStatus
           );
-
       }
-
 
       /* -------------------------
          SEARCH
@@ -288,11 +276,9 @@ export default function SlaybasePage() {
           .toLowerCase();
 
       if (normalizedQuery) {
-
         results =
           results.filter(
             (record) => {
-
               const book =
                 record.book;
 
@@ -321,12 +307,9 @@ export default function SlaybasePage() {
                   normalizedQuery
                 )
               );
-
             }
           );
-
       }
-
 
       /* -------------------------
          RATING
@@ -335,11 +318,9 @@ export default function SlaybasePage() {
       if (
         selectedRatings.length > 0
       ) {
-
         results =
           results.filter(
             (record) => {
-
               const rating =
                 record.book
                   .personalRating;
@@ -350,12 +331,9 @@ export default function SlaybasePage() {
                   rating
                 )
               );
-
             }
           );
-
       }
-
 
       /* -------------------------
          FORMAT
@@ -364,7 +342,6 @@ export default function SlaybasePage() {
       if (
         selectedFormats.length > 0
       ) {
-
         results =
           results.filter(
             (record) =>
@@ -374,15 +351,10 @@ export default function SlaybasePage() {
                     .includes(format)
               )
           );
-
       }
-
 
       /* -------------------------
          SPECIAL FILTERS
-
-         Multiple selected special
-         filters use AND behavior.
          ------------------------- */
 
       if (
@@ -391,30 +363,24 @@ export default function SlaybasePage() {
             "certified-slay"
           )
       ) {
-
         results =
           results.filter(
             (record) =>
               record.book
                 .certifiedSlay
           );
-
       }
-
 
       if (
         selectedSpecialFilters
           .includes("reread")
       ) {
-
         results =
           results.filter(
             (record) =>
               record.readCount > 1
           );
-
       }
-
 
       if (
         selectedSpecialFilters
@@ -422,27 +388,20 @@ export default function SlaybasePage() {
             "tbb-buddy-read"
           )
       ) {
-
         results =
           results.filter(
             (record) =>
               record.wasTbbBuddyRead
           );
-
       }
-
 
       /* -------------------------
          GOODREADS SHELVES
-
-         Multiple selected shelves
-         use OR behavior.
          ------------------------- */
 
       if (
         selectedShelves.length > 0
       ) {
-
         results =
           results.filter(
             (record) =>
@@ -454,9 +413,7 @@ export default function SlaybasePage() {
                     )
               )
           );
-
       }
-
 
       /* -------------------------
          SORTING
@@ -464,7 +421,6 @@ export default function SlaybasePage() {
 
       results.sort(
         (a, b) => {
-
           const bookA =
             a.book;
 
@@ -472,7 +428,6 @@ export default function SlaybasePage() {
             b.book;
 
           switch (sortOption) {
-
             case "oldest-added":
               return (
                 new Date(
@@ -483,7 +438,6 @@ export default function SlaybasePage() {
                 ).getTime()
               );
 
-
             case "title-az":
               return (
                 bookA.title
@@ -492,7 +446,6 @@ export default function SlaybasePage() {
                   )
               );
 
-
             case "title-za":
               return (
                 bookB.title
@@ -500,7 +453,6 @@ export default function SlaybasePage() {
                     bookA.title
                   )
               );
-
 
             case "highest-rated":
               return (
@@ -514,7 +466,6 @@ export default function SlaybasePage() {
                 )
               );
 
-
             case "lowest-rated":
               return (
                 (
@@ -527,7 +478,6 @@ export default function SlaybasePage() {
                 )
               );
 
-
             case "recently-added":
             default:
               return (
@@ -538,14 +488,11 @@ export default function SlaybasePage() {
                   bookA.dateAdded ?? 0
                 ).getTime()
               );
-
           }
-
         }
       );
 
       return results;
-
     }, [
       activeStatus,
       searchQuery,
@@ -586,14 +533,12 @@ export default function SlaybasePage() {
     setVisibleCount(12);
   }
 
-
   function handleSearchChange(
     value: string
   ) {
     setSearchQuery(value);
     setVisibleCount(12);
   }
-
 
   function handleSortChange(
     value: SortOption
@@ -602,7 +547,6 @@ export default function SlaybasePage() {
     setVisibleCount(12);
   }
 
-
   function handleLoadMore() {
     setVisibleCount(
       (current) =>
@@ -610,11 +554,9 @@ export default function SlaybasePage() {
     );
   }
 
-
   function toggleRating(
     rating: number
   ) {
-
     setSelectedRatings(
       (current) =>
         current.includes(rating)
@@ -631,11 +573,9 @@ export default function SlaybasePage() {
     setVisibleCount(12);
   }
 
-
   function toggleFormat(
     format: BookFormat
   ) {
-
     setSelectedFormats(
       (current) =>
         current.includes(format)
@@ -652,11 +592,9 @@ export default function SlaybasePage() {
     setVisibleCount(12);
   }
 
-
   function toggleSpecialFilter(
     filter: SpecialFilter
   ) {
-
     setSelectedSpecialFilters(
       (current) =>
         current.includes(filter)
@@ -673,11 +611,9 @@ export default function SlaybasePage() {
     setVisibleCount(12);
   }
 
-
   function toggleShelf(
     shelf: string
   ) {
-
     setSelectedShelves(
       (current) =>
         current.includes(shelf)
@@ -694,20 +630,15 @@ export default function SlaybasePage() {
     setVisibleCount(12);
   }
 
-
   function clearDeepFilters() {
-
     setSelectedRatings([]);
     setSelectedFormats([]);
     setSelectedSpecialFilters([]);
     setSelectedShelves([]);
     setVisibleCount(12);
-
   }
 
-
   function resetEverything() {
-
     setActiveStatus("all");
     setSearchQuery("");
     setSortOption(
@@ -718,7 +649,6 @@ export default function SlaybasePage() {
     setSelectedSpecialFilters([]);
     setSelectedShelves([]);
     setVisibleCount(12);
-
   }
 
 
@@ -732,7 +662,6 @@ export default function SlaybasePage() {
       <section className="slaybase-hero">
 
         <div>
-
           <p className="eyebrow">
             LIBRARY DATABASE //{" "}
             {books.length.toLocaleString()} RECORDS
@@ -748,12 +677,9 @@ export default function SlaybasePage() {
             questionable decision that somehow
             became part of the collection.
           </p>
-
         </div>
 
-
         <div className="slaybase-orbit">
-
           <span>
             {books.length.toLocaleString()}
           </span>
@@ -761,7 +687,6 @@ export default function SlaybasePage() {
           <small>
             BOOKS INDEXED
           </small>
-
         </div>
 
       </section>
@@ -775,7 +700,6 @@ export default function SlaybasePage() {
 
         {statusFilters.map(
           (filter) => {
-
             const isActive =
               activeStatus ===
               filter.value;
@@ -799,7 +723,6 @@ export default function SlaybasePage() {
                   }`
                 }
               >
-
                 <span>
                   {filter.label}
                 </span>
@@ -808,7 +731,6 @@ export default function SlaybasePage() {
                   {filter.count
                     .toLocaleString()}
                 </strong>
-
               </button>
             );
           }
@@ -823,13 +745,9 @@ export default function SlaybasePage() {
 
       <section className="slaybase-controls">
 
-        {/* SEARCH */}
-
         <div className="slaybase-search">
 
-          <span>
-            ⌕
-          </span>
+          <span>⌕</span>
 
           <input
             type="search"
@@ -858,8 +776,6 @@ export default function SlaybasePage() {
 
         </div>
 
-
-        {/* CONTROL BUTTONS */}
 
         <div className="slaybase-control-buttons">
 
@@ -898,7 +814,6 @@ export default function SlaybasePage() {
               }
               aria-label="Sort books"
             >
-
               {sortOptions.map(
                 (option) => (
                   <option
@@ -913,7 +828,6 @@ export default function SlaybasePage() {
                   </option>
                 )
               )}
-
             </select>
 
           </label>
@@ -925,7 +839,6 @@ export default function SlaybasePage() {
           >
             ▦
           </button>
-
 
           <button
             type="button"
@@ -959,7 +872,6 @@ export default function SlaybasePage() {
               </h2>
             </div>
 
-
             <div className="slaybase-filter-actions">
 
               {activeDeepFilterCount > 0 && (
@@ -990,10 +902,6 @@ export default function SlaybasePage() {
 
           <div className="slaybase-filter-grid">
 
-            {/* =====================
-                RATING
-                ===================== */}
-
             <fieldset className="slaybase-filter-group">
 
               <legend>
@@ -1008,7 +916,6 @@ export default function SlaybasePage() {
 
                 {[5, 4, 3, 2, 1].map(
                   (rating) => {
-
                     const selected =
                       selectedRatings
                         .includes(
@@ -1032,12 +939,10 @@ export default function SlaybasePage() {
                       >
                         {"★".repeat(
                           rating
-                        )}
-                        {" "}
+                        )}{" "}
                         {rating}
                       </button>
                     );
-
                   }
                 )}
 
@@ -1045,10 +950,6 @@ export default function SlaybasePage() {
 
             </fieldset>
 
-
-            {/* =====================
-                FORMAT
-                ===================== */}
 
             <fieldset className="slaybase-filter-group">
 
@@ -1083,7 +984,6 @@ export default function SlaybasePage() {
                   },
                 ].map(
                   (format) => {
-
                     const selected =
                       selectedFormats
                         .includes(
@@ -1110,7 +1010,6 @@ export default function SlaybasePage() {
                         {format.label}
                       </button>
                     );
-
                   }
                 )}
 
@@ -1118,10 +1017,6 @@ export default function SlaybasePage() {
 
             </fieldset>
 
-
-            {/* =====================
-                SPECIAL
-                ===================== */}
 
             <fieldset className="slaybase-filter-group">
 
@@ -1155,7 +1050,6 @@ export default function SlaybasePage() {
                   ✦ Certified Slay
                 </button>
 
-
                 <button
                   type="button"
                   onClick={() =>
@@ -1174,7 +1068,6 @@ export default function SlaybasePage() {
                 >
                   ↻ Rereads
                 </button>
-
 
                 <button
                   type="button"
@@ -1200,10 +1093,6 @@ export default function SlaybasePage() {
             </fieldset>
 
 
-            {/* =====================
-                GOODREADS SHELVES
-                ===================== */}
-
             <fieldset className="slaybase-filter-group">
 
               <legend>
@@ -1219,7 +1108,6 @@ export default function SlaybasePage() {
 
                 {availableShelves.map(
                   (shelf) => {
-
                     const selected =
                       selectedShelves
                         .includes(
@@ -1249,7 +1137,6 @@ export default function SlaybasePage() {
                           .toUpperCase()}
                       </button>
                     );
-
                   }
                 )}
 
@@ -1264,12 +1151,10 @@ export default function SlaybasePage() {
 
             <p>
               {filteredRecords.length
-                .toLocaleString()}
-              {" "}
+                .toLocaleString()}{" "}
               {filteredRecords.length === 1
                 ? "book matches"
-                : "books match"}
-              {" "}
+                : "books match"}{" "}
               the current query.
             </p>
 
@@ -1287,8 +1172,7 @@ export default function SlaybasePage() {
         </section>
       )}
 
-
-      {/* =========================
+          {/* =========================
           QUERY INFORMATION
           ========================= */}
 
@@ -1318,7 +1202,6 @@ export default function SlaybasePage() {
                   : "S"
               }`}
           </p>
-
 
           <h2 className="section-title">
             The Library
@@ -1382,7 +1265,6 @@ export default function SlaybasePage() {
 
           {visibleRecords.map(
             (record, index) => {
-
               const book =
                 record.book;
 
@@ -1400,11 +1282,13 @@ export default function SlaybasePage() {
 
                   {/* BOOK COVER */}
 
-                  <div
+                  <Link
+                    href={`/books/${book.id}`}
                     className={
                       `slaybase-book-cover ` +
                       `book-${accent}`
                     }
+                    aria-label={`Open ${book.title}`}
                   >
 
                     <span className="book-status">
@@ -1416,17 +1300,15 @@ export default function SlaybasePage() {
                         .toUpperCase()}
                     </span>
 
-
                     <span className="book-cover-symbol">
                       ✦
                     </span>
-
 
                     <strong>
                       {book.title}
                     </strong>
 
-                  </div>
+                  </Link>
 
 
                   {/* BOOK INFORMATION */}
@@ -1438,7 +1320,11 @@ export default function SlaybasePage() {
                       <div>
 
                         <h3>
-                          {book.title}
+                          <Link
+                            href={`/books/${book.id}`}
+                          >
+                            {book.title}
+                          </Link>
                         </h3>
 
                         <p>
@@ -1495,7 +1381,6 @@ export default function SlaybasePage() {
                         </span>
                       )}
 
-
                       {record.readCount > 1 && (
                         <span>
                           REREAD ×
@@ -1503,13 +1388,11 @@ export default function SlaybasePage() {
                         </span>
                       )}
 
-
                       {record.wasTbbBuddyRead && (
                         <span>
                           TBB BUDDY READ
                         </span>
                       )}
-
 
                       {book.primaryFormat && (
                         <span>
@@ -1549,7 +1432,6 @@ export default function SlaybasePage() {
               >
                 LOAD MORE FROM THE ARCHIVES ↓
               </button>
-
 
               <p>
                 {remainingBooks

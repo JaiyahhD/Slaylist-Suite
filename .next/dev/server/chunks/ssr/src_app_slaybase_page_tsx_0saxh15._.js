@@ -7,9 +7,11 @@ __turbopack_context__.s([
     ()=>SlaybasePage
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$goodreads$2d$library$2e$json$2e5b$json$5d2e$cjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/data/goodreads-library.json.[json].cjs [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -149,9 +151,6 @@ function SlaybasePage() {
         }
         /* -------------------------
          SPECIAL FILTERS
-
-         Multiple selected special
-         filters use AND behavior.
          ------------------------- */ if (selectedSpecialFilters.includes("certified-slay")) {
             results = results.filter((record)=>record.book.certifiedSlay);
         }
@@ -163,9 +162,6 @@ function SlaybasePage() {
         }
         /* -------------------------
          GOODREADS SHELVES
-
-         Multiple selected shelves
-         use OR behavior.
          ------------------------- */ if (selectedShelves.length > 0) {
             results = results.filter((record)=>selectedShelves.some((selectedShelf)=>record.rawShelves.includes(selectedShelf)));
         }
@@ -284,7 +280,7 @@ function SlaybasePage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 736,
+                                lineNumber: 665,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -295,13 +291,13 @@ function SlaybasePage() {
                                         children: " SLAYBASE"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 743,
+                                        lineNumber: 672,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 741,
+                                lineNumber: 670,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -309,13 +305,13 @@ function SlaybasePage() {
                                 children: "Every book. Every shelf. Every questionable decision that somehow became part of the collection."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 746,
+                                lineNumber: 675,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 734,
+                        lineNumber: 664,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -325,26 +321,26 @@ function SlaybasePage() {
                                 children: books.length.toLocaleString()
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 757,
+                                lineNumber: 683,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                                 children: "BOOKS INDEXED"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 761,
+                                lineNumber: 687,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 755,
+                        lineNumber: 682,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 732,
+                lineNumber: 662,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -360,26 +356,26 @@ function SlaybasePage() {
                                 children: filter.label
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 803,
+                                lineNumber: 726,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                 children: filter.count.toLocaleString()
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 807,
+                                lineNumber: 730,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, filter.value, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 784,
+                        lineNumber: 708,
                         columnNumber: 15
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 774,
+                lineNumber: 699,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -392,7 +388,7 @@ function SlaybasePage() {
                                 children: "⌕"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 830,
+                                lineNumber: 750,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -403,7 +399,7 @@ function SlaybasePage() {
                                 "aria-label": "Search the Slaybase"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 834,
+                                lineNumber: 752,
                                 columnNumber: 11
                             }, this),
                             searchQuery && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -414,13 +410,13 @@ function SlaybasePage() {
                                 children: "×"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 847,
+                                lineNumber: 765,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 828,
+                        lineNumber: 748,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -436,7 +432,7 @@ function SlaybasePage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 866,
+                                lineNumber: 782,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -447,7 +443,7 @@ function SlaybasePage() {
                                         children: "Sort books"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 887,
+                                        lineNumber: 803,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -459,18 +455,18 @@ function SlaybasePage() {
                                                 children: option.label
                                             }, option.value, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 904,
+                                                lineNumber: 819,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 891,
+                                        lineNumber: 807,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 885,
+                                lineNumber: 801,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -479,7 +475,7 @@ function SlaybasePage() {
                                 children: "▦"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 922,
+                                lineNumber: 836,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -489,19 +485,19 @@ function SlaybasePage() {
                                 children: "☰"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 930,
+                                lineNumber: 843,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 864,
+                        lineNumber: 780,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 824,
+                lineNumber: 746,
                 columnNumber: 7
             }, this),
             filtersOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -517,20 +513,20 @@ function SlaybasePage() {
                                         children: "ADVANCED QUERY"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 953,
+                                        lineNumber: 866,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                         children: "Filter the Slaybase"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 957,
+                                        lineNumber: 870,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 952,
+                                lineNumber: 865,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -542,7 +538,7 @@ function SlaybasePage() {
                                         children: "CLEAR FILTERS"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 966,
+                                        lineNumber: 878,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -552,19 +548,19 @@ function SlaybasePage() {
                                         children: "×"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 976,
+                                        lineNumber: 888,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 963,
+                                lineNumber: 875,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 950,
+                        lineNumber: 863,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -577,14 +573,14 @@ function SlaybasePage() {
                                         children: "RATING"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 999,
+                                        lineNumber: 907,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "Pick one or more ratings."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1003,
+                                        lineNumber: 911,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -608,19 +604,19 @@ function SlaybasePage() {
                                                 ]
                                             }, rating, true, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1019,
+                                                lineNumber: 926,
                                                 columnNumber: 23
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1007,
+                                        lineNumber: 915,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 997,
+                                lineNumber: 905,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("fieldset", {
@@ -630,14 +626,14 @@ function SlaybasePage() {
                                         children: "FORMAT"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1055,
+                                        lineNumber: 956,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "How was the book consumed?"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1059,
+                                        lineNumber: 960,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -664,19 +660,19 @@ function SlaybasePage() {
                                                 children: format.label
                                             }, format.value, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1094,
+                                                lineNumber: 994,
                                                 columnNumber: 23
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1063,
+                                        lineNumber: 964,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1053,
+                                lineNumber: 954,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("fieldset", {
@@ -686,14 +682,14 @@ function SlaybasePage() {
                                         children: "SLAY DATA"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1128,
+                                        lineNumber: 1023,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "The stuff Goodreads could never make this cute."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1132,
+                                        lineNumber: 1027,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -706,7 +702,7 @@ function SlaybasePage() {
                                                 children: "✦ Certified Slay"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1139,
+                                                lineNumber: 1034,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -716,7 +712,7 @@ function SlaybasePage() {
                                                 children: "↻ Rereads"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1159,
+                                                lineNumber: 1053,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -726,19 +722,19 @@ function SlaybasePage() {
                                                 children: "♡ TBB Buddy Reads"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1179,
+                                                lineNumber: 1072,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1137,
+                                        lineNumber: 1032,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1126,
+                                lineNumber: 1021,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("fieldset", {
@@ -748,14 +744,14 @@ function SlaybasePage() {
                                         children: "IMPORTED SHELVES"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1209,
+                                        lineNumber: 1098,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "Your original Goodreads organization, preserved."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1213,
+                                        lineNumber: 1102,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -769,25 +765,25 @@ function SlaybasePage() {
                                                 children: shelf.replaceAll("-", " ").toUpperCase()
                                             }, shelf, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1230,
+                                                lineNumber: 1118,
                                                 columnNumber: 23
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1218,
+                                        lineNumber: 1107,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1207,
+                                lineNumber: 1096,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 991,
+                        lineNumber: 903,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -803,7 +799,7 @@ function SlaybasePage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1265,
+                                lineNumber: 1152,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -812,19 +808,19 @@ function SlaybasePage() {
                                 children: "SHOW RESULTS ✦"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1276,
+                                lineNumber: 1161,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1263,
+                        lineNumber: 1150,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 948,
+                lineNumber: 861,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -843,7 +839,7 @@ function SlaybasePage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1299,
+                                lineNumber: 1183,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -851,13 +847,13 @@ function SlaybasePage() {
                                 children: "The Library"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1323,
+                                lineNumber: 1206,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1297,
+                        lineNumber: 1181,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -873,13 +869,13 @@ function SlaybasePage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1330,
+                        lineNumber: 1213,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 1295,
+                lineNumber: 1179,
                 columnNumber: 7
             }, this),
             filteredRecords.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -889,21 +885,21 @@ function SlaybasePage() {
                         children: "⌕"
                     }, void 0, false, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1349,
+                        lineNumber: 1232,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         children: "THE SLAYBASE FOUND NOTHING."
                     }, void 0, false, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1353,
+                        lineNumber: 1236,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         children: "Not a single book survived this particular combination of fictional chaos."
                     }, void 0, false, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1357,
+                        lineNumber: 1240,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -912,13 +908,13 @@ function SlaybasePage() {
                         children: "RESET THE SLAYBASE"
                     }, void 0, false, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1363,
+                        lineNumber: 1246,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 1347,
+                lineNumber: 1230,
                 columnNumber: 9
             }, this),
             filteredRecords.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -929,15 +925,17 @@ function SlaybasePage() {
                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
                         className: "slaybase-book",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                href: `/books/${book.id}`,
                                 className: `slaybase-book-cover ` + `book-${accent}`,
+                                "aria-label": `Open ${book.title}`,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "book-status",
                                         children: book.status.replaceAll("-", " ").toUpperCase()
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1410,
+                                        lineNumber: 1294,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -945,20 +943,20 @@ function SlaybasePage() {
                                         children: "✦"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1420,
+                                        lineNumber: 1303,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                         children: book.title
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1425,
+                                        lineNumber: 1307,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1403,
+                                lineNumber: 1285,
                                 columnNumber: 19
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -970,23 +968,30 @@ function SlaybasePage() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                        children: book.title
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                            href: `/books/${book.id}`,
+                                                            children: book.title
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/slaybase/page.tsx",
+                                                            lineNumber: 1323,
+                                                            columnNumber: 27
+                                                        }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                                        lineNumber: 1440,
+                                                        lineNumber: 1322,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         children: book.authors.join(", ")
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                                        lineNumber: 1444,
+                                                        lineNumber: 1330,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1438,
+                                                lineNumber: 1320,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -995,13 +1000,13 @@ function SlaybasePage() {
                                                 children: "•••"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1453,
+                                                lineNumber: 1339,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1436,
+                                        lineNumber: 1318,
                                         columnNumber: 21
                                     }, this),
                                     book.personalRating ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1012,14 +1017,14 @@ function SlaybasePage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1469,
+                                        lineNumber: 1355,
                                         columnNumber: 23
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "book-rating unrated",
                                         children: "NOT YET RATED"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1482,
+                                        lineNumber: 1368,
                                         columnNumber: 23
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1029,7 +1034,7 @@ function SlaybasePage() {
                                                 children: "CERTIFIED SLAY"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1493,
+                                                lineNumber: 1379,
                                                 columnNumber: 25
                                             }, this),
                                             record.readCount > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1039,45 +1044,45 @@ function SlaybasePage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1500,
+                                                lineNumber: 1385,
                                                 columnNumber: 25
                                             }, this),
                                             record.wasTbbBuddyRead && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: "TBB BUDDY READ"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1508,
+                                                lineNumber: 1392,
                                                 columnNumber: 25
                                             }, this),
                                             book.primaryFormat && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: book.primaryFormat.toUpperCase()
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                                lineNumber: 1515,
+                                                lineNumber: 1398,
                                                 columnNumber: 25
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/slaybase/page.tsx",
-                                        lineNumber: 1490,
+                                        lineNumber: 1376,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/slaybase/page.tsx",
-                                lineNumber: 1434,
+                                lineNumber: 1316,
                                 columnNumber: 19
                             }, this)
                         ]
                     }, book.id, true, {
                         fileName: "[project]/src/app/slaybase/page.tsx",
-                        lineNumber: 1396,
+                        lineNumber: 1278,
                         columnNumber: 17
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 1381,
+                lineNumber: 1264,
                 columnNumber: 9
             }, this),
             filteredRecords.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1090,7 +1095,7 @@ function SlaybasePage() {
                             children: "LOAD MORE FROM THE ARCHIVES ↓"
                         }, void 0, false, {
                             fileName: "[project]/src/app/slaybase/page.tsx",
-                            lineNumber: 1544,
+                            lineNumber: 1427,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1109,30 +1114,30 @@ function SlaybasePage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/slaybase/page.tsx",
-                            lineNumber: 1554,
+                            lineNumber: 1436,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/slaybase/page.tsx",
-                    lineNumber: 1542,
+                    lineNumber: 1425,
                     columnNumber: 13
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: "✦ YOU HAVE REACHED THE END OF THIS SHELF ✦"
                 }, void 0, false, {
                     fileName: "[project]/src/app/slaybase/page.tsx",
-                    lineNumber: 1573,
+                    lineNumber: 1455,
                     columnNumber: 13
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/slaybase/page.tsx",
-                lineNumber: 1539,
+                lineNumber: 1422,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/slaybase/page.tsx",
-        lineNumber: 726,
+        lineNumber: 656,
         columnNumber: 5
     }, this);
 }
