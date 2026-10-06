@@ -1282,33 +1282,58 @@ export default function SlaybasePage() {
 
                   {/* BOOK COVER */}
 
-                  <Link
-                    href={`/books/${book.id}`}
-                    className={
-                      `slaybase-book-cover ` +
-                      `book-${accent}`
-                    }
-                    aria-label={`Open ${book.title}`}
-                  >
+                  {/* BOOK COVER */}
 
-                    <span className="book-status">
-                      {book.status
-                        .replaceAll(
-                          "-",
-                          " "
-                        )
-                        .toUpperCase()}
-                    </span>
+<Link
+  href={`/books/${book.id}`}
+  className={
+    `slaybase-book-cover ` +
+    `book-${accent} ` +
+    `${book.coverUrl ? "has-real-cover" : ""}`
+  }
+  aria-label={`Open ${book.title}`}
+>
 
-                    <span className="book-cover-symbol">
-                      ✦
-                    </span>
+  {book.coverUrl ? (
+  <>
+    <img
+        src={book.coverUrl}
+        alt={`Cover of ${book.title}`}
+        className="slaybase-real-cover"
+        loading="lazy"
+      />
 
-                    <strong>
-                      {book.title}
-                    </strong>
+      <span className="book-status">
+        {book.status
+          .replaceAll(
+            "-",
+            " "
+          )
+          .toUpperCase()}
+      </span>
+    </>
+  ) : (
+    <>
+      <span className="book-status">
+        {book.status
+          .replaceAll(
+            "-",
+            " "
+          )
+          .toUpperCase()}
+      </span>
 
-                  </Link>
+      <span className="book-cover-symbol">
+        ✦
+      </span>
+
+      <strong>
+        {book.title}
+      </strong>
+    </>
+  )}
+
+</Link>
 
 
                   {/* BOOK INFORMATION */}

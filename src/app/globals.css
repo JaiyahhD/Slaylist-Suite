@@ -5204,3 +5204,165 @@ body {
 
 }
 
+/* =========================================================
+   PRETTY SMART™ // REAL SLAYBASE COVERS
+   ========================================================= */
+
+.slaybase-book-cover.has-real-cover {
+  position: relative;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  background: #160a18;
+}
+
+.slaybase-book-cover.has-real-cover .slaybase-real-cover {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: inherit;
+
+  transition:
+    transform 260ms ease,
+    filter 260ms ease;
+}
+
+.slaybase-book-cover.has-real-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(9, 7, 13, 0.03) 0%,
+      transparent 60%,
+      rgba(9, 7, 13, 0.22) 100%
+    );
+
+  box-shadow:
+    inset 0 0 0 1px
+      rgba(255, 255, 255, 0.08);
+}
+
+.slaybase-book-cover.has-real-cover .book-status {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+
+  width: auto;
+  height: auto;
+
+  background: rgba(9, 7, 13, 0.78);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.22);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 6px 20px
+      rgba(0, 0, 0, 0.25);
+}
+
+@media (hover: hover) {
+  .slaybase-book-cover.has-real-cover:hover
+    .slaybase-real-cover {
+    transform: scale(1.035);
+  }
+}
+
+/* =========================================================
+   PRETTY SMART™ // REAL BOOK DOSSIER COVER
+   ========================================================= */
+
+.book-detail-cover.has-real-cover {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+
+  background: #160a18;
+}
+
+.book-detail-real-cover {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: inherit;
+
+  transition:
+    transform 300ms ease,
+    filter 300ms ease;
+}
+
+.book-detail-cover.has-real-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(9, 7, 13, 0.02) 0%,
+      transparent 62%,
+      rgba(9, 7, 13, 0.18) 100%
+    );
+
+  box-shadow:
+    inset 0 0 0 1px
+      rgba(255, 255, 255, 0.1);
+}
+
+.book-detail-cover.has-real-cover
+  .book-detail-status {
+  position: absolute;
+
+  top: 1rem;
+  left: 1rem;
+
+  z-index: 3;
+
+  width: auto;
+  height: auto;
+
+  background:
+    rgba(9, 7, 13, 0.78);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.22);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 8px 24px
+      rgba(0, 0, 0, 0.3);
+}
+
+@media (hover: hover) {
+  .book-detail-cover.has-real-cover:hover
+    .book-detail-real-cover {
+    transform: scale(1.025);
+  }
+}

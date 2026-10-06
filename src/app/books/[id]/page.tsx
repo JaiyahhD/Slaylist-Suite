@@ -150,30 +150,52 @@ export default async function BookPage({
 
       <section className="book-detail-hero">
 
-        {/* TEMPORARY COVER */}
+        {/* BOOK COVER */}
 
-        <div className="book-detail-cover">
+<div
+  className={
+    `book-detail-cover ` +
+    `${book.coverUrl ? "has-real-cover" : ""}`
+  }
+>
 
-          <span className="book-detail-status">
-            {formatLabel(
-              book.status
-            )}
-          </span>
+  {book.coverUrl ? (
+    <>
+      <img
+        src={book.coverUrl}
+        alt={`Cover of ${book.title}`}
+        className="book-detail-real-cover"
+      />
 
-          <span className="book-detail-cover-symbol">
-            ✦
-          </span>
+      <span className="book-detail-status">
+        {formatLabel(
+          book.status
+        )}
+      </span>
+    </>
+  ) : (
+    <>
+      <span className="book-detail-status">
+        {formatLabel(
+          book.status
+        )}
+      </span>
 
-          <strong>
-            {book.title}
-          </strong>
+      <span className="book-detail-cover-symbol">
+        ✦
+      </span>
 
-          <small>
-            {book.authors.join(", ")}
-          </small>
+      <strong>
+        {book.title}
+      </strong>
 
-        </div>
+      <small>
+        {book.authors.join(", ")}
+      </small>
+    </>
+  )}
 
+</div>
 
         {/* PRIMARY INFORMATION */}
 
