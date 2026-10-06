@@ -8,6 +8,7 @@ import type {
 
 import goodreadsLibrary from "@/data/goodreads-library.json";
 
+import UpdateProgressButton from "@/components/rotation/UpdateProgressButton";
 
 /* =========================================================
    TYPES
@@ -391,13 +392,13 @@ export default function CurrentRotationPage() {
 
                       <div className="current-rotation-actions">
 
-                        <button
-                          type="button"
-                          disabled
-                          title="Progress editing is coming in the next step."
-                        >
-                          + UPDATE PROGRESS
-                        </button>
+                        <UpdateProgressButton
+                            bookId={book.id}
+                            bookTitle={book.title}
+                            pageCount={book.pageCount}
+                            readingMethod={readingRecord?.readingMethod}
+                            readingNumber={readingRecord?.readingNumber ?? 1}
+                            />
 
                         <Link
                           href={`/books/${book.id}`}
