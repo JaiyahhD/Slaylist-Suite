@@ -8,7 +8,7 @@
         ↓
    normalize / translate
         ↓
-   Book + ReadingRecord
+   Book + ReadingRecord + Review
    ========================================================= */
 
 import type {
@@ -22,6 +22,8 @@ import type {
   ReadingRecordStatus,
 } from "@/types/reading";
 
+import type { Review } from "@/types/review";
+
 import type { GoodreadsRow } from "./types";
 
 
@@ -29,10 +31,14 @@ import type { GoodreadsRow } from "./types";
    HELPERS
    ========================================================= */
 
-function cleanText(value?: string): string | undefined {
+function cleanText(
+  value?: string
+): string | undefined {
   const cleaned = value?.trim();
 
-  return cleaned ? cleaned : undefined;
+  return cleaned
+    ? cleaned
+    : undefined;
 }
 
 
@@ -94,7 +100,9 @@ function parseAuthors(
     .map((author) => author.trim())
     .filter(Boolean);
 
-  return Array.from(new Set(authors));
+  return Array.from(
+    new Set(authors)
+  );
 }
 
 
@@ -105,6 +113,22 @@ function parseShelves(
     .split(",")
     .map((shelf) => shelf.trim())
     .filter(Boolean);
+}
+
+
+function parseGoodreadsBoolean(
+  value?: string
+): boolean {
+  const normalized =
+    value
+      ?.trim()
+      .toLowerCase();
+
+  return (
+    normalized === "true" ||
+    normalized === "yes" ||
+    normalized === "1"
+  );
 }
 
 
@@ -214,9 +238,14 @@ function normalizeGoodreadsDate(
     return undefined;
   }
 
-  const date = new Date(value);
+  const date =
+    new Date(value);
 
-  if (Number.isNaN(date.getTime())) {
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
     return undefined;
   }
 
@@ -227,7 +256,7 @@ function normalizeGoodreadsDate(
 
 
 /* =========================================================
-   CERTIFIED SLAY LOGIC
+   CERTIFIED SLAY / TBB LOGIC
    ========================================================= */
 
 function isCertifiedSlay(
@@ -239,6 +268,8 @@ function isCertifiedSlay(
       "5-star-reads"
   );
 }
+
+
 function isTbbBuddyRead(
   shelves: string[]
 ): boolean {
@@ -258,22 +289,31 @@ export function mapGoodreadsRowToBook(
   row: GoodreadsRow
 ): Book {
   const shelves =
-    parseShelves(row["Bookshelves"]);
+    parseShelves(
+      row["Bookshelves"]
+    );
 
   const format =
-    mapBookFormat(row["Binding"]);
+    mapBookFormat(
+      row["Binding"]
+    );
 
   const rating =
-    parsePositiveNumber(row["My Rating"]);
+    parsePositiveNumber(
+      row["My Rating"]
+    );
 
   const now =
     new Date().toISOString();
 
   return {
-    id: `goodreads-${row["Book Id"]}`,
+    id:
+      `goodreads-${row["Book Id"]}`,
 
     title:
-      cleanText(row["Title"]) ??
+      cleanText(
+        row["Title"]
+      ) ??
       "Untitled",
 
     authors:
@@ -306,7 +346,9 @@ export function mapGoodreadsRowToBook(
       ),
 
     publisher:
-      cleanText(row["Publisher"]),
+      cleanText(
+        row["Publisher"]
+      ),
 
     status:
       mapLibraryStatus(
@@ -320,11 +362,12 @@ export function mapGoodreadsRowToBook(
     tagIds: [],
 
     /*
-      Goodreads shelves will eventually be converted
-      into real Shelf IDs during the import process.
+      Goodreads shelves will eventually be
+      converted into real Shelf IDs during
+      the import process.
 
-      We intentionally do NOT place raw shelf names
-      into shelfIds.
+      Raw Goodreads shelf names are
+      intentionally NOT placed here.
     */
     shelfIds: [],
 
@@ -342,7 +385,9 @@ export function mapGoodreadsRowToBook(
       rating,
 
     certifiedSlay:
-      isCertifiedSlay(shelves),
+      isCertifiedSlay(
+        shelves
+      ),
 
     brainChemistry: false,
 
@@ -389,18 +434,26 @@ export function mapGoodreadsRowToReadingRecord(
     They exist in Slaybase as Books until an
     actual reading experience begins.
   */
-  if (status === "planned") {
+  if (
+    status === "planned"
+  ) {
     return null;
   }
 
   const shelves =
-    parseShelves(row["Bookshelves"]);
+    parseShelves(
+      row["Bookshelves"]
+    );
 
   const format =
-    mapBookFormat(row["Binding"]);
+    mapBookFormat(
+      row["Binding"]
+    );
 
   const rating =
-    parsePositiveNumber(row["My Rating"]);
+    parsePositiveNumber(
+      row["My Rating"]
+    );
 
   const readCount =
     parsePositiveNumber(
@@ -435,10 +488,11 @@ export function mapGoodreadsRowToReadingRecord(
     rating,
 
     certifiedSlay:
-      isCertifiedSlay(shelves),
+      isCertifiedSlay(
+        shelves
+      ),
 
-    readingNumber:
-      1,
+    readingNumber: 1,
 
     isReread:
       readCount > 1,
@@ -458,6 +512,93 @@ export function mapGoodreadsRowToReadingRecord(
 
 
 /* =========================================================
+   GOODREADS ROW → REVIEW
+   ========================================================= */
+
+export function mapGoodreadsRowToReview(
+  row: GoodreadsRow,
+  readingRecord:
+    ReadingRecord | null
+): Review | null {
+  const body =
+    cleanText(
+      row["My Review"]
+    );
+
+  /*
+    Star ratings alone do not create Review
+    entities. There must be a written review.
+  */
+  if (!body) {
+    return null;
+  }
+
+  const rating =
+    parsePositiveNumber(
+      row["My Rating"]
+    );
+
+  /*
+    Our audit confirmed all 10 Goodreads
+    written reviews have ratings.
+
+    We still refuse to invent one if future
+    imports contain an unrated review.
+  */
+  if (
+    rating === undefined
+  ) {
+    return null;
+  }
+
+  const importedDate =
+    normalizeGoodreadsDate(
+      row["Date Read"]
+    ) ??
+    normalizeGoodreadsDate(
+      row["Date Added"]
+    );
+
+  const timestamp =
+    importedDate
+      ? `${importedDate}T00:00:00.000Z`
+      : new Date().toISOString();
+
+  return {
+    id:
+      `goodreads-review-${row["Book Id"]}`,
+
+    bookId:
+      `goodreads-${row["Book Id"]}`,
+
+    readingRecordId:
+      readingRecord?.id,
+
+    rating,
+
+    /*
+      Goodreads does not provide a separate
+      review title, favorite quote, or
+      reaction field, so we do not invent
+      those values.
+    */
+    body,
+
+    containsSpoilers:
+      parseGoodreadsBoolean(
+        row["Spoiler"]
+      ),
+
+    createdAt:
+      timestamp,
+
+    updatedAt:
+      timestamp,
+  };
+}
+
+
+/* =========================================================
    COMPLETE ROW MAPPER
    ========================================================= */
 
@@ -466,6 +607,9 @@ export interface GoodreadsMappedRecord {
 
   readingRecord:
     ReadingRecord | null;
+
+  review:
+    Review | null;
 
   rawShelves: string[];
 
@@ -478,28 +622,40 @@ export interface GoodreadsMappedRecord {
 export function mapGoodreadsRow(
   row: GoodreadsRow
 ): GoodreadsMappedRecord {
+  const readingRecord =
+    mapGoodreadsRowToReadingRecord(
+      row
+    );
+
   return {
-  book:
-    mapGoodreadsRowToBook(row),
+    book:
+      mapGoodreadsRowToBook(
+        row
+      ),
 
-  readingRecord:
-    mapGoodreadsRowToReadingRecord(row),
+    readingRecord,
 
-  rawShelves:
-    parseShelves(
-      row["Bookshelves"]
-    ),
+    review:
+      mapGoodreadsRowToReview(
+        row,
+        readingRecord
+      ),
 
-  readCount:
-    parsePositiveNumber(
-      row["Read Count"]
-    ) ?? 0,
-
-  wasTbbBuddyRead:
-    isTbbBuddyRead(
+    rawShelves:
       parseShelves(
         row["Bookshelves"]
-      )
-    ),
+      ),
+
+    readCount:
+      parsePositiveNumber(
+        row["Read Count"]
+      ) ?? 0,
+
+    wasTbbBuddyRead:
+      isTbbBuddyRead(
+        parseShelves(
+          row["Bookshelves"]
+        )
+      ),
   };
 }
