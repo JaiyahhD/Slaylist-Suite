@@ -1977,4 +1977,282 @@ body {
   }
 }
 
+.slaybase-filter-panel {
+  background: radial-gradient(circle at 10% 0, #ff3eaa2e, #0000 34%), radial-gradient(circle at 90% 20%, #83ddff1f, #0000 30%), linear-gradient(135deg, #260d29f5, #160a18f5);
+  border: 1px solid #e7e5ef29;
+  border-radius: 28px;
+  margin: 0 0 2.5rem;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 80px #00000059, inset 0 1px #ffffff0f;
+}
+
+.slaybase-filter-panel:before {
+  content: "";
+  opacity: .8;
+  background: linear-gradient(90deg, #0000, #ff5fbd, #b8a1ff, #83ddff, #0000);
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+}
+
+.slaybase-filter-header {
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.slaybase-filter-header h2 {
+  color: var(--text-primary);
+  margin: .25rem 0 0;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1;
+}
+
+.slaybase-filter-actions {
+  align-items: center;
+  gap: .6rem;
+  display: flex;
+}
+
+.slaybase-filter-actions button {
+  min-height: 38px;
+  color: var(--text-secondary);
+  font: inherit;
+  letter-spacing: .08em;
+  cursor: pointer;
+  background: #ffffff0a;
+  border: 1px solid #ff91d338;
+  border-radius: 999px;
+  padding: .55rem .85rem;
+  font-size: .7rem;
+  font-weight: 800;
+  transition: transform .16s, border-color .16s, background .16s, color .16s;
+}
+
+.slaybase-filter-actions button:hover {
+  color: var(--chrome-white);
+  background: #ff3eaa1f;
+  border-color: #ff5fbda6;
+  transform: translateY(-1px);
+}
+
+.slaybase-filter-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  display: grid;
+}
+
+.slaybase-filter-group {
+  background: linear-gradient(135deg, #ffffff0e, #ffffff05);
+  border: 1px solid #c9c8d81f;
+  border-radius: 20px;
+  min-width: 0;
+  margin: 0;
+  padding: 1.15rem;
+  box-shadow: inset 0 1px #ffffff0a;
+}
+
+.slaybase-filter-group:first-child {
+  background: linear-gradient(135deg, #ff3eaa21, #260d29a6);
+}
+
+.slaybase-filter-group:nth-child(2) {
+  background: linear-gradient(135deg, #8f63ff21, #260d29a6);
+}
+
+.slaybase-filter-group:nth-child(3) {
+  background: linear-gradient(135deg, #83ddff1a, #260d29a6);
+}
+
+.slaybase-filter-group:nth-child(4) {
+  background: linear-gradient(135deg, #ff3eaa1a, #8f63ff1a, #83ddff14);
+}
+
+.slaybase-filter-group legend {
+  color: var(--bubblegum);
+  letter-spacing: .14em;
+  padding: 0 .4rem;
+  font-size: .75rem;
+  font-weight: 900;
+}
+
+.slaybase-filter-group p {
+  color: var(--text-muted);
+  margin: .2rem 0 .9rem;
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+.slaybase-filter-options {
+  flex-wrap: wrap;
+  gap: .55rem;
+  display: flex;
+}
+
+.slaybase-filter-options button {
+  min-height: 36px;
+  color: var(--text-secondary);
+  font: inherit;
+  letter-spacing: .045em;
+  cursor: pointer;
+  background: #09070d6b;
+  border: 1px solid #c9c8d826;
+  border-radius: 999px;
+  padding: .55rem .8rem;
+  font-size: .7rem;
+  font-weight: 800;
+  transition: transform .16s, background .16s, border-color .16s, color .16s, box-shadow .16s;
+}
+
+.slaybase-filter-options button:hover {
+  color: var(--chrome-white);
+  border-color: #ff91d380;
+  transform: translateY(-2px);
+}
+
+.slaybase-filter-options button.selected {
+  color: #fff8fc;
+  background: linear-gradient(135deg, #ff3eaa52, #8f63ff3d);
+  border-color: #ff91d3bf;
+  box-shadow: 0 0 0 1px #ff5fbd1f, 0 8px 24px #ff3eaa21;
+}
+
+.slaybase-filter-footer {
+  border-top: 1px solid #c9c8d81a;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.1rem;
+  display: flex;
+}
+
+.slaybase-filter-footer p {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: .78rem;
+}
+
+.slaybase-filter-footer button {
+  color: #fff8fc;
+  font: inherit;
+  letter-spacing: .08em;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff3eaa, #8f63ff);
+  border: 1px solid #ff91d380;
+  border-radius: 999px;
+  padding: .75rem 1.1rem;
+  font-size: .72rem;
+  font-weight: 900;
+  transition: transform .16s, box-shadow .16s;
+  box-shadow: 0 10px 28px #ff3eaa2e;
+}
+
+.slaybase-filter-footer button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px #ff3eaa42;
+}
+
+.slaybase-search-clear {
+  width: 30px;
+  height: 30px;
+  color: var(--bubblegum);
+  cursor: pointer;
+  background: #ff5fbd1a;
+  border: 0;
+  border-radius: 50%;
+  place-items: center;
+  padding: 0;
+  font-size: 1.15rem;
+  display: grid;
+}
+
+.slaybase-sort select {
+  min-height: 42px;
+  color: var(--text-primary);
+  font: inherit;
+  letter-spacing: .04em;
+  cursor: pointer;
+  background: #160a18;
+  border: 1px solid #c9c8d829;
+  border-radius: 999px;
+  padding: .65rem 2.25rem .65rem .9rem;
+  font-size: .7rem;
+  font-weight: 800;
+}
+
+.slaybase-empty {
+  text-align: center;
+  background: linear-gradient(135deg, #ff3eaa14, #8f63ff0f, #83ddff0a);
+  border: 1px dashed #ff91d340;
+  border-radius: 26px;
+  margin: 2rem 0 3rem;
+  padding: 3.5rem 1.5rem;
+}
+
+.slaybase-empty > span {
+  color: var(--ice-blue);
+  margin-bottom: .75rem;
+  font-size: 2rem;
+  display: block;
+}
+
+.slaybase-empty h3 {
+  color: var(--text-primary);
+  margin: 0 0 .5rem;
+}
+
+.slaybase-empty p {
+  max-width: 520px;
+  color: var(--text-muted);
+  margin: 0 auto 1.2rem;
+}
+
+.slaybase-empty button {
+  color: var(--bubblegum);
+  font: inherit;
+  cursor: pointer;
+  background: #ff3eaa1f;
+  border: 1px solid #ff91d373;
+  border-radius: 999px;
+  padding: .7rem 1rem;
+  font-weight: 800;
+}
+
+.sr-only {
+  clip: rect(0,
+    0,
+    0,
+    0);
+  white-space: nowrap;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  .slaybase-filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slaybase-filter-header, .slaybase-filter-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .slaybase-filter-actions, .slaybase-filter-footer button {
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=src_app_globals_162hn9o.css.map*/
