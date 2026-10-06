@@ -1,0 +1,304 @@
+/* =========================================================
+   THE SLAYLIST SUITE
+   Design System: Pretty Smart™
+   
+   Pink is the diva.
+   Plum is the foundation.
+   Purple is the transition.
+   Ice blue is the nerd.
+   Chrome is the jewelry.
+   ========================================================= */
+
+:root {
+  /* ========================================
+     FOUNDATION
+     ======================================== */
+
+  --ink: #09070d;
+  --blackberry: #160a18;
+  --deep-plum: #260d29;
+  --plum: #3b123e;
+
+  /* ========================================
+     SIGNATURE PINKS
+     ======================================== */
+
+  --electric-pink: #ff3eaa;
+  --hot-pink: #ff5fbd;
+  --bubblegum: #ff91d3;
+  --blush: #f6b8dc;
+
+  /* ========================================
+     PURPLES
+     ======================================== */
+
+  --ultraviolet: #8f63ff;
+  --digital-lavender: #b8a1ff;
+  --orchid: #d58cff;
+
+  /* ========================================
+     TECH BLUES
+     ======================================== */
+
+  --ice-blue: #83ddff;
+  --electric-blue: #6da9ff;
+  --blue-lavender: #91a7ff;
+
+  /* ========================================
+     CHROME
+     ======================================== */
+
+  --chrome: #c9c8d8;
+  --silver: #e7e5ef;
+  --chrome-white: #faf8ff;
+
+  /* ========================================
+     TEXT
+     ======================================== */
+
+  --text-primary: #fff8fc;
+  --text-secondary: #d8cbd8;
+  --text-muted: #978a9a;
+
+  /* ========================================
+     STATUS COLORS
+     ======================================== */
+
+  --success: #8dffc1;
+  --warning: #ffe174;
+  --danger: #ff6482;
+
+  /* ========================================
+     GRADIENTS
+     ======================================== */
+
+  --gradient-diva:
+    linear-gradient(
+      135deg,
+      var(--electric-pink),
+      var(--bubblegum)
+    );
+
+  --gradient-brainy:
+    linear-gradient(
+      135deg,
+      var(--electric-pink),
+      var(--ultraviolet)
+    );
+
+  --gradient-tech:
+    linear-gradient(
+      135deg,
+      var(--ultraviolet),
+      var(--ice-blue)
+    );
+
+  --gradient-holographic:
+    linear-gradient(
+      135deg,
+      var(--bubblegum),
+      var(--digital-lavender),
+      var(--ice-blue),
+      var(--hot-pink)
+    );
+
+  --gradient-chrome:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #aeb4c4 30%,
+      #f7f7fb 50%,
+      #8f95a5 75%,
+      #ffffff 100%
+    );
+
+  /* ========================================
+     GLASS CARDS
+     ======================================== */
+
+  --glass-dark: rgba(22, 10, 24, 0.78);
+
+  --glass-pink:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.22),
+      rgba(38, 13, 41, 0.82)
+    );
+
+  --glass-violet:
+    linear-gradient(
+      135deg,
+      rgba(143, 99, 255, 0.20),
+      rgba(38, 13, 41, 0.82)
+    );
+
+  --glass-ice:
+    linear-gradient(
+      135deg,
+      rgba(131, 221, 255, 0.16),
+      rgba(38, 13, 41, 0.82)
+    );
+
+  --glass-mixed:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.20),
+      rgba(143, 99, 255, 0.15),
+      rgba(131, 221, 255, 0.12)
+    );
+
+  /* ========================================
+     BORDERS
+     ======================================== */
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-pink: rgba(255, 62, 170, 0.45);
+  --border-purple: rgba(143, 99, 255, 0.40);
+  --border-ice: rgba(131, 221, 255, 0.38);
+  --border-chrome: rgba(231, 229, 239, 0.30);
+
+  /* ========================================
+     GLOWS
+     ======================================== */
+
+  --glow-pink:
+    0 0 25px rgba(255, 62, 170, 0.28);
+
+  --glow-purple:
+    0 0 25px rgba(143, 99, 255, 0.22);
+
+  --glow-ice:
+    0 0 25px rgba(131, 221, 255, 0.20);
+
+  /* ========================================
+     SHAPES
+     ======================================== */
+
+  --radius-small: 10px;
+  --radius-medium: 18px;
+  --radius-large: 28px;
+  --radius-pill: 999px;
+
+  /* ========================================
+     SPACING
+     ======================================== */
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+
+  /* ========================================
+     LAYOUT
+     ======================================== */
+
+  --content-width: 1400px;
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 5%,
+      rgba(255, 62, 170, 0.10),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(143, 99, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 75% 80%,
+      rgba(131, 221, 255, 0.05),
+      transparent 30%
+    ),
+    var(--ink);
+
+  color: var(--text-primary);
+
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: var(--electric-pink);
+  color: white;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      var(--electric-pink),
+      var(--ultraviolet),
+      var(--ice-blue)
+    );
+
+  border-radius: var(--radius-pill);
+}
+
+
+/* =========================================================
+   REUSABLE GLASS SURFACES
+   ========================================================= */
+
+.glass-pink {
+  background: var(--glass-pink);
+  border: 1px solid var(--border-pink);
+  box-shadow: var(--glow-pink);
+  backdrop-filter: blur(16px);
+}
+
+.glass-violet {
+  background: var(--glass-violet);
+  border: 1px solid var(--border-purple);
+  box-shadow: var(--glow-purple);
+  backdrop-filter: blur(16px);
+}
+
+.glass-ice {
+  background: var(--glass-ice);
+  border: 1px solid var(--border-ice);
+  box-shadow: var(--glow-ice);
+  backdrop-filter: blur(16px);
+}
+
+.glass-mixed {
+  background: var(--glass-mixed);
+  border: 1px solid var(--border-chrome);
+  backdrop-filter: blur(16px);
+}
