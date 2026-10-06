@@ -6282,3 +6282,744 @@ body {
   }
 
 }
+
+/* =========================================================
+   PRETTY SMART™ // REVIEW CONTROLS
+   ========================================================= */
+
+.review-controls {
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  display: grid;
+  grid-template-columns:
+    minmax(250px, 1.7fr)
+    minmax(150px, 0.7fr)
+    minmax(170px, 0.8fr)
+    auto;
+
+  align-items: end;
+
+  gap: 0.8rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 1.35rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.07),
+      rgba(143, 99, 255, 0.05),
+      rgba(131, 221, 255, 0.035)
+    ),
+    rgba(22, 10, 24, 0.68);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 18px 45px
+      rgba(0, 0, 0, 0.18);
+}
+
+
+.review-search,
+.review-control-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.45rem;
+}
+
+
+.review-search label,
+.review-control-group label {
+  padding-left: 0.2rem;
+
+  color: var(--text-muted);
+
+  font-family: monospace;
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+
+.review-search-box {
+  height: 46px;
+  padding: 0 0.85rem;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.65rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 0.9rem;
+
+  background:
+    rgba(9, 7, 13, 0.58);
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.review-search-box:focus-within {
+  border-color:
+    rgba(255, 95, 189, 0.55);
+
+  box-shadow:
+    0 0 0 3px
+      rgba(255, 62, 170, 0.08);
+}
+
+
+.review-search-box > span {
+  color: var(--bubblegum);
+
+  font-size: 1.15rem;
+}
+
+
+.review-search-box input {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--text-primary);
+
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+
+.review-search-box input::placeholder {
+  color:
+    rgba(151, 138, 154, 0.72);
+}
+
+
+.review-control-group select {
+  height: 46px;
+  padding: 0 2.3rem 0 0.85rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 0.9rem;
+
+  outline: none;
+
+  background:
+    rgba(9, 7, 13, 0.72);
+
+  color: var(--text-primary);
+
+  font: inherit;
+  font-size: 0.8rem;
+
+  cursor: pointer;
+}
+
+
+.review-control-group select:focus {
+  border-color:
+    rgba(143, 99, 255, 0.6);
+
+  box-shadow:
+    0 0 0 3px
+      rgba(143, 99, 255, 0.08);
+}
+
+
+.review-control-group select option {
+  background: #160a18;
+
+  color: var(--text-primary);
+}
+
+
+/* =========================================================
+   CERTIFIED TOGGLE
+   ========================================================= */
+
+.review-certified-toggle {
+  height: 46px;
+  padding: 0 1rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  border:
+    1px solid
+    rgba(255, 145, 211, 0.2);
+
+  border-radius: 0.9rem;
+
+  background:
+    rgba(255, 62, 170, 0.06);
+
+  color: var(--text-secondary);
+
+  font-family: monospace;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.review-certified-toggle > span {
+  color: var(--bubblegum);
+}
+
+
+.review-certified-toggle:hover {
+  border-color:
+    rgba(255, 145, 211, 0.45);
+
+  color: var(--chrome-white);
+}
+
+
+.review-certified-toggle.is-active {
+  border-color:
+    rgba(255, 95, 189, 0.58);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.22),
+      rgba(143, 99, 255, 0.14)
+    );
+
+  color: var(--chrome-white);
+
+  box-shadow:
+    0 0 24px
+      rgba(255, 62, 170, 0.12);
+}
+
+
+/* =========================================================
+   RESULTS BAR
+   ========================================================= */
+
+.review-results-bar {
+  min-height: 42px;
+  margin-bottom: 1rem;
+  padding: 0 0.35rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
+
+.review-results-bar p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+}
+
+
+.review-results-bar p strong {
+  color: var(--ice-blue);
+}
+
+
+.review-results-bar button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--bubblegum);
+
+  font-family: monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease;
+}
+
+
+.review-results-bar button:hover {
+  color: var(--chrome-white);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.reviews-empty-state {
+  min-height: 340px;
+  padding: 3rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border:
+    1px dashed
+    rgba(255, 145, 211, 0.2);
+
+  border-radius: 1.6rem;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 62, 170, 0.1),
+      transparent 45%
+    ),
+    rgba(22, 10, 24, 0.55);
+}
+
+
+.reviews-empty-state > span {
+  margin-bottom: 1rem;
+
+  color: var(--bubblegum);
+
+  font-size: 2.5rem;
+}
+
+
+.reviews-empty-state .eyebrow {
+  margin: 0 0 0.55rem;
+
+  color: var(--ice-blue);
+}
+
+
+.reviews-empty-state h3 {
+  margin: 0;
+
+  font-size:
+    clamp(1.8rem, 4vw, 2.8rem);
+
+  letter-spacing: -0.04em;
+}
+
+
+.reviews-empty-state > p:not(.eyebrow) {
+  max-width: 480px;
+  margin: 0.8rem 0 1.4rem;
+
+  color: var(--text-muted);
+
+  line-height: 1.65;
+}
+
+
+.reviews-empty-state button {
+  padding: 0.8rem 1rem;
+
+  border:
+    1px solid
+    rgba(255, 95, 189, 0.32);
+
+  border-radius: 0.8rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.18),
+      rgba(143, 99, 255, 0.12)
+    );
+
+  color: var(--chrome-white);
+
+  font-family: monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   REVIEW CONTROLS // RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+  .review-controls {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .review-search {
+    grid-column:
+      1 / -1;
+  }
+
+}
+
+
+@media (max-width: 620px) {
+
+  .review-controls {
+    grid-template-columns: 1fr;
+
+    padding: 0.85rem;
+  }
+
+  .review-search {
+    grid-column: auto;
+  }
+
+  .review-certified-toggle {
+    width: 100%;
+  }
+
+  .review-results-bar {
+    align-items: flex-start;
+  }
+
+}
+
+/* =========================================================
+   PRETTY SMART™ // BOOK DOSSIER — THE VERDICT
+   ========================================================= */
+
+.book-detail-review-panel {
+  position: relative;
+  overflow: hidden;
+
+  grid-column: 1 / -1;
+
+  background:
+    radial-gradient(
+      circle at 92% 10%,
+      rgba(255, 62, 170, 0.16),
+      transparent 22rem
+    ),
+    radial-gradient(
+      circle at 5% 90%,
+      rgba(131, 221, 255, 0.07),
+      transparent 20rem
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.1),
+      rgba(143, 99, 255, 0.07) 50%,
+      rgba(22, 10, 24, 0.82)
+    );
+}
+
+
+.book-detail-review-panel::after {
+  content: "REVIEW.LOG";
+
+  position: absolute;
+  top: 1.35rem;
+  right: 1.5rem;
+
+  font-family: monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+
+  color:
+    rgba(131, 221, 255, 0.24);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   REVIEW HEADING
+   ========================================================= */
+
+.book-detail-review-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  padding-right: 5.5rem;
+}
+
+
+.book-detail-review-heading h2 {
+  margin: 0;
+
+  font-size:
+    clamp(1.8rem, 4vw, 2.8rem);
+
+  letter-spacing: -0.04em;
+}
+
+
+.book-detail-review-rating {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.7rem;
+
+  padding: 0.65rem 0.85rem;
+
+  border:
+    1px solid
+    rgba(255, 145, 211, 0.22);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 62, 170, 0.07);
+}
+
+
+.book-detail-review-rating span {
+  color: var(--hot-pink);
+
+  font-size: 1rem;
+  letter-spacing: 0.07em;
+
+  text-shadow:
+    0 0 16px
+    rgba(255, 62, 170, 0.3);
+}
+
+
+.book-detail-review-rating small {
+  color: var(--text-muted);
+
+  font-family: monospace;
+  font-size: 0.62rem;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   REVIEW METADATA
+   ========================================================= */
+
+.book-detail-review-meta {
+  margin-top: 1.2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.55rem;
+}
+
+
+.book-detail-review-meta span {
+  padding: 0.45rem 0.7rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  color: var(--text-secondary);
+
+  font-family: monospace;
+  font-size: 0.61rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+}
+
+
+.book-detail-review-meta span:nth-child(2) {
+  border-color:
+    rgba(255, 62, 170, 0.24);
+
+  background:
+    rgba(255, 62, 170, 0.08);
+
+  color: var(--bubblegum);
+}
+
+
+.book-detail-review-meta .is-spoiler {
+  border-color:
+    rgba(143, 99, 255, 0.32);
+
+  background:
+    rgba(143, 99, 255, 0.1);
+
+  color: var(--digital-lavender);
+}
+
+
+/* =========================================================
+   REVIEW BODY
+   ========================================================= */
+
+.book-detail-review-body {
+  position: relative;
+
+  max-width: 900px;
+
+  margin:
+    1.6rem 0 0;
+
+  padding:
+    1.4rem 1.5rem;
+
+  border-left:
+    2px solid
+    rgba(255, 95, 189, 0.55);
+
+  border-radius:
+    0 1rem 1rem 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 62, 170, 0.065),
+      rgba(143, 99, 255, 0.025),
+      transparent
+    );
+
+  color: var(--text-secondary);
+
+  font-size: 1rem;
+  line-height: 1.8;
+
+  white-space: pre-line;
+}
+
+
+.book-detail-review-body::before {
+  content: "“";
+
+  position: absolute;
+
+  top: -0.7rem;
+  left: 0.65rem;
+
+  color:
+    rgba(255, 145, 211, 0.16);
+
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  line-height: 1;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ARCHIVE LINK
+   ========================================================= */
+
+.book-detail-review-link {
+  width: fit-content;
+
+  margin-top: 1.35rem;
+
+  display: inline-flex;
+  align-items: center;
+
+  color: var(--ice-blue);
+
+  font-family: monospace;
+  font-size: 0.67rem;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+
+.book-detail-review-link:hover {
+  color: var(--bubblegum);
+
+  transform:
+    translateX(3px);
+}
+
+
+/* =========================================================
+   THE VERDICT // MOBILE
+   ========================================================= */
+
+@media (max-width: 620px) {
+
+  .book-detail-review-panel::after {
+    display: none;
+  }
+
+
+  .book-detail-review-heading {
+    flex-direction: column;
+
+    gap: 1rem;
+
+    padding-right: 0;
+  }
+
+
+  .book-detail-review-rating {
+    padding:
+      0.55rem 0.7rem;
+  }
+
+
+  .book-detail-review-body {
+    margin-top: 1.2rem;
+
+    padding:
+      1.1rem 1rem;
+
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+}
+

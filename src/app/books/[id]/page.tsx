@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type {
   Book,
   ReadingRecord,
+  Review,
 } from "@/types";
 
 import goodreadsLibrary from "@/data/goodreads-library.json";
@@ -17,6 +18,9 @@ type GoodreadsLibraryRecord = {
 
   readingRecord:
     ReadingRecord | null;
+
+  review:
+    Review | null;
 
   rawShelves: string[];
 
@@ -113,12 +117,13 @@ export default async function BookPage({
 
 
   const {
-    book,
-    readingRecord,
-    rawShelves,
-    readCount,
-    wasTbbBuddyRead,
-  } = record;
+  book,
+  readingRecord,
+  review,
+  rawShelves,
+  readCount,
+  wasTbbBuddyRead,
+} = record;
 
 
   /* =======================================================
@@ -616,6 +621,88 @@ export default async function BookPage({
 
         </article>
 
+        {/* =========================
+    WRITTEN REVIEW
+    ========================= */}
+
+{review && (
+
+  <article className="book-detail-panel book-detail-review-panel">
+
+    <div className="book-detail-review-heading">
+
+      <div>
+        <p className="eyebrow">
+          THE VERDICT
+        </p>
+
+        <h2>
+          My Review
+        </h2>
+      </div>
+
+      <div
+        className="book-detail-review-rating"
+        aria-label={`${review.rating} out of 5 stars`}
+      >
+        <span>
+          {"★".repeat(
+            review.rating
+          )}
+
+          {"☆".repeat(
+            5 -
+            review.rating
+          )}
+        </span>
+
+        <small>
+          {review.rating}/5
+        </small>
+      </div>
+
+    </div>
+
+
+    <div className="book-detail-review-meta">
+
+      <span>
+        REVIEWED{" "}
+        {formatDate(
+          review.createdAt
+        ).toUpperCase()}
+      </span>
+
+      {book.certifiedSlay && (
+        <span>
+          ✦ CERTIFIED SLAY
+        </span>
+      )}
+
+      {review.containsSpoilers && (
+        <span className="is-spoiler">
+          ⚠ SPOILERS
+        </span>
+      )}
+
+    </div>
+
+
+    <p className="book-detail-review-body">
+      {review.body}
+    </p>
+
+
+    <a
+      href="/reviews"
+      className="book-detail-review-link"
+    >
+      VIEW IN REVIEW ARCHIVE →
+    </a>
+
+  </article>
+
+)}
 
         {/* =========================
             NOTES / FUTURE DATA

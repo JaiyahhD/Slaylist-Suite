@@ -43,7 +43,7 @@ async function BookPage({ params }) {
     if (!record) {
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$components$2f$navigation$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["notFound"])();
     }
-    const { book, readingRecord, rawShelves, readCount, wasTbbBuddyRead } = record;
+    const { book, readingRecord, review, rawShelves, readCount, wasTbbBuddyRead } = record;
     /* =======================================================
      DISPLAY VALUES
      ======================================================= */ const publicationYear = book.publicationDate ? new Date(book.publicationDate).getFullYear() : undefined;
@@ -64,7 +64,7 @@ async function BookPage({ params }) {
                                     className: "book-detail-real-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 164,
+                                    lineNumber: 169,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -72,13 +72,13 @@ async function BookPage({ params }) {
                                     children: formatLabel(book.status)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 170,
+                                    lineNumber: 175,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/books/[id]/page.tsx",
-                            lineNumber: 163,
+                            lineNumber: 168,
                             columnNumber: 5
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -87,7 +87,7 @@ async function BookPage({ params }) {
                                     children: formatLabel(book.status)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 183,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -95,32 +95,32 @@ async function BookPage({ params }) {
                                     children: "✦"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 189,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                     children: book.title
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 188,
+                                    lineNumber: 193,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                                     children: book.authors.join(", ")
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 192,
+                                    lineNumber: 197,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/books/[id]/page.tsx",
-                            lineNumber: 177,
+                            lineNumber: 182,
                             columnNumber: 5
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 155,
+                        lineNumber: 160,
                         columnNumber: 1
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -135,14 +135,14 @@ async function BookPage({ params }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 204,
+                                lineNumber: 209,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 children: book.title
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 212,
+                                lineNumber: 217,
                                 columnNumber: 11
                             }, this),
                             book.subtitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -150,7 +150,7 @@ async function BookPage({ params }) {
                                 children: book.subtitle
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 218,
+                                lineNumber: 223,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -162,13 +162,13 @@ async function BookPage({ params }) {
                                         children: book.authors.join(", ")
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 226,
+                                        lineNumber: 231,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 224,
+                                lineNumber: 229,
                                 columnNumber: 11
                             }, this),
                             book.series && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -179,7 +179,7 @@ async function BookPage({ params }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 233,
+                                lineNumber: 238,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -193,7 +193,7 @@ async function BookPage({ params }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/books/[id]/page.tsx",
-                                            lineNumber: 249,
+                                            lineNumber: 254,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
@@ -203,13 +203,13 @@ async function BookPage({ params }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/books/[id]/page.tsx",
-                                            lineNumber: 260,
+                                            lineNumber: 265,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 248,
+                                    lineNumber: 253,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
                                     children: [
@@ -217,25 +217,25 @@ async function BookPage({ params }) {
                                             children: "☆☆☆☆☆"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/books/[id]/page.tsx",
-                                            lineNumber: 267,
+                                            lineNumber: 272,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                                             children: "NOT YET RATED"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/books/[id]/page.tsx",
-                                            lineNumber: 271,
+                                            lineNumber: 276,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/books/[id]/page.tsx",
-                                    lineNumber: 266,
+                                    lineNumber: 271,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 245,
+                                lineNumber: 250,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -245,14 +245,14 @@ async function BookPage({ params }) {
                                         children: "✦ CERTIFIED SLAY"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 290,
                                         columnNumber: 15
                                     }, this),
                                     book.brainChemistry && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "🧪 BRAIN CHEMISTRY"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 292,
+                                        lineNumber: 297,
                                         columnNumber: 15
                                     }, this),
                                     readCount > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -262,39 +262,39 @@ async function BookPage({ params }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 299,
+                                        lineNumber: 304,
                                         columnNumber: 15
                                     }, this),
                                     wasTbbBuddyRead && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "♡ TBB BUDDY READ"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 306,
+                                        lineNumber: 311,
                                         columnNumber: 15
                                     }, this),
                                     book.primaryFormat && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: formatLabel(book.primaryFormat)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 313,
+                                        lineNumber: 318,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 282,
+                                lineNumber: 287,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 202,
+                        lineNumber: 207,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                lineNumber: 151,
+                lineNumber: 156,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -306,20 +306,20 @@ async function BookPage({ params }) {
                                 children: "STATUS"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 334,
+                                lineNumber: 339,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                 children: formatLabel(book.status)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 338,
+                                lineNumber: 343,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 333,
+                        lineNumber: 338,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -328,20 +328,20 @@ async function BookPage({ params }) {
                                 children: "PAGES"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 347,
+                                lineNumber: 352,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                 children: book.pageCount ? book.pageCount.toLocaleString() : "—"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 351,
+                                lineNumber: 356,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 346,
+                        lineNumber: 351,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -350,20 +350,20 @@ async function BookPage({ params }) {
                                 children: "READ COUNT"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 361,
+                                lineNumber: 366,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                 children: readCount
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 365,
+                                lineNumber: 370,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 360,
+                        lineNumber: 365,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -372,26 +372,26 @@ async function BookPage({ params }) {
                                 children: "ADDED"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 372,
+                                lineNumber: 377,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                 children: formatDate(book.dateAdded)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 376,
+                                lineNumber: 381,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 371,
+                        lineNumber: 376,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                lineNumber: 331,
+                lineNumber: 336,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -405,14 +405,14 @@ async function BookPage({ params }) {
                                 children: "SPECIMEN DATA"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 394,
+                                lineNumber: 399,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 children: "Book Details"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 398,
+                                lineNumber: 403,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dl", {
@@ -424,20 +424,20 @@ async function BookPage({ params }) {
                                                 children: "Publisher"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 406,
+                                                lineNumber: 411,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: book.publisher ?? "Not recorded"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 410,
+                                                lineNumber: 415,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 405,
+                                        lineNumber: 410,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -446,20 +446,20 @@ async function BookPage({ params }) {
                                                 children: "Publication Year"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 418,
+                                                lineNumber: 423,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: displayPublicationYear
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 422,
+                                                lineNumber: 427,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 417,
+                                        lineNumber: 422,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -468,20 +468,20 @@ async function BookPage({ params }) {
                                                 children: "ISBN-10"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 429,
+                                                lineNumber: 434,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: book.isbn10 ?? "Not recorded"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 433,
+                                                lineNumber: 438,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 428,
+                                        lineNumber: 433,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -490,20 +490,20 @@ async function BookPage({ params }) {
                                                 children: "ISBN-13"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 441,
+                                                lineNumber: 446,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: book.isbn13 ?? "Not recorded"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 445,
+                                                lineNumber: 450,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 440,
+                                        lineNumber: 445,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -512,20 +512,20 @@ async function BookPage({ params }) {
                                                 children: "Format"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 453,
+                                                lineNumber: 458,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: book.formats.length > 0 ? book.formats.map(formatLabel).join(", ") : "Not recorded"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 457,
+                                                lineNumber: 462,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 452,
+                                        lineNumber: 457,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -534,32 +534,32 @@ async function BookPage({ params }) {
                                                 children: "Source"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 470,
+                                                lineNumber: 475,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: book.source ? formatLabel(book.source) : "Not recorded"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 474,
+                                                lineNumber: 479,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 469,
+                                        lineNumber: 474,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 403,
+                                lineNumber: 408,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 392,
+                        lineNumber: 397,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -570,14 +570,14 @@ async function BookPage({ params }) {
                                 children: "ORIGINAL ORGANIZATION"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 494,
+                                lineNumber: 499,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 children: "Imported Shelves"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 498,
+                                lineNumber: 503,
                                 columnNumber: 11
                             }, this),
                             rawShelves.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -586,25 +586,25 @@ async function BookPage({ params }) {
                                         children: formatLabel(shelf)
                                     }, shelf, false, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 508,
+                                        lineNumber: 513,
                                         columnNumber: 19
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 504,
+                                lineNumber: 509,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "book-detail-muted",
                                 children: "No additional Goodreads shelves were recorded."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 518,
+                                lineNumber: 523,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 492,
+                        lineNumber: 497,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
@@ -615,14 +615,14 @@ async function BookPage({ params }) {
                                 children: "READING RECEIPTS"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 533,
+                                lineNumber: 538,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 children: "Reading Record"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 537,
+                                lineNumber: 542,
                                 columnNumber: 11
                             }, this),
                             readingRecord ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dl", {
@@ -634,20 +634,20 @@ async function BookPage({ params }) {
                                                 children: "Reading Status"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 546,
+                                                lineNumber: 551,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: formatLabel(readingRecord.status)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 550,
+                                                lineNumber: 555,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 545,
+                                        lineNumber: 550,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -656,20 +656,20 @@ async function BookPage({ params }) {
                                                 children: "Finished"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 559,
+                                                lineNumber: 564,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: formatDate(readingRecord.finishedAt)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 563,
+                                                lineNumber: 568,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 558,
+                                        lineNumber: 563,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -678,20 +678,20 @@ async function BookPage({ params }) {
                                                 children: "Reading Number"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 572,
+                                                lineNumber: 577,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: readingRecord.readingNumber
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 576,
+                                                lineNumber: 581,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 571,
+                                        lineNumber: 576,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -700,20 +700,20 @@ async function BookPage({ params }) {
                                                 children: "Reread"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 584,
+                                                lineNumber: 589,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: readCount > 1 ? `Yes — ${readCount} total reads recorded` : "No"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 588,
+                                                lineNumber: 593,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 583,
+                                        lineNumber: 588,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -722,40 +722,163 @@ async function BookPage({ params }) {
                                                 children: "TBB Buddy Read"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 597,
+                                                lineNumber: 602,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("dd", {
                                                 children: wasTbbBuddyRead ? "Historical buddy read" : "No"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                                lineNumber: 601,
+                                                lineNumber: 606,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                                        lineNumber: 596,
+                                        lineNumber: 601,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 543,
+                                lineNumber: 548,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "book-detail-muted",
                                 children: "No reading record yet. This book is waiting on the TBR."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 610,
+                                lineNumber: 615,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 531,
+                        lineNumber: 536,
                         columnNumber: 9
+                    }, this),
+                    review && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
+                        className: "book-detail-panel book-detail-review-panel",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "book-detail-review-heading",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "eyebrow",
+                                                children: "THE VERDICT"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                                lineNumber: 635,
+                                                columnNumber: 9
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                children: "My Review"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                                lineNumber: 639,
+                                                columnNumber: 9
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/app/books/[id]/page.tsx",
+                                        lineNumber: 634,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "book-detail-review-rating",
+                                        "aria-label": `${review.rating} out of 5 stars`,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                children: [
+                                                    "★".repeat(review.rating),
+                                                    "☆".repeat(5 - review.rating)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                                lineNumber: 648,
+                                                columnNumber: 9
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
+                                                children: [
+                                                    review.rating,
+                                                    "/5"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                                lineNumber: 659,
+                                                columnNumber: 9
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/app/books/[id]/page.tsx",
+                                        lineNumber: 644,
+                                        columnNumber: 7
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                lineNumber: 632,
+                                columnNumber: 5
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "book-detail-review-meta",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            "REVIEWED",
+                                            " ",
+                                            formatDate(review.createdAt).toUpperCase()
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/app/books/[id]/page.tsx",
+                                        lineNumber: 669,
+                                        columnNumber: 7
+                                    }, this),
+                                    book.certifiedSlay && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "✦ CERTIFIED SLAY"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/books/[id]/page.tsx",
+                                        lineNumber: 677,
+                                        columnNumber: 9
+                                    }, this),
+                                    review.containsSpoilers && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "is-spoiler",
+                                        children: "⚠ SPOILERS"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/books/[id]/page.tsx",
+                                        lineNumber: 683,
+                                        columnNumber: 9
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                lineNumber: 667,
+                                columnNumber: 5
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "book-detail-review-body",
+                                children: review.body
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                lineNumber: 691,
+                                columnNumber: 5
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: "/reviews",
+                                className: "book-detail-review-link",
+                                children: "VIEW IN REVIEW ARCHIVE →"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/books/[id]/page.tsx",
+                                lineNumber: 696,
+                                columnNumber: 5
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/books/[id]/page.tsx",
+                        lineNumber: 630,
+                        columnNumber: 3
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
                         className: "book-detail-panel",
@@ -765,14 +888,14 @@ async function BookPage({ params }) {
                                 children: "THE LAB NOTES"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 626,
+                                lineNumber: 713,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 children: "Personal Notes"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 630,
+                                lineNumber: 717,
                                 columnNumber: 11
                             }, this),
                             book.privateNotes ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -780,32 +903,32 @@ async function BookPage({ params }) {
                                 children: book.privateNotes
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 636,
+                                lineNumber: 723,
                                 columnNumber: 13
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "book-detail-muted",
                                 children: "No private notes have been added to this record yet."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                                lineNumber: 640,
+                                lineNumber: 727,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/books/[id]/page.tsx",
-                        lineNumber: 624,
+                        lineNumber: 711,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/books/[id]/page.tsx",
-                lineNumber: 390,
+                lineNumber: 395,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/books/[id]/page.tsx",
-        lineNumber: 145,
+        lineNumber: 150,
         columnNumber: 5
     }, this);
 }
