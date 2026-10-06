@@ -9,6 +9,7 @@ type UpdateProgressButtonProps = {
   pageCount?: number;
   readingMethod?: "physical" | "ebook" | "audiobook";
   readingNumber?: number;
+  onProgressSaved?: () => void | Promise<void>;
 };
 
 export default function UpdateProgressButton({
@@ -17,6 +18,7 @@ export default function UpdateProgressButton({
   pageCount,
   readingMethod,
   readingNumber = 1,
+  onProgressSaved,
 }: UpdateProgressButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
@@ -150,9 +152,12 @@ export default function UpdateProgressButton({
       }
 
       setSuccess("Progress saved ✦");
-      setCurrentPage("");
-      setNote("");
-      setMood("");
+
+      await onProgressSaved?.();
+
+        setCurrentPage("");
+        setNote("");
+        setMood("");
     } catch (caughtError) {
       if (caughtError instanceof Error) {
         setError(caughtError.message);

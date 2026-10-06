@@ -13,7 +13,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$cl
 ;
 ;
 ;
-function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, readingNumber = 1 }) {
+function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, readingNumber = 1, onProgressSaved }) {
     const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [note, setNote] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
@@ -82,6 +82,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                 throw progressError;
             }
             setSuccess("Progress saved ✦");
+            await onProgressSaved?.();
             setCurrentPage("");
             setNote("");
             setMood("");
@@ -107,7 +108,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                 children: "+ UPDATE PROGRESS"
             }, void 0, false, {
                 fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                lineNumber: 171,
+                lineNumber: 176,
                 columnNumber: 7
             }, this),
             isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -132,7 +133,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                             children: "×"
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                            lineNumber: 198,
+                            lineNumber: 203,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -140,7 +141,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                             children: "READING LAB // PROGRESS LOG"
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                            lineNumber: 207,
+                            lineNumber: 212,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -148,7 +149,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                             children: "Update Progress"
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                            lineNumber: 211,
+                            lineNumber: 216,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -156,7 +157,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                             children: bookTitle
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                            lineNumber: 217,
+                            lineNumber: 222,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -177,13 +178,13 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                             required: true
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                            lineNumber: 228,
+                                            lineNumber: 233,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                    lineNumber: 225,
+                                    lineNumber: 230,
                                     columnNumber: 15
                                 }, this),
                                 pageCount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -199,13 +200,13 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                                    lineNumber: 252,
+                                                    lineNumber: 257,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                            lineNumber: 250,
+                                            lineNumber: 255,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -218,19 +219,19 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                                    lineNumber: 259,
+                                                    lineNumber: 264,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 262,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                    lineNumber: 249,
+                                    lineNumber: 254,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -243,13 +244,13 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                             placeholder: "Obsessed, stressed, suspicious..."
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                            lineNumber: 270,
+                                            lineNumber: 275,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                    lineNumber: 268,
+                                    lineNumber: 273,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -262,13 +263,13 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                             rows: 4
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                            lineNumber: 284,
+                                            lineNumber: 289,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                    lineNumber: 282,
+                                    lineNumber: 287,
                                     columnNumber: 15
                                 }, this),
                                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -277,7 +278,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                    lineNumber: 297,
+                                    lineNumber: 302,
                                     columnNumber: 17
                                 }, this),
                                 success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -286,7 +287,7 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                     children: success
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                    lineNumber: 306,
+                                    lineNumber: 311,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -296,30 +297,30 @@ function UpdateProgressButton({ bookId, bookTitle, pageCount, readingMethod, rea
                                     children: saving ? "LOGGING DATA..." : "SAVE PROGRESS ✦"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                                    lineNumber: 314,
+                                    lineNumber: 319,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                            lineNumber: 221,
+                            lineNumber: 226,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                    lineNumber: 192,
+                    lineNumber: 197,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-                lineNumber: 183,
+                lineNumber: 188,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/rotation/UpdateProgressButton.tsx",
-        lineNumber: 170,
+        lineNumber: 175,
         columnNumber: 5
     }, this);
 }

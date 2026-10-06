@@ -4662,4 +4662,236 @@ body {
   font-weight: 700;
 }
 
+.progress-modal-backdrop {
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  background: #09070dd1;
+  place-items: center;
+  padding: 1.5rem;
+  display: grid;
+  position: fixed;
+  inset: 0;
+}
+
+.progress-modal {
+  background: linear-gradient(135deg, #ff3eaa26, #8f63ff1a, #83ddff0f), #160a18f7;
+  border: 1px solid #e7e5ef2e;
+  border-radius: 1.75rem;
+  width: min(100%, 560px);
+  max-height: calc(100vh - 3rem);
+  padding: clamp(1.75rem, 5vw, 2.75rem);
+  position: relative;
+  overflow-y: auto;
+  box-shadow: 0 35px 90px #0009, 0 0 50px #ff3eaa1f, inset 0 1px #ffffff14;
+}
+
+.progress-modal:before {
+  content: "READ // LOG // REPEAT";
+  letter-spacing: .16em;
+  color: #83ddff59;
+  pointer-events: none;
+  font-family: monospace;
+  font-size: .58rem;
+  font-weight: 800;
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+}
+
+.progress-modal h2 {
+  letter-spacing: -.045em;
+  background: linear-gradient(135deg, #fff8fc, #ff91d3 45%, #b8a1ff 75%, #83ddff);
+  color: #0000;
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin: .35rem 0 0;
+  font-size: clamp(2rem, 7vw, 3.4rem);
+  line-height: .95;
+}
+
+.progress-modal-book {
+  color: #d8cbd8;
+  margin: .85rem 0 2rem;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.progress-modal-close {
+  z-index: 2;
+  color: #f6b8dc;
+  cursor: pointer;
+  background: #09070db3;
+  border: 1px solid #e7e5ef26;
+  border-radius: 50%;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  font-size: 1.35rem;
+  line-height: 1;
+  display: grid;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.progress-modal-close:hover {
+  color: #fff8fc;
+  border-color: #ff5fbd80;
+}
+
+.progress-modal-form {
+  gap: 1.25rem;
+  display: grid;
+}
+
+.progress-modal-form label {
+  color: #f6b8dc;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  gap: .55rem;
+  font-size: .7rem;
+  font-weight: 900;
+  display: grid;
+}
+
+.progress-modal-form input, .progress-modal-form textarea {
+  color: #fff8fc;
+  width: 100%;
+  font: inherit;
+  background: #09070db8;
+  border: 1px solid #c9c8d833;
+  border-radius: .9rem;
+  outline: none;
+  transition: border-color .16s, box-shadow .16s;
+}
+
+.progress-modal-form input {
+  min-height: 3.25rem;
+  padding: 0 1rem;
+}
+
+.progress-modal-form textarea {
+  resize: vertical;
+  min-height: 7rem;
+  padding: .9rem 1rem;
+}
+
+.progress-modal-form input:focus, .progress-modal-form textarea:focus {
+  border-color: #ff5fbd;
+  box-shadow: 0 0 0 3px #ff5fbd1a, 0 0 22px #8f63ff17;
+}
+
+.progress-modal-form input::placeholder, .progress-modal-form textarea::placeholder {
+  color: #6f6372;
+}
+
+.progress-modal-calculation {
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75rem;
+  display: grid;
+}
+
+.progress-modal-calculation span {
+  color: #83ddff;
+  letter-spacing: .09em;
+  background: linear-gradient(135deg, #83ddff12, #8f63ff0d);
+  border: 1px solid #83ddff1f;
+  border-radius: .85rem;
+  gap: .35rem;
+  padding: .85rem 1rem;
+  font-family: monospace;
+  font-size: .62rem;
+  font-weight: 800;
+  display: grid;
+}
+
+.progress-modal-calculation strong {
+  color: #fff8fc;
+  font-family: inherit;
+  font-size: .88rem;
+}
+
+.progress-modal-error, .progress-modal-success {
+  border-radius: .8rem;
+  margin: 0;
+  padding: .8rem 1rem;
+  font-size: .82rem;
+  line-height: 1.4;
+}
+
+.progress-modal-error {
+  color: #ff91d3;
+  background: #ff3eaa17;
+  border: 1px solid #ff5fbd40;
+}
+
+.progress-modal-success {
+  color: #83ddff;
+  background: #83ddff14;
+  border: 1px solid #83ddff38;
+}
+
+.progress-modal-save {
+  cursor: pointer;
+  color: #fff8fc;
+  letter-spacing: .12em;
+  background: linear-gradient(135deg, #ff3eaa, #8f63ff);
+  border: 0;
+  border-radius: .9rem;
+  min-height: 3.4rem;
+  font-size: .75rem;
+  font-weight: 900;
+  transition: transform .16s, box-shadow .16s, opacity .16s;
+  box-shadow: 0 14px 32px #ff3eaa33;
+}
+
+.progress-modal-save:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px #ff3eaa4d, 0 0 24px #8f63ff24;
+}
+
+.progress-modal-save:disabled {
+  cursor: wait;
+  opacity: .6;
+}
+
+@media (max-width: 520px) {
+  .progress-modal-backdrop {
+    padding: .75rem;
+  }
+
+  .progress-modal {
+    border-radius: 1.35rem;
+    padding: 1.5rem 1.15rem;
+  }
+
+  .progress-modal:before {
+    display: none;
+  }
+
+  .progress-modal-calculation {
+    grid-template-columns: 1fr;
+  }
+}
+
+.progress-modal-backdrop {
+  align-items: start;
+  overflow-y: auto;
+}
+
+.progress-modal {
+  max-height: none;
+  margin: 1.5rem auto;
+}
+
+@media (max-height: 800px) {
+  .progress-modal {
+    margin: .75rem auto;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
 /*# sourceMappingURL=src_app_globals_162hn9o.css.map*/
