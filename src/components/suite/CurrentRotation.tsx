@@ -49,7 +49,7 @@ export default function CurrentRotation() {
           </p>
 
           <h2 className="section-title">
-             TESTING 123 JAIYAH
+             Current Rotation
           </h2>
 
           <p className="section-copy">
