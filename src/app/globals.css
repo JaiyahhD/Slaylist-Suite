@@ -1248,3 +1248,441 @@ body {
   }
 }
 
+/* =========================================================
+   CURRENT ROTATION — HOMEPAGE
+   ========================================================= */
+
+.rotation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 1rem;
+
+  margin-top: 2rem;
+}
+
+.rotation-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 0.8rem;
+
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-large);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(22, 10, 24, 0.76)
+    );
+
+  overflow: hidden;
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.rotation-card:hover {
+  transform: translateY(-7px);
+}
+
+
+/* =========================
+   FAKE COVER ART
+   ========================= */
+
+.rotation-cover {
+  position: relative;
+
+  aspect-ratio: 2 / 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1.25rem;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.rotation-cover::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: 20%;
+  right: -40%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.13);
+
+  filter: blur(15px);
+}
+
+.rotation-cover::after {
+  content: "01  ✦  READ  ✦  SLAY";
+
+  position: absolute;
+
+  left: -25px;
+  bottom: 95px;
+
+  transform: rotate(-90deg);
+
+  color:
+    rgba(255, 255, 255, 0.34);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.54rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.cover-label {
+  position: relative;
+  z-index: 1;
+
+  color:
+    rgba(255, 255, 255, 0.72);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  line-height: 1.5;
+}
+
+.cover-sparkle {
+  position: absolute;
+
+  top: 42%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  color: var(--chrome-white);
+
+  font-size: 3.2rem;
+
+  text-shadow:
+    0 0 30px
+    rgba(255, 255, 255, 0.5);
+}
+
+.cover-title {
+  position: relative;
+  z-index: 1;
+
+  max-width: 90%;
+
+  color: white;
+
+  font-size: clamp(1.25rem, 2vw, 1.85rem);
+  font-weight: 950;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   CARD COLOR VARIANTS
+   ========================= */
+
+.rotation-pink .rotation-cover {
+  background:
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(255, 188, 229, 0.55),
+      transparent 25%
+    ),
+    linear-gradient(
+      145deg,
+      #ff3eaa,
+      #5e164f 70%,
+      #260d29
+    );
+}
+
+.rotation-violet .rotation-cover {
+  background:
+    radial-gradient(
+      circle at 72% 20%,
+      rgba(213, 140, 255, 0.50),
+      transparent 24%
+    ),
+    linear-gradient(
+      145deg,
+      #8f63ff,
+      #4a2376 65%,
+      #260d29
+    );
+}
+
+.rotation-ice .rotation-cover {
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      rgba(207, 245, 255, 0.62),
+      transparent 24%
+    ),
+    linear-gradient(
+      145deg,
+      #83ddff,
+      #4760a2 60%,
+      #271746
+    );
+}
+
+.rotation-mixed .rotation-cover {
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.46),
+      transparent 22%
+    ),
+    linear-gradient(
+      145deg,
+      #ff5fbd,
+      #8f63ff 50%,
+      #437da4
+    );
+}
+
+.rotation-pink:hover {
+  border-color: var(--border-pink);
+
+  box-shadow:
+    0 18px 55px
+    rgba(255, 62, 170, 0.16);
+}
+
+.rotation-violet:hover {
+  border-color: var(--border-purple);
+
+  box-shadow:
+    0 18px 55px
+    rgba(143, 99, 255, 0.15);
+}
+
+.rotation-ice:hover {
+  border-color: var(--border-ice);
+
+  box-shadow:
+    0 18px 55px
+    rgba(131, 221, 255, 0.13);
+}
+
+.rotation-mixed:hover {
+  border-color:
+    rgba(184, 161, 255, 0.55);
+
+  box-shadow:
+    0 18px 55px
+    rgba(255, 95, 189, 0.12);
+}
+
+
+/* =========================
+   BOOK INFORMATION
+   ========================= */
+
+.rotation-info {
+  min-height: 225px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding:
+    1.25rem
+    0.4rem
+    0.45rem;
+}
+
+.rotation-status {
+  color: var(--hot-pink);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.56rem;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.rotation-violet .rotation-status {
+  color: var(--digital-lavender);
+}
+
+.rotation-ice .rotation-status {
+  color: var(--ice-blue);
+}
+
+.rotation-mixed .rotation-status {
+  color: var(--bubblegum);
+}
+
+.rotation-info h3 {
+  margin:
+    0.7rem
+    0
+    0.25rem;
+
+  color: var(--text-primary);
+
+  font-size: 1.05rem;
+  font-weight: 850;
+
+  line-height: 1.15;
+}
+
+.rotation-info p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 0.76rem;
+}
+
+
+/* =========================
+   PROGRESS
+   ========================= */
+
+.rotation-progress {
+  margin-top: 1.5rem;
+}
+
+.progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 0.55rem;
+
+  color: var(--text-secondary);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.59rem;
+
+  letter-spacing: 0.07em;
+}
+
+.progress-meta strong {
+  color: var(--text-primary);
+
+  font-size: 0.7rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+
+  border-radius: var(--radius-pill);
+
+  background:
+    rgba(255, 255, 255, 0.07);
+
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: var(--gradient-diva);
+
+  box-shadow:
+    0 0 12px
+    rgba(255, 62, 170, 0.45);
+}
+
+.rotation-violet .progress-fill {
+  background: var(--gradient-brainy);
+}
+
+.rotation-ice .progress-fill {
+  background: var(--gradient-tech);
+
+  box-shadow:
+    0 0 12px
+    rgba(131, 221, 255, 0.38);
+}
+
+.rotation-mixed .progress-fill {
+  background: var(--gradient-holographic);
+}
+
+.progress-pages {
+  display: block;
+
+  margin-top: 0.55rem;
+
+  color: var(--text-muted);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.07em;
+}
+
+
+/* =========================
+   CURRENT ROTATION RESPONSIVE
+   ========================= */
+
+@media (max-width: 1100px) {
+  .rotation-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .rotation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rotation-cover {
+    aspect-ratio: 4 / 5;
+  }
+}
+

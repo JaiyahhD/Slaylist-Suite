@@ -1,6 +1,8 @@
 import Link from "next/link";
 
+import CurrentRotation from "@/components/suite/CurrentRotation";
 import { suiteCopy } from "@/config/copy";
+
 
 export default function HomePage() {
   return (
@@ -128,37 +130,7 @@ export default function HomePage() {
           CURRENT ROTATION
           ===================================== */}
 
-      <section className="suite-section">
-
-        <div className="section-heading-row">
-
-          <div>
-            <p className="eyebrow">
-              LIVE READING DATA
-            </p>
-
-            <h2 className="section-title">
-              Current Rotation
-            </h2>
-          </div>
-
-          <Link
-            href="/current-rotation"
-            className="text-link"
-          >
-            VIEW ROTATION →
-          </Link>
-
-        </div>
-
-        <div className="placeholder-panel glass-mixed">
-          <p>
-            📖 Current books are loading into the rotation...
-          </p>
-        </div>
-
-      </section>
-
+        <CurrentRotation />
 
       {/* =====================================
           EXPLORE THE SUITE
