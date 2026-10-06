@@ -7,6 +7,7 @@ import {
 } from "react";
 
 import UpdateProgressButton from "@/components/rotation/UpdateProgressButton";
+import FinishReadButton from "@/components/rotation/FinishReadButton";
 import { supabase } from "@/lib/supabase/client";
 
 type ReadingMethod =
@@ -50,6 +51,9 @@ export default function CurrentRotationClient({
   const [liveRecord, setLiveRecord] =
     useState<LiveReadingRecord | null>(null);
 
+    const [latestEntry, setLatestEntry] =
+  useState<ProgressEntry | null>(null);
+
   const loadProgress = useCallback(
     async () => {
       const {
@@ -85,6 +89,43 @@ export default function CurrentRotationClient({
       }
 
       setLiveRecord(data);
+
+      const {
+  data: latestProgressEntry,
+  error: progressEntryError,
+} = await supabase
+  .from("reading_progress_entries")
+  .select(
+    `
+      id,
+      page,
+      percentage,
+      note,
+      mood,
+      recorded_at
+    `
+  )
+  .eq("owner_id", user.id)
+  .eq(
+    "reading_record_id",
+    `${user.id}:${bookId}:${readingNumber}`
+  )
+  .order("recorded_at", {
+    ascending: false,
+  })
+  .limit(1)
+  .maybeSingle();
+
+if (progressEntryError) {
+  console.error(
+    "Could not load latest progress entry:",
+    progressEntryError
+  );
+} else {
+  setLatestEntry(
+    latestProgressEntry as ProgressEntry | null
+  );
+}
     },
     [bookId, readingNumber]
   );
@@ -140,6 +181,57 @@ export default function CurrentRotationClient({
         </div>
       </div>
 
+
+          {latestEntry && (
+        <div className="current-rotation-checkin">
+          <div className="current-rotation-checkin-heading">
+            <span>LATEST CHECK-IN</span>
+
+            <strong>
+              {new Intl.DateTimeFormat(
+                "en-US",
+                {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                }
+              ).format(
+                new Date(
+                  latestEntry.recorded_at
+                )
+              )}
+            </strong>
+          </div>
+
+          <div className="current-rotation-checkin-meta">
+            {latestEntry.page !== null && (
+              <span>
+                PAGE {latestEntry.page}
+              </span>
+            )}
+
+            {latestEntry.percentage !== null && (
+              <span>
+                {latestEntry.percentage}%
+              </span>
+            )}
+
+            {latestEntry.mood && (
+              <span>
+                MOOD: {latestEntry.mood}
+              </span>
+            )}
+          </div>
+
+          {latestEntry.note && (
+            <p className="current-rotation-checkin-note">
+              “{latestEntry.note}”
+            </p>
+          )}
+        </div>
+      )
+    }
+
       <UpdateProgressButton
         bookId={bookId}
         bookTitle={bookTitle}
@@ -148,6 +240,14 @@ export default function CurrentRotationClient({
         readingNumber={readingNumber}
         onProgressSaved={loadProgress}
       />
+
+      <FinishReadButton
+  bookId={bookId}
+  bookTitle={bookTitle}
+  readingNumber={readingNumber}
+  pageCount={pageCount}
+  onFinished={loadProgress}
+/>
     </>
   );
 }

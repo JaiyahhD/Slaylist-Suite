@@ -8492,3 +8492,264 @@ body {
     padding-bottom: 1.75rem;
   }
 }
+
+/* =========================================================
+   CURRENT ROTATION // LIVE READING LOG
+   ========================================================= */
+
+.current-rotation-live-percent {
+  display: block;
+  margin-top: 0.15rem;
+  margin-bottom: 0.65rem;
+
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================
+   LIVE PROGRESS
+   ========================= */
+
+.current-rotation-progress {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.current-rotation-progress-track {
+  width: 100%;
+  height: 6px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+
+  background: rgba(5, 3, 8, 0.72);
+}
+
+.current-rotation-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--electric-pink),
+      var(--ultraviolet),
+      var(--ice-blue)
+    );
+
+  box-shadow:
+    0 0 12px rgba(255, 62, 170, 0.28);
+}
+
+.current-rotation-progress-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: 0.45rem;
+
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.current-rotation-progress-data strong {
+  color: var(--electric-pink);
+  font-size: 0.66rem;
+}
+
+
+/* =========================
+   LATEST CHECK-IN
+   ========================= */
+
+.current-rotation-checkin {
+  position: relative;
+
+  width: 100%;
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(184, 161, 255, 0.18);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.08),
+      rgba(143, 99, 255, 0.08),
+      rgba(131, 221, 255, 0.04)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.current-rotation-checkin::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 3px;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--electric-pink),
+      var(--ultraviolet),
+      var(--ice-blue)
+    );
+}
+
+.current-rotation-checkin-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-bottom: 0.65rem;
+}
+
+.current-rotation-checkin-heading span {
+  color: var(--ice-blue);
+
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.current-rotation-checkin-heading strong {
+  color: var(--text-secondary);
+
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.current-rotation-checkin-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.current-rotation-checkin-meta span {
+  padding: 0.32rem 0.55rem;
+
+  border:
+    1px solid rgba(255, 145, 211, 0.15);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 145, 211, 0.06);
+
+  color: var(--bubblegum);
+
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.current-rotation-checkin-note {
+  margin: 0.7rem 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.76rem;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+
+/* =========================
+   ROTATION BUTTONS
+   ========================= */
+
+.current-rotation-card-content
+button.current-rotation-update-button {
+  width: auto;
+  min-height: 38px;
+
+  padding: 0.65rem 0.9rem;
+
+  border:
+    1px solid rgba(255, 62, 170, 0.25);
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.13),
+      rgba(143, 99, 255, 0.1)
+    );
+
+  color: var(--bubblegum);
+
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.current-rotation-card-content
+button.current-rotation-update-button:hover {
+  transform: translateY(-1px);
+
+  border-color:
+    rgba(255, 95, 189, 0.5);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.2),
+      rgba(143, 99, 255, 0.14)
+    );
+}
+
+
+/* =========================
+   ACTION ROW
+   ========================= */
+
+.current-rotation-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  margin-top: 0.75rem;
+}
+
+.current-rotation-actions a {
+  color: var(--ice-blue);
+
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.current-rotation-actions a:hover {
+  color: var(--bubblegum);
+}

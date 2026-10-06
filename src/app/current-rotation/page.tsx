@@ -332,26 +332,23 @@ export default function CurrentRotationPage() {
                           ACTIONS
                           ========================= */}
 
-                      <div className="current-rotation-actions">
+                      <CurrentRotationClient
+  bookId={book.id}
+  bookTitle={book.title}
+  pageCount={book.pageCount}
+  readingMethod={readingRecord?.readingMethod}
+  readingNumber={readingRecord?.readingNumber ?? 1}
+  fallbackPage={readingRecord?.currentPage}
+  fallbackProgress={readingRecord?.progressPercent ?? 0}
+/>
 
-                        <CurrentRotationClient
-                          bookId={book.id}
-                          bookTitle={book.title}
-                          pageCount={book.pageCount}
-                          readingMethod={readingRecord?.readingMethod}
-                          readingNumber={readingRecord?.readingNumber ?? 1}
-                          fallbackPage={readingRecord?.currentPage}
-                          fallbackProgress={readingRecord?.progressPercent ?? 0}
-                            />
-
-                        <Link
-                          href={`/books/${book.id}`}
-                        >
-                          OPEN DOSSIER →
-                        </Link>
-
-                      </div>
-
+<div className="current-rotation-actions">
+  <Link
+    href={`/books/${book.id}`}
+  >
+    OPEN DOSSIER →
+  </Link>
+</div>
                     </div>
 
                   </article>

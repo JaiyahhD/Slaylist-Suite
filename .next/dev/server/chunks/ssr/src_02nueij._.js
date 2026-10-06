@@ -349,35 +349,33 @@ function CurrentRotationPage() {
                                                 lineNumber: 272,
                                                 columnNumber: 23
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "current-rotation-actions",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$rotation$2f$CurrentRotationClient$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                                                        bookId: book.id,
-                                                        bookTitle: book.title,
-                                                        pageCount: book.pageCount,
-                                                        readingMethod: readingRecord?.readingMethod,
-                                                        readingNumber: readingRecord?.readingNumber ?? 1,
-                                                        fallbackPage: readingRecord?.currentPage,
-                                                        fallbackProgress: readingRecord?.progressPercent ?? 0
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/current-rotation/page.tsx",
-                                                        lineNumber: 337,
-                                                        columnNumber: 25
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                                                        href: `/books/${book.id}`,
-                                                        children: "OPEN DOSSIER →"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/current-rotation/page.tsx",
-                                                        lineNumber: 347,
-                                                        columnNumber: 25
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$rotation$2f$CurrentRotationClient$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                bookId: book.id,
+                                                bookTitle: book.title,
+                                                pageCount: book.pageCount,
+                                                readingMethod: readingRecord?.readingMethod,
+                                                readingNumber: readingRecord?.readingNumber ?? 1,
+                                                fallbackPage: readingRecord?.currentPage,
+                                                fallbackProgress: readingRecord?.progressPercent ?? 0
+                                            }, void 0, false, {
                                                 fileName: "[project]/src/app/current-rotation/page.tsx",
                                                 lineNumber: 335,
                                                 columnNumber: 23
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "current-rotation-actions",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: `/books/${book.id}`,
+                                                    children: "OPEN DOSSIER →"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/current-rotation/page.tsx",
+                                                    lineNumber: 346,
+                                                    columnNumber: 3
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/current-rotation/page.tsx",
+                                                lineNumber: 345,
+                                                columnNumber: 1
                                             }, this)
                                         ]
                                     }, void 0, true, {
@@ -403,27 +401,27 @@ function CurrentRotationPage() {
                                 children: "✦"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/current-rotation/page.tsx",
-                                lineNumber: 369,
+                                lineNumber: 366,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 children: "The lab is suspiciously quiet."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/current-rotation/page.tsx",
-                                lineNumber: 373,
+                                lineNumber: 370,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "No books are currently marked as actively reading."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/current-rotation/page.tsx",
-                                lineNumber: 377,
+                                lineNumber: 374,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/current-rotation/page.tsx",
-                        lineNumber: 367,
+                        lineNumber: 364,
                         columnNumber: 11
                     }, this)
                 ]
