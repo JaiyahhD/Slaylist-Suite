@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import CurrentRotation from "@/components/suite/CurrentRotation";
+import ReadingDashboard from "@/components/suite/ReadingDashboard";
 import { suiteCopy } from "@/config/copy";
 
 
@@ -131,6 +132,8 @@ export default function HomePage() {
           ===================================== */}
 
         <CurrentRotation />
+
+        <ReadingDashboard />
 
       {/* =====================================
           EXPLORE THE SUITE
