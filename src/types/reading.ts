@@ -2,28 +2,84 @@
    THE SLAYLIST SUITE
    Reading Types
 
-   ReadingRecord represents ONE reading experience.
-   A single book can have multiple ReadingRecords.
+   A ReadingRecord represents one reading experience/session
+   for a Book.
+
+   One Book can have multiple ReadingRecords, which allows
+   rereads to remain separate instead of overwriting history.
    ========================================================= */
 
-import type { BookFormat } from "./book";
-
-export type ReadingStatus =
+export type ReadingRecordStatus =
+  | "planned"
   | "currently-reading"
-  | "finished"
   | "paused"
+  | "completed"
   | "dnf";
 
+export type ReadingMethod =
+  | "physical"
+  | "ebook"
+  | "audiobook";
+
+export interface ReadingProgressEntry {
+  /* -------------------------
+     IDENTITY
+     ------------------------- */
+
+  id: string;
+
+  readingRecordId: string;
+
+
+  /* -------------------------
+     PROGRESS
+     ------------------------- */
+
+  page?: number;
+
+  percentage?: number;
+
+  minutesListened?: number;
+
+
+  /* -------------------------
+     REACTION / NOTES
+     ------------------------- */
+
+  note?: string;
+
+  mood?: string;
+
+
+  /* -------------------------
+     SYSTEM
+     ------------------------- */
+
+  recordedAt: string;
+}
+
+
 export interface ReadingRecord {
+  /* -------------------------
+     IDENTITY
+     ------------------------- */
+
   id: string;
 
   bookId: string;
 
-  status: ReadingStatus;
+
+  /* -------------------------
+     READING STATUS
+     ------------------------- */
+
+  status: ReadingRecordStatus;
+
+  readingMethod?: ReadingMethod;
 
 
   /* -------------------------
-     DATES
+     READING DATES
      ------------------------- */
 
   startedAt?: string;
@@ -32,43 +88,48 @@ export interface ReadingRecord {
 
 
   /* -------------------------
-     PROGRESS
+     CURRENT PROGRESS
      ------------------------- */
 
   currentPage?: number;
-
-  totalPages?: number;
 
   progressPercent?: number;
 
 
   /* -------------------------
-     READING METHOD
-     ------------------------- */
-
-  format?: BookFormat;
-
-  isReread: boolean;
-
-  rereadNumber?: number;
-
-
-  /* -------------------------
-     PERSONAL RESPONSE
+     READING RESULT
      ------------------------- */
 
   rating?: number;
 
-  mood?: string[];
+  reviewId?: string;
+
+  certifiedSlay: boolean;
+
+
+  /* -------------------------
+     REREAD DATA
+     ------------------------- */
+
+  readingNumber: number;
+
+  isReread: boolean;
+
+
+  /* -------------------------
+     READING CONTEXT
+     ------------------------- */
+
+  readSyncId?: string;
 
   notes?: string;
 
 
   /* -------------------------
-     STATS
+     PROGRESS HISTORY
      ------------------------- */
 
-  pagesRead?: number;
+  progressEntries: ReadingProgressEntry[];
 
 
   /* -------------------------

@@ -71,13 +71,13 @@ export interface Book {
 
   status: LibraryStatus;
 
- genreIds: string[];
+   genreIds: string[];
 
-tropeIds: string[];
+  tropeIds: string[];
 
-tagIds: string[];
+  tagIds: string[];
 
-shelfIds: string[];
+  shelfIds: string[];
 
 
   /* -------------------------

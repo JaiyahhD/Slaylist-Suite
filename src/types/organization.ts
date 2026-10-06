@@ -2,15 +2,33 @@
    THE SLAYLIST SUITE
    Organization Types
 
-   Defines how books are categorized, tagged, shelved,
-   filtered, and discovered throughout Slaybase.
+   These types power the organizational layer of Slaybase:
+   genres, tropes, tags, shelves, and collections.
+
+   Books reference these items by ID instead of storing
+   duplicated organization data directly.
    ========================================================= */
 
-export type ShelfType =
-  | "system"
-  | "custom";
+export type OrganizationType =
+  | "genre"
+  | "trope"
+  | "tag"
+  | "shelf"
+  | "collection";
 
-export interface Shelf {
+export type AccentColor =
+  | "pink"
+  | "violet"
+  | "ice"
+  | "mixed"
+  | "chrome";
+
+
+/* =========================================================
+   GENRES
+   ========================================================= */
+
+export interface Genre {
   id: string;
 
   name: string;
@@ -19,11 +37,30 @@ export interface Shelf {
 
   description?: string;
 
-  type: ShelfType;
+  parentGenreId?: string;
 
-  icon?: string;
+  accent?: AccentColor;
 
-  bookIds: string[];
+  createdAt: string;
+
+  updatedAt: string;
+}
+
+
+/* =========================================================
+   TROPES
+   ========================================================= */
+
+export interface Trope {
+  id: string;
+
+  name: string;
+
+  slug: string;
+
+  description?: string;
+
+  accent?: AccentColor;
 
   createdAt: string;
 
@@ -33,14 +70,6 @@ export interface Shelf {
 
 /* =========================================================
    TAGS
-
-   Flexible labels I can attach to basically anything.
-   Examples:
-   - Black author
-   - Kindle owned
-   - BookTok made me do it
-   - need to read ASAP
-   - emotionally dangerous
    ========================================================= */
 
 export interface Tag {
@@ -52,34 +81,19 @@ export interface Tag {
 
   description?: string;
 
-  color?: string;
+  accent?: AccentColor;
+
+  createdAt: string;
+
+  updatedAt: string;
 }
 
 
 /* =========================================================
-   GENRES
-
-   Formal book classifications.
+   SHELVES
    ========================================================= */
 
-export interface Genre {
-  id: string;
-
-  name: string;
-
-  slug: string;
-
-  parentGenre?: string;
-}
-
-
-/* =========================================================
-   TROPES
-
-   Story elements rather than formal genres.
-   ========================================================= */
-
-export interface Trope {
+export interface Shelf {
   id: string;
 
   name: string;
@@ -87,4 +101,63 @@ export interface Trope {
   slug: string;
 
   description?: string;
+
+  source:
+    | "slaylist"
+    | "goodreads"
+    | "system";
+
+  isPrivate: boolean;
+
+  accent?: AccentColor;
+
+  createdAt: string;
+
+  updatedAt: string;
+}
+
+
+/* =========================================================
+   COLLECTIONS
+   ========================================================= */
+
+export interface Collection {
+  id: string;
+
+  name: string;
+
+  slug: string;
+
+  description?: string;
+
+  coverImageUrl?: string;
+
+  accent?: AccentColor;
+
+  isPrivate: boolean;
+
+  bookIds: string[];
+
+  createdAt: string;
+
+  updatedAt: string;
+}
+
+
+/* =========================================================
+   GENERAL ORGANIZATION ITEM
+   ========================================================= */
+
+export interface OrganizationItem {
+  id: string;
+
+  type: OrganizationType;
+
+  name: string;
+
+  slug: string;
+
+  description?: string;
+
+  accent?: AccentColor;
 }
