@@ -8,7 +8,7 @@ import type {
 
 import goodreadsLibrary from "@/data/goodreads-library.json";
 
-import UpdateProgressButton from "@/components/rotation/UpdateProgressButton";
+import CurrentRotationClient from "@/components/rotation/CurrentRotationClient";
 
 /* =========================================================
    TYPES
@@ -183,11 +183,6 @@ export default function CurrentRotationPage() {
                 readingRecord,
               }) => {
 
-                const progress =
-                  readingRecord
-                    ?.progressPercent ??
-                  0;
-
                 return (
 
                   <article
@@ -253,10 +248,6 @@ export default function CurrentRotationPage() {
                           CURRENT EXPERIMENT
                         </span>
 
-                        <span>
-                          {progress}% COMPLETE
-                        </span>
-
                       </div>
 
 
@@ -273,55 +264,6 @@ export default function CurrentRotationPage() {
                       <p className="current-rotation-author">
                         {book.authors.join(", ")}
                       </p>
-
-
-                      {/* =========================
-                          PROGRESS
-                          ========================= */}
-
-                      <div className="current-rotation-progress">
-
-                        <div className="current-rotation-progress-track">
-
-                          <div
-                            className="current-rotation-progress-fill"
-                            style={{
-                              width:
-                                `${Math.min(
-                                  100,
-                                  Math.max(
-                                    0,
-                                    progress
-                                  )
-                                )}%`,
-                            }}
-                          />
-
-                        </div>
-
-                        <div className="current-rotation-progress-data">
-
-                          <span>
-                            {readingRecord
-                              ?.currentPage
-                              ? (
-                                  book.pageCount
-                                    ? `PAGE ${readingRecord.currentPage} / ${book.pageCount}`
-                                    : `PAGE ${readingRecord.currentPage}`
-                                )
-                              : book.pageCount
-                                ? `${book.pageCount} PAGES TOTAL`
-                                : "PAGE DATA UNAVAILABLE"}
-                          </span>
-
-                          <strong>
-                            {progress}%
-                          </strong>
-
-                        </div>
-
-                      </div>
-
 
                       {/* =========================
                           READING DETAILS
@@ -392,12 +334,14 @@ export default function CurrentRotationPage() {
 
                       <div className="current-rotation-actions">
 
-                        <UpdateProgressButton
-                            bookId={book.id}
-                            bookTitle={book.title}
-                            pageCount={book.pageCount}
-                            readingMethod={readingRecord?.readingMethod}
-                            readingNumber={readingRecord?.readingNumber ?? 1}
+                        <CurrentRotationClient
+                          bookId={book.id}
+                          bookTitle={book.title}
+                          pageCount={book.pageCount}
+                          readingMethod={readingRecord?.readingMethod}
+                          readingNumber={readingRecord?.readingNumber ?? 1}
+                          fallbackPage={readingRecord?.currentPage}
+                          fallbackProgress={readingRecord?.progressPercent ?? 0}
                             />
 
                         <Link

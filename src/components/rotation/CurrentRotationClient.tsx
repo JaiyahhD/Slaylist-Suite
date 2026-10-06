@@ -29,6 +29,15 @@ type LiveReadingRecord = {
   progress_percent: number | null;
 };
 
+type ProgressEntry = {
+  id: string;
+  page: number | null;
+  percentage: number | null;
+  note: string | null;
+  mood: string | null;
+  recorded_at: string;
+};
+
 export default function CurrentRotationClient({
   bookId,
   bookTitle,
@@ -100,6 +109,10 @@ export default function CurrentRotationClient({
 
   return (
     <>
+      <span className="current-rotation-live-percent">
+        {safeProgress}% COMPLETE
+      </span>
+
       <div className="current-rotation-progress">
         <div className="current-rotation-progress-track">
           <div
