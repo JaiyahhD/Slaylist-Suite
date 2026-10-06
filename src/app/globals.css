@@ -2465,3 +2465,1046 @@ body {
   }
 }
 
+/* =========================================================
+   THE SLAYBASE
+   ========================================================= */
+
+.slaybase-page {
+  width: min(100% - 3rem, 1440px);
+  margin: 0 auto;
+  padding: 5.5rem 0 7rem;
+}
+
+
+/* =========================================================
+   SLAYBASE HERO
+   ========================================================= */
+
+.slaybase-hero {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 3rem;
+
+  min-height: 340px;
+  padding: 3.5rem;
+
+  border:
+    1px solid
+    rgba(255, 62, 170, 0.16);
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 12% 25%,
+      rgba(255, 62, 170, 0.2),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 25%,
+      rgba(131, 221, 255, 0.11),
+      transparent 26%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(59, 18, 62, 0.6),
+      rgba(22, 10, 24, 0.88) 48%,
+      rgba(12, 9, 20, 0.94)
+    );
+
+  overflow: hidden;
+
+  box-shadow:
+    0 30px 90px
+    rgba(0, 0, 0, 0.28);
+}
+
+.slaybase-hero::before {
+  content: "01010011 01001100 01000001 01011001";
+
+  position: absolute;
+  right: 3rem;
+  bottom: 1.2rem;
+
+  color:
+    rgba(131, 221, 255, 0.09);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.18em;
+
+  pointer-events: none;
+}
+
+.slaybase-hero > div:first-child {
+  position: relative;
+  z-index: 1;
+
+  max-width: 760px;
+}
+
+.slaybase-title {
+  margin:
+    0.55rem
+    0
+    1rem;
+
+  color: var(--text-primary);
+
+  font-size:
+    clamp(3.7rem, 7vw, 7.4rem);
+
+  font-weight: 950;
+
+  line-height: 0.86;
+
+  letter-spacing: -0.075em;
+}
+
+.slaybase-title span {
+  display: block;
+
+  background: var(--gradient-holographic);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+
+  filter:
+    drop-shadow(
+      0 0 24px
+      rgba(255, 62, 170, 0.13)
+    );
+}
+
+.slaybase-intro {
+  max-width: 620px;
+
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.9rem;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   SLAYBASE ORBIT
+   ========================================================= */
+
+.slaybase-orbit {
+  position: relative;
+  z-index: 1;
+
+  width: 210px;
+  height: 210px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(131, 221, 255, 0.2);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(143, 99, 255, 0.16),
+      rgba(255, 62, 170, 0.05) 48%,
+      transparent 70%
+    );
+
+  box-shadow:
+    inset 0 0 50px
+    rgba(131, 221, 255, 0.06),
+    0 0 60px
+    rgba(143, 99, 255, 0.1);
+}
+
+.slaybase-orbit::before,
+.slaybase-orbit::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.slaybase-orbit::before {
+  inset: -15px;
+
+  border:
+    1px dashed
+    rgba(255, 145, 211, 0.2);
+
+  transform: rotate(-18deg);
+}
+
+.slaybase-orbit::after {
+  width: 11px;
+  height: 11px;
+
+  top: 8px;
+  right: 33px;
+
+  background: var(--electric-pink);
+
+  box-shadow:
+    0 0 20px
+    rgba(255, 62, 170, 0.75);
+}
+
+.slaybase-orbit span {
+  background: var(--gradient-tech);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+
+  font-size: 3.4rem;
+  font-weight: 950;
+
+  line-height: 1;
+
+  letter-spacing: -0.07em;
+}
+
+.slaybase-orbit small {
+  margin-top: 0.6rem;
+
+  color: var(--text-muted);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.5rem;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   STATUS FILTER CARDS
+   ========================================================= */
+
+.slaybase-status-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 0.8rem;
+
+  margin-top: 1rem;
+}
+
+.slaybase-status-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 105px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 1rem 1.1rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 16px;
+
+  color: var(--text-primary);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  text-align: left;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.slaybase-status-card:hover {
+  transform: translateY(-4px);
+}
+
+.slaybase-status-card span {
+  position: relative;
+  z-index: 1;
+
+  color: var(--text-secondary);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.52rem;
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+}
+
+.slaybase-status-card strong {
+  position: relative;
+  z-index: 1;
+
+  font-size: 1.9rem;
+  font-weight: 950;
+
+  letter-spacing: -0.06em;
+}
+
+.status-pink {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 62, 170, 0.18),
+      rgba(38, 13, 41, 0.84)
+    );
+}
+
+.status-pink strong {
+  color: var(--bubblegum);
+}
+
+.status-pink:hover {
+  border-color: var(--border-pink);
+
+  box-shadow:
+    0 12px 35px
+    rgba(255, 62, 170, 0.12);
+}
+
+.status-violet {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(143, 99, 255, 0.18),
+      rgba(38, 13, 41, 0.84)
+    );
+}
+
+.status-violet strong {
+  color: var(--digital-lavender);
+}
+
+.status-violet:hover {
+  border-color: var(--border-purple);
+
+  box-shadow:
+    0 12px 35px
+    rgba(143, 99, 255, 0.12);
+}
+
+.status-ice {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(131, 221, 255, 0.14),
+      rgba(38, 13, 41, 0.84)
+    );
+}
+
+.status-ice strong {
+  color: var(--ice-blue);
+}
+
+.status-ice:hover {
+  border-color: var(--border-ice);
+
+  box-shadow:
+    0 12px 35px
+    rgba(131, 221, 255, 0.1);
+}
+
+.status-mixed {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 62, 170, 0.15),
+      rgba(143, 99, 255, 0.15),
+      rgba(131, 221, 255, 0.09)
+    );
+}
+
+.status-mixed strong {
+  background: var(--gradient-holographic);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+}
+
+.status-mixed:hover {
+  border-color:
+    rgba(184, 161, 255, 0.35);
+
+  box-shadow:
+    0 12px 35px
+    rgba(143, 99, 255, 0.12);
+}
+
+
+/* =========================================================
+   SLAYBASE CONTROLS
+   ========================================================= */
+
+.slaybase-controls {
+  position: sticky;
+  top: 74px;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-top: 2.5rem;
+  padding: 0.8rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 18px;
+
+  background:
+    rgba(14, 9, 17, 0.84);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 15px 50px
+    rgba(0, 0, 0, 0.25);
+}
+
+.slaybase-search {
+  min-width: 260px;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  padding:
+    0
+    0.9rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+.slaybase-search:focus-within {
+  border-color:
+    rgba(255, 62, 170, 0.45);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(255, 62, 170, 0.07);
+}
+
+.slaybase-search > span {
+  color: var(--bubblegum);
+
+  font-size: 1.35rem;
+}
+
+.slaybase-search input {
+  width: 100%;
+  min-height: 46px;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--text-primary);
+
+  font: inherit;
+
+  font-size: 0.75rem;
+}
+
+.slaybase-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.slaybase-control-buttons {
+  display: flex;
+
+  gap: 0.5rem;
+}
+
+.slaybase-control-buttons button {
+  min-height: 46px;
+
+  padding:
+    0
+    0.9rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  color: var(--text-secondary);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.5rem;
+  font-weight: 800;
+
+  letter-spacing: 0.06em;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.slaybase-control-buttons button:hover {
+  border-color:
+    rgba(131, 221, 255, 0.3);
+
+  background:
+    rgba(131, 221, 255, 0.06);
+
+  color: var(--ice-blue);
+}
+
+
+/* =========================================================
+   LIBRARY HEADING
+   ========================================================= */
+
+.slaybase-library-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin:
+    4rem
+    0
+    1.5rem;
+}
+
+.slaybase-library-heading .section-title {
+  margin-bottom: 0;
+}
+
+.slaybase-results {
+  margin: 0;
+
+  color: var(--ice-blue);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.55rem;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   BOOK GRID
+   ========================================================= */
+
+.slaybase-book-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+  gap: 1rem;
+}
+
+.slaybase-book {
+  min-width: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  overflow: hidden;
+
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.slaybase-book:hover {
+  transform:
+    translateY(-7px);
+
+  border-color:
+    rgba(255, 145, 211, 0.25);
+
+  box-shadow:
+    0 22px 50px
+    rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   BOOK COVERS
+   ========================================================= */
+
+.slaybase-book-cover {
+  position: relative;
+
+  aspect-ratio: 2 / 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1rem;
+
+  overflow: hidden;
+}
+
+.slaybase-book-cover::after {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  right: -40px;
+  top: 25%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.14);
+
+  filter: blur(28px);
+}
+
+.book-pink {
+  background:
+    linear-gradient(
+      155deg,
+      #f83ca9,
+      #9f1f70 58%,
+      #38102f
+    );
+}
+
+.book-violet {
+  background:
+    linear-gradient(
+      155deg,
+      #9b6cff,
+      #6737ae 58%,
+      #29143d
+    );
+}
+
+.book-ice {
+  background:
+    linear-gradient(
+      155deg,
+      #86e4ff,
+      #5379c8 55%,
+      #292253
+    );
+}
+
+.book-mixed {
+  background:
+    linear-gradient(
+      155deg,
+      #ff63bd,
+      #9569ff 50%,
+      #61bce6
+    );
+}
+
+.book-status {
+  position: relative;
+  z-index: 1;
+
+  align-self: flex-start;
+
+  padding:
+    0.3rem
+    0.45rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.2);
+
+  border-radius: 999px;
+
+  background:
+    rgba(10, 7, 13, 0.2);
+
+  color: white;
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.43rem;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+}
+
+.book-cover-symbol {
+  position: relative;
+  z-index: 1;
+
+  align-self: center;
+
+  color: white;
+
+  font-size: 2.2rem;
+
+  text-shadow:
+    0 0 20px
+    rgba(255, 255, 255, 0.5);
+}
+
+.slaybase-book-cover strong {
+  position: relative;
+  z-index: 1;
+
+  max-width: 90%;
+
+  color: white;
+
+  font-size:
+    clamp(1rem, 1.6vw, 1.45rem);
+
+  font-weight: 950;
+
+  line-height: 0.93;
+
+  letter-spacing: -0.05em;
+}
+
+
+/* =========================================================
+   BOOK INFO
+   ========================================================= */
+
+.slaybase-book-info {
+  padding: 1rem;
+}
+
+.book-info-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 0.5rem;
+}
+
+.book-info-heading h3 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 0.8rem;
+  font-weight: 850;
+
+  line-height: 1.25;
+}
+
+.book-info-heading p {
+  margin:
+    0.3rem
+    0
+    0;
+
+  color: var(--text-muted);
+
+  font-size: 0.62rem;
+}
+
+.book-info-heading button {
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--text-muted);
+
+  cursor: pointer;
+
+  font-size: 0.8rem;
+}
+
+.book-info-heading button:hover {
+  color: var(--bubblegum);
+}
+
+.book-rating {
+  margin-top: 0.9rem;
+
+  color: var(--bubblegum);
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.04em;
+
+  text-shadow:
+    0 0 10px
+    rgba(255, 145, 211, 0.28);
+}
+
+.book-rating.unrated {
+  color: var(--text-muted);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.45rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-shadow: none;
+}
+
+.book-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.35rem;
+
+  margin-top: 0.85rem;
+}
+
+.book-tags span {
+  padding:
+    0.25rem
+    0.42rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  color: var(--text-secondary);
+
+  font-size: 0.48rem;
+}
+
+
+/* =========================================================
+   LOAD MORE
+   ========================================================= */
+
+.slaybase-load-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 3.5rem;
+
+  text-align: center;
+}
+
+.slaybase-load-more button {
+  padding:
+    0.9rem
+    1.4rem;
+
+  border:
+    1px solid
+    rgba(255, 62, 170, 0.25);
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.13),
+      rgba(143, 99, 255, 0.1)
+    );
+
+  color: var(--bubblegum);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.55rem;
+  font-weight: 900;
+
+  letter-spacing: 0.09em;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.slaybase-load-more button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(255, 62, 170, 0.12);
+}
+
+.slaybase-load-more p {
+  margin-top: 0.8rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.6rem;
+}
+
+
+/* =========================================================
+   SLAYBASE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1250px) {
+  .slaybase-book-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .slaybase-status-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .slaybase-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .slaybase-control-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 800px) {
+  .slaybase-page {
+    width: min(100% - 2rem, 1440px);
+
+    padding-top: 3rem;
+  }
+
+  .slaybase-hero {
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 2rem;
+  }
+
+  .slaybase-orbit {
+    width: 160px;
+    height: 160px;
+
+    align-self: center;
+  }
+
+  .slaybase-book-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .slaybase-status-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .slaybase-library-heading {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.7rem;
+  }
+
+  .slaybase-control-buttons button:nth-child(2) {
+    flex: 1;
+  }
+}
+
