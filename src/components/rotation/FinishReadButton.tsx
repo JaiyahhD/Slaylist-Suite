@@ -31,6 +31,99 @@ const [error, setError] =
 const [success, setSuccess] =
   useState("");
 
+  const handleFinishRead = async () => {
+  setFinishing(true);
+  setError("");
+  setSuccess("");
+
+  try {
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      setError(
+        "Your session could not be verified. Please log in again."
+      );
+      return;
+    }
+
+    const recordId =
+      `${user.id}:${bookId}:${readingNumber}`;
+
+    const finishedAt =
+      new Date().toISOString();
+
+    const {
+      error: recordError,
+    } = await supabase
+      .from("reading_records")
+      .upsert(
+        {
+          id: recordId,
+          owner_id: user.id,
+          book_id: bookId,
+          status: "completed",
+          current_page: pageCount ?? null,
+          progress_percent: 100,
+          reading_number: readingNumber,
+          is_reread: readingNumber > 1,
+          finished_at: finishedAt,
+          updated_at: finishedAt,
+        },
+        {
+          onConflict: "id",
+        }
+      );
+
+    if (recordError) {
+      setError(
+        `Could not finish this read: ${recordError.message}`
+      );
+      return;
+    }
+
+    const {
+      error: historyError,
+    } = await supabase
+      .from("reading_progress_entries")
+      .insert({
+        owner_id: user.id,
+        reading_record_id: recordId,
+        page: pageCount ?? null,
+        percentage: 100,
+        note: "Finished reading.",
+        mood: null,
+        recorded_at: finishedAt,
+      });
+
+    if (historyError) {
+      setError(
+        `The book was completed, but the final history entry could not be saved: ${historyError.message}`
+      );
+      return;
+    }
+
+    setSuccess("Read completed ✦");
+
+window.dispatchEvent(
+  new CustomEvent(
+    "slaylist:reading-finished",
+    {
+      detail: {
+        bookId,
+      },
+    }
+  )
+);
+
+await onFinished?.();
+  } finally {
+    setFinishing(false);
+  }
+};
+
   return (
     <>
       <button
@@ -99,26 +192,29 @@ const [success, setSuccess] =
               </p>
             </div>
 
+  {error && (
+  <p className="finish-read-error">
+    {error}
+  </p>
+)}
+
+{success && (
+  <p className="finish-read-success">
+    {success}
+  </p>
+)}              
+
             <div className="finish-read-actions">
               <button
                 type="button"
-                className="finish-read-cancel"
-                onClick={() =>
-                  setIsOpen(false)
-                }
-              >
-                NOT YET
-              </button>
-
-              <button
-                type="button"
                 className="finish-read-confirm"
-                onClick={() =>
-                  setIsOpen(false)
-                }
-              >
-                YES, I FINISHED ✦
-              </button>
+                onClick={handleFinishRead}
+                disabled={finishing}
+            >
+  {finishing
+    ? "FINISHING..."
+    : "YES, I FINISHED ✦"}
+</button>
             </div>
           </div>
         </div>

@@ -4138,8 +4138,9 @@ body {
 }
 
 .current-rotation-real-cover {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: linear-gradient(#ff3eaa14, #8f63ff14, #09070deb);
   width: 100%;
   height: 100%;
   min-height: 390px;

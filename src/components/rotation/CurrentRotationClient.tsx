@@ -26,6 +26,12 @@ type CurrentRotationClientProps = {
 };
 
 type LiveReadingRecord = {
+  status:
+    | "planned"
+    | "currently-reading"
+    | "paused"
+    | "completed"
+    | "dnf";
   current_page: number | null;
   progress_percent: number | null;
 };
@@ -70,7 +76,7 @@ export default function CurrentRotationClient({
       } = await supabase
         .from("reading_records")
         .select(
-          "current_page, progress_percent"
+            "status, current_page, progress_percent"
         )
         .eq("owner_id", user.id)
         .eq("book_id", bookId)
@@ -147,6 +153,10 @@ if (progressEntryError) {
     100,
     Math.max(0, progress)
   );
+
+  if (liveRecord?.status === "completed") {
+  return null;
+}
 
   return (
     <>

@@ -7414,8 +7414,16 @@ body {
 
   display: block;
 
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 62, 170, 0.08),
+      rgba(143, 99, 255, 0.08),
+      rgba(9, 7, 13, 0.92)
+    );
 
   transition:
     transform 300ms ease,

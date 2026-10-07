@@ -1,4 +1,79 @@
 module.exports = [
+"[project]/src/components/rotation/CurrentRotationCardGuard.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>CurrentRotationCardGuard
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/supabase/client.ts [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+function CurrentRotationCardGuard({ bookId, readingNumber = 1, children }) {
+    const [isCompleted, setIsCompleted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const checkStatus = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async ()=>{
+        const { data: { user } } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["supabase"].auth.getUser();
+        if (!user) {
+            setLoading(false);
+            return;
+        }
+        const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["supabase"].from("reading_records").select("status").eq("owner_id", user.id).eq("book_id", bookId).eq("reading_number", readingNumber).maybeSingle();
+        if (error) {
+            console.error("Could not check reading status:", error);
+            setLoading(false);
+            return;
+        }
+        setIsCompleted(data?.status === "completed");
+        setLoading(false);
+    }, [
+        bookId,
+        readingNumber
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        checkStatus();
+    }, [
+        checkStatus
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const handleReadingFinished = (event)=>{
+            const finishedEvent = event;
+            if (finishedEvent.detail?.bookId === bookId) {
+                setIsCompleted(true);
+            }
+        };
+        window.addEventListener("slaylist:reading-finished", handleReadingFinished);
+        return ()=>{
+            window.removeEventListener("slaylist:reading-finished", handleReadingFinished);
+        };
+    }, [
+        bookId
+    ]);
+    if (loading) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+            children: children
+        }, void 0, false, {
+            fileName: "[project]/src/components/rotation/CurrentRotationCardGuard.tsx",
+            lineNumber: 110,
+            columnNumber: 12
+        }, this);
+    }
+    if (isCompleted) {
+        return null;
+    }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+        children: children
+    }, void 0, false, {
+        fileName: "[project]/src/components/rotation/CurrentRotationCardGuard.tsx",
+        lineNumber: 117,
+        columnNumber: 10
+    }, this);
+}
+}),
 "[project]/src/components/rotation/CurrentRotationClient.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -244,6 +319,60 @@ function CurrentRotationClient({ bookId, bookTitle, pageCount, readingMethod, re
     }, this);
 }
 }),
+"[project]/src/components/rotation/CurrentRotationCount.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>CurrentRotationCount
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/supabase/client.ts [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+function CurrentRotationCount({ bookIds }) {
+    const [activeCount, setActiveCount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(bookIds.length);
+    const loadActiveCount = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(async ()=>{
+        const { data: { user } } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["supabase"].auth.getUser();
+        if (!user || bookIds.length === 0) {
+            setActiveCount(bookIds.length);
+            return;
+        }
+        const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["supabase"].from("reading_records").select("book_id, status").eq("owner_id", user.id).in("book_id", bookIds);
+        if (error) {
+            console.error("Could not load active reading count:", error);
+            return;
+        }
+        const completedBookIds = new Set((data ?? []).filter((record)=>record.status === "completed").map((record)=>record.book_id));
+        const count = bookIds.filter((bookId)=>!completedBookIds.has(bookId)).length;
+        setActiveCount(count);
+    }, [
+        bookIds
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        loadActiveCount();
+        const handleReadingFinished = ()=>{
+            loadActiveCount();
+        };
+        window.addEventListener("slaylist:reading-finished", handleReadingFinished);
+        return ()=>{
+            window.removeEventListener("slaylist:reading-finished", handleReadingFinished);
+        };
+    }, [
+        loadActiveCount
+    ]);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+        children: activeCount
+    }, void 0, false, {
+        fileName: "[project]/src/components/rotation/CurrentRotationCount.tsx",
+        lineNumber: 95,
+        columnNumber: 5
+    }, this);
+}
+}),
 "[project]/src/components/rotation/FinishReadButton.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -307,6 +436,11 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                 return;
             }
             setSuccess("Read completed ✦");
+            window.dispatchEvent(new CustomEvent("slaylist:reading-finished", {
+                detail: {
+                    bookId
+                }
+            }));
             await onFinished?.();
         } finally{
             setFinishing(false);
@@ -321,7 +455,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                 children: "✦ FINISH READ"
             }, void 0, false, {
                 fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                lineNumber: 118,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -343,7 +477,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                             children: "×"
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 143,
+                            lineNumber: 154,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -351,7 +485,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                             children: "READING LAB // FINAL RESULTS"
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 154,
+                            lineNumber: 165,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -359,7 +493,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                             children: "Finished this one?"
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 158,
+                            lineNumber: 169,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -367,7 +501,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                             children: bookTitle
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 162,
+                            lineNumber: 173,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -375,7 +509,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                             children: "Confirming will eventually close this reading record, preserve your progress history, and move the book out of Current Rotation."
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 166,
+                            lineNumber: 177,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -385,20 +519,20 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                                     children: "✦"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                                    lineNumber: 174,
+                                    lineNumber: 185,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Nothing will be changed yet. We're testing the Finish Read flow before connecting it to your database."
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                                    lineNumber: 176,
+                                    lineNumber: 187,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 173,
+                            lineNumber: 184,
                             columnNumber: 13
                         }, this),
                         error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -406,7 +540,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 185,
+                            lineNumber: 196,
                             columnNumber: 3
                         }, this),
                         success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -414,7 +548,7 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                             children: success
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 191,
+                            lineNumber: 202,
                             columnNumber: 3
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -427,29 +561,29 @@ function FinishReadButton({ bookId, bookTitle, readingNumber = 1, pageCount, onF
                                 children: finishing ? "FINISHING..." : "YES, I FINISHED ✦"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                                lineNumber: 197,
+                                lineNumber: 208,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                            lineNumber: 196,
+                            lineNumber: 207,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                    lineNumber: 134,
+                    lineNumber: 145,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-                lineNumber: 127,
+                lineNumber: 138,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/rotation/FinishReadButton.tsx",
-        lineNumber: 117,
+        lineNumber: 128,
         columnNumber: 5
     }, this);
 }
@@ -799,4 +933,4 @@ const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_module
 }),
 ];
 
-//# sourceMappingURL=src_1k9pyzj._.js.map
+//# sourceMappingURL=src_1gh8mon._.js.map

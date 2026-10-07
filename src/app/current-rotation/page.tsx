@@ -9,6 +9,8 @@ import type {
 import goodreadsLibrary from "@/data/goodreads-library.json";
 
 import CurrentRotationClient from "@/components/rotation/CurrentRotationClient";
+import CurrentRotationCardGuard from "@/components/rotation/CurrentRotationCardGuard";
+import CurrentRotationCount from "@/components/rotation/CurrentRotationCount";
 
 /* =========================================================
    TYPES
@@ -93,10 +95,8 @@ function formatReadingMethod(
    ========================================================= */
 
 export default function CurrentRotationPage() {
-
   const library =
     goodreadsLibrary as GoodreadsLibraryRecord[];
-
 
   const currentReads =
     library.filter(
@@ -105,6 +105,10 @@ export default function CurrentRotationPage() {
         "currently-reading"
     );
 
+  const currentReadBookIds =
+    currentReads.map(
+      (record) => record.book.id
+    );
 
   return (
     <main className="current-rotation-page">
@@ -136,9 +140,9 @@ export default function CurrentRotationPage() {
             ACTIVE EXPERIMENTS
           </span>
 
-          <strong>
-            {currentReads.length}
-          </strong>
+          <CurrentRotationCount
+            bookIds={currentReadBookIds}
+          />
 
         </div>
 
@@ -184,175 +188,208 @@ export default function CurrentRotationPage() {
               }) => {
 
                 return (
-
-                  <article
+                  <CurrentRotationCardGuard
                     key={book.id}
-                    className="current-rotation-card"
+                    bookId={book.id}
+                    readingNumber={
+                      readingRecord?.readingNumber ??
+                      1
+                    }
                   >
 
-                    {/* =========================
-                        COVER
-                        ========================= */}
+                    <article className="current-rotation-card">
 
-                    <Link
-                      href={`/books/${book.id}`}
-                      className={
-                        `current-rotation-cover ` +
-                        `${book.coverUrl
-                          ? "has-real-cover"
-                          : ""}`
-                      }
-                      aria-label={
-                        `Open ${book.title}`
-                      }
-                    >
-
-                      {book.coverUrl ? (
-
-                        <img
-                          src={book.coverUrl}
-                          alt={
-                            `Cover of ${book.title}`
-                          }
-                          className="current-rotation-real-cover"
-                        />
-
-                      ) : (
-
-                        <div className="current-rotation-cover-placeholder">
-
-                          <span>
-                            ✦
-                          </span>
-
-                          <strong>
-                            {book.title}
-                          </strong>
-
-                        </div>
-
-                      )}
-
-                    </Link>
-
-
-                    {/* =========================
-                        BOOK DATA
-                        ========================= */}
-
-                    <div className="current-rotation-card-content">
-
-                      <div className="current-rotation-card-topline">
-
-                        <span>
-                          CURRENT EXPERIMENT
-                        </span>
-
-                      </div>
-
+                      {/* =========================
+                          COVER
+                          ========================= */}
 
                       <Link
                         href={`/books/${book.id}`}
-                        className="current-rotation-title-link"
+                        className={
+                          `current-rotation-cover ` +
+                          `${book.coverUrl
+                            ? "has-real-cover"
+                            : ""}`
+                        }
+                        aria-label={
+                          `Open ${book.title}`
+                        }
                       >
-                        <h3>
-                          {book.title}
-                        </h3>
+
+                        {book.coverUrl ? (
+
+                          <img
+                            src={book.coverUrl}
+                            alt={
+                              `Cover of ${book.title}`
+                            }
+                            className="current-rotation-real-cover"
+                          />
+
+                        ) : (
+
+                          <div className="current-rotation-cover-placeholder">
+
+                            <span>
+                              ✦
+                            </span>
+
+                            <strong>
+                              {book.title}
+                            </strong>
+
+                          </div>
+
+                        )}
+
                       </Link>
 
 
-                      <p className="current-rotation-author">
-                        {book.authors.join(", ")}
-                      </p>
-
                       {/* =========================
-                          READING DETAILS
+                          BOOK DATA
                           ========================= */}
 
-                      <div className="current-rotation-data-grid">
+                      <div className="current-rotation-card-content">
 
-                        <div>
+                        <div className="current-rotation-card-topline">
+
                           <span>
-                            FORMAT
+                            CURRENT EXPERIMENT
                           </span>
 
-                          <strong>
-                            {formatReadingMethod(
-                              readingRecord
-                                ?.readingMethod
-                            )}
-                          </strong>
                         </div>
 
 
-                        <div>
-                          <span>
-                            STARTED
-                          </span>
+                        <Link
+                          href={`/books/${book.id}`}
+                          className="current-rotation-title-link"
+                        >
+                          <h3>
+                            {book.title}
+                          </h3>
+                        </Link>
 
-                          <strong>
-                            {formatDate(
-                              readingRecord
-                                ?.startedAt
-                            )}
-                          </strong>
+
+                        <p className="current-rotation-author">
+                          {book.authors.join(", ")}
+                        </p>
+
+
+                        {/* =========================
+                            READING DETAILS
+                            ========================= */}
+
+                        <div className="current-rotation-data-grid">
+
+                          <div>
+
+                            <span>
+                              FORMAT
+                            </span>
+
+                            <strong>
+                              {formatReadingMethod(
+                                readingRecord
+                                  ?.readingMethod
+                              )}
+                            </strong>
+
+                          </div>
+
+
+                          <div>
+
+                            <span>
+                              STARTED
+                            </span>
+
+                            <strong>
+                              {formatDate(
+                                readingRecord
+                                  ?.startedAt
+                              )}
+                            </strong>
+
+                          </div>
+
+
+                          <div>
+
+                            <span>
+                              READ #
+                            </span>
+
+                            <strong>
+                              {readingRecord
+                                ?.readingNumber ??
+                                1}
+                            </strong>
+
+                          </div>
+
+
+                          <div>
+
+                            <span>
+                              SOURCE
+                            </span>
+
+                            <strong>
+                              {book.source ===
+                              "goodreads"
+                                ? "Goodreads"
+                                : "Slaylist"}
+                            </strong>
+
+                          </div>
+
                         </div>
 
 
-                        <div>
-                          <span>
-                            READ #
-                          </span>
+                        {/* =========================
+                            LIVE READING DATA
+                            ========================= */}
 
-                          <strong>
-                            {readingRecord
-                              ?.readingNumber ??
-                              1}
-                          </strong>
-                        </div>
+                        <CurrentRotationClient
+                          bookId={book.id}
+                          bookTitle={book.title}
+                          pageCount={book.pageCount}
+                          readingMethod={
+                            readingRecord?.readingMethod
+                          }
+                          readingNumber={
+                            readingRecord?.readingNumber ??
+                            1
+                          }
+                          fallbackPage={
+                            readingRecord?.currentPage
+                          }
+                          fallbackProgress={
+                            readingRecord?.progressPercent ??
+                            0
+                          }
+                        />
 
 
-                        <div>
-                          <span>
-                            SOURCE
-                          </span>
+                        {/* =========================
+                            ACTIONS
+                            ========================= */}
 
-                          <strong>
-                            {book.source ===
-                            "goodreads"
-                              ? "Goodreads"
-                              : "Slaylist"}
-                          </strong>
+                        <div className="current-rotation-actions">
+
+                          <Link
+                            href={`/books/${book.id}`}
+                          >
+                            OPEN DOSSIER →
+                          </Link>
+
                         </div>
 
                       </div>
 
+                    </article>
 
-                      {/* =========================
-                          ACTIONS
-                          ========================= */}
-
-                      <CurrentRotationClient
-  bookId={book.id}
-  bookTitle={book.title}
-  pageCount={book.pageCount}
-  readingMethod={readingRecord?.readingMethod}
-  readingNumber={readingRecord?.readingNumber ?? 1}
-  fallbackPage={readingRecord?.currentPage}
-  fallbackProgress={readingRecord?.progressPercent ?? 0}
-/>
-
-<div className="current-rotation-actions">
-  <Link
-    href={`/books/${book.id}`}
-  >
-    OPEN DOSSIER →
-  </Link>
-</div>
-                    </div>
-
-                  </article>
-
+                  </CurrentRotationCardGuard>
                 );
               }
             )}
