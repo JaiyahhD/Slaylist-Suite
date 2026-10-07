@@ -8,6 +8,8 @@ import type {
 
 import goodreadsLibrary from "@/data/goodreads-library.json";
 
+import BookwaveDossierConnection from "@/components/bookwave/BookwaveDossierConnection";
+
 
 /* =========================================================
    TYPES
@@ -393,6 +395,11 @@ export default async function BookPage({
           ========================= */}
 
       <section className="book-detail-grid">
+
+        <BookwaveDossierConnection
+          bookId={book.id}
+          bookTitle={book.title}
+        />
 
         <article className="book-detail-panel">
 
