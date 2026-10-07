@@ -1,6 +1,28 @@
 import Link from "next/link";
 
+import BookwaveManager from "@/components/bookwave/BookwaveManager";
+import goodreadsLibrary from "@/data/goodreads-library.json";
+
+type GoodreadsLibraryEntry = {
+  book: {
+    id: string;
+    title: string;
+    authors: string[];
+    coverUrl?: string | null;
+  };
+};
+
 export default function BookwavePage() {
+  const library =
+    goodreadsLibrary as GoodreadsLibraryEntry[];
+
+  const books = library.map(({ book }) => ({
+    id: book.id,
+    title: book.title,
+    authors: book.authors,
+    coverUrl: book.coverUrl ?? null,
+  }));
+
   return (
     <main className="bookwave-page">
       <section className="bookwave-hero">
@@ -27,17 +49,26 @@ export default function BookwavePage() {
           </p>
 
           <div className="bookwave-hero-actions">
-            <a href="#bookwave-library" className="bookwave-primary-action">
+            <a
+              href="#bookwave-library"
+              className="bookwave-primary-action"
+            >
               Explore the Waves
             </a>
 
-            <Link href="/slaybase" className="bookwave-secondary-action">
+            <Link
+              href="/slaybase"
+              className="bookwave-secondary-action"
+            >
               Back to the Slaybase
             </Link>
           </div>
         </div>
 
-        <div className="bookwave-signal" aria-hidden="true">
+        <div
+          className="bookwave-signal"
+          aria-hidden="true"
+        >
           <span />
           <span />
           <span />
@@ -53,7 +84,10 @@ export default function BookwavePage() {
       <section className="bookwave-console">
         <div className="bookwave-console-header">
           <div>
-            <span className="bookwave-eyebrow">NOW TRANSMITTING</span>
+            <span className="bookwave-eyebrow">
+              NOW TRANSMITTING
+            </span>
+
             <h2>My Reading Frequency</h2>
           </div>
 
@@ -76,8 +110,8 @@ export default function BookwavePage() {
             <h3>Nothing on the airwaves.</h3>
 
             <p>
-              Once a playlist is attached to a book, its soundtrack
-              can live here.
+              Once a playlist is attached to a book,
+              its soundtrack can live here.
             </p>
           </div>
 
@@ -93,54 +127,12 @@ export default function BookwavePage() {
         </div>
       </section>
 
-      <section
-        className="bookwave-library"
-        id="bookwave-library"
-      >
-        <div className="bookwave-section-heading">
-          <div>
-            <span className="bookwave-eyebrow">
-              THE FREQUENCY LIBRARY
-            </span>
-
-            <h2>Bookwaves</h2>
-          </div>
-
-          <p>
-            Books and their musical counterparts will collect here
-            as the archive grows.
-          </p>
-        </div>
-
-        <div className="bookwave-empty">
-          <div className="bookwave-empty-orbit">
-            <div className="bookwave-empty-disc">
-              <span>BW</span>
-            </div>
-          </div>
-
-          <span className="bookwave-empty-code">
-            SIGNAL_000 // AWAITING TRANSMISSION
-          </span>
-
-          <h3>Your airwaves are quiet.</h3>
-
-          <p>
-            No Bookwaves have been created yet. Soon, this space will
-            connect real books from your Slaybase with the playlists
-            that belong to them.
-          </p>
-
-          <div className="bookwave-empty-tags">
-            <span>BOOK × MUSIC</span>
-            <span>PLAYLIST ARCHIVE</span>
-            <span>READING SOUNDTRACKS</span>
-          </div>
-        </div>
-      </section>
+      <BookwaveManager books={books} />
 
       <section className="bookwave-manifesto">
-        <span className="bookwave-eyebrow">THE FORMULA</span>
+        <span className="bookwave-eyebrow">
+          THE FORMULA
+        </span>
 
         <div className="bookwave-equation">
           <span>BOOK</span>
@@ -155,8 +147,9 @@ export default function BookwavePage() {
         </div>
 
         <p>
-          A playlist is not just background noise. Sometimes it
-          becomes part of how a story is remembered.
+          A playlist is not just background noise.
+          Sometimes it becomes part of how a story is
+          remembered.
         </p>
       </section>
     </main>

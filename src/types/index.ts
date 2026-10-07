@@ -12,3 +12,4 @@ export * from "./goal";
 export * from "./playlist";
 export * from "./readsync";
 export * from "./review";
+export * from "./bookwave";
