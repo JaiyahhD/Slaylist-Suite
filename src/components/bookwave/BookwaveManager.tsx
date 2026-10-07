@@ -68,11 +68,14 @@ const isEditing = editingWaveId !== null;
 const [bookwaves, setBookwaves] = useState<
   Bookwave[]
 >([]);
-  const [libraryState, setLibraryState] =
-    useState<LibraryState>("loading");
-  const [libraryMessage, setLibraryMessage] =
-    useState("");
+const [libraryState, setLibraryState] =
+  useState<LibraryState>("loading");
 
+const [libraryMessage, setLibraryMessage] =
+  useState("");
+
+const [deletingWaveId, setDeletingWaveId] =
+  useState<string | null>(null);
   const normalizedSearch = search
     .trim()
     .toLowerCase();
@@ -902,13 +905,61 @@ setEditingWaveId(null);
     </button>
 
     <button
-            type="button"
-            className="bookwave-delete-button"
-            disabled
-            title="Delete flow activates in 62C.4.3"
-            >
-            × DELETE
-            </button>
+  type="button"
+  className="bookwave-delete-button"
+  disabled={deletingWaveId === wave.id}
+  onClick={async () => {
+    const confirmed = window.confirm(
+      `Delete "${wave.playlistName}" from Bookwave? This cannot be undone.`
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    setDeletingWaveId(wave.id);
+    setLibraryMessage("");
+
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      setLibraryMessage(
+        "Your session could not be verified. The Bookwave was not deleted."
+      );
+      setDeletingWaveId(null);
+      return;
+    }
+
+    const { error } = await supabase
+      .from("bookwaves")
+      .delete()
+      .eq("id", wave.id)
+      .eq("owner_id", user.id);
+
+    if (error) {
+      setLibraryMessage(
+        error.message ||
+          "The Bookwave could not be deleted."
+      );
+      setDeletingWaveId(null);
+      return;
+    }
+
+    if (editingWaveId === wave.id) {
+      cancelEditing();
+    }
+
+    await loadBookwaves(false);
+    setDeletingWaveId(null);
+  }}
+>
+  {deletingWaveId === wave.id
+    ? "DELETING..."
+    : "× DELETE"}
+</button>
         </div>
         </div>
 
