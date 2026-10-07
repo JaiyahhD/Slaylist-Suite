@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import {
   FormEvent,
   useCallback,
@@ -886,16 +888,25 @@ setEditingWaveId(null);
                       )}
 
                       <div className="bookwave-card-actions">
-  <a
-    href={wave.spotifyUrl}
-    target="_blank"
-    rel="noreferrer"
-    className="bookwave-spotify-button"
-  >
-    ▶ OPEN ON SPOTIFY
-  </a>
+                <a
+                  href={wave.spotifyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bookwave-spotify-button"
+                >
+                  ▶ OPEN ON SPOTIFY
+                </a>
 
-  <div className="bookwave-manage-actions">
+                {book && (
+                  <Link
+                    href={`/books/${wave.bookId}`}
+                    className="bookwave-dossier-button"
+                  >
+                    ✦ OPEN BOOK DOSSIER
+                  </Link>
+                )}
+
+            <div className="bookwave-manage-actions">
     <button
         type="button"
         className="bookwave-edit-button"

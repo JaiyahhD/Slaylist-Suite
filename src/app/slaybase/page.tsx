@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import {
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -14,6 +15,8 @@ import type {
 } from "@/types";
 
 import goodreadsLibrary from "@/data/goodreads-library.json";
+
+import { supabase } from "@/lib/supabase/client";
 
 
 /* =========================================================
@@ -190,6 +193,61 @@ export default function SlaybasePage() {
     selectedShelves,
     setSelectedShelves,
   ] = useState<string[]>([]);
+
+  const [
+  bookwaveBookIds,
+  setBookwaveBookIds,
+] = useState<Set<string>>(
+  () => new Set()
+);
+
+useEffect(() => {
+  let active = true;
+
+  async function loadBookwaveConnections() {
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (
+      !active ||
+      userError ||
+      !user
+    ) {
+      return;
+    }
+
+    const { data, error } =
+      await supabase
+        .from("bookwaves")
+        .select("book_id")
+        .eq("owner_id", user.id);
+
+    if (
+      !active ||
+      error ||
+      !data
+    ) {
+      return;
+    }
+
+    setBookwaveBookIds(
+      new Set(
+        data.map(
+          (wave) =>
+            wave.book_id as string
+        )
+      )
+    );
+  }
+
+  void loadBookwaveConnections();
+
+  return () => {
+    active = false;
+  };
+}, []);
 
 
   /* =======================================================
@@ -1398,9 +1456,15 @@ export default function SlaybasePage() {
 
                     {/* BADGES */}
 
-                    <div className="book-tags">
+                      <div className="book-tags">
 
-                      {book.certifiedSlay && (
+                        {bookwaveBookIds.has(book.id) && (
+                          <span className="bookwave-library-tag">
+                            ◉ BOOKWAVE
+                          </span>
+                        )}
+
+                        {book.certifiedSlay && (
                         <span>
                           CERTIFIED SLAY
                         </span>
