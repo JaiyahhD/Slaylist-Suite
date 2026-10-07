@@ -7,10 +7,12 @@ import type {
 import goodreadsLibrary from "@/data/goodreads-library.json";
 
 import ReadingTimeline from "@/components/receipts/ReadingTimeline";
-
 import RatingDistribution from "@/components/receipts/RatingDistribution";
-
 import PageAnalytics from "@/components/receipts/PageAnalytics";
+import ReadingBehavior from "@/components/receipts/ReadingBehavior";
+import SlayMetrics from "@/components/receipts/SlayMetrics";
+import SlayProfile from "@/components/receipts/SlayProfile";
+import BrainChemistryAnalytics from "@/components/receipts/BrainChemistryAnalytics";
 
 /* =========================================================
    TYPES
@@ -132,7 +134,7 @@ export default function ReadingReceiptsPage() {
     library.filter(
       ({ book }) =>
         typeof book.personalRating ===
-        "number" &&
+          "number" &&
         book.personalRating > 0
     );
 
@@ -187,7 +189,7 @@ export default function ReadingReceiptsPage() {
     readBooks.filter(
       ({ book }) =>
         typeof book.pageCount ===
-        "number" &&
+          "number" &&
         book.pageCount > 0
     ).length;
 
@@ -207,6 +209,8 @@ export default function ReadingReceiptsPage() {
       (record) =>
         record.wasTbbBuddyRead
     ).length;
+
+  void tbbBuddyReads;
 
 
   /* =======================================================
@@ -328,7 +332,6 @@ export default function ReadingReceiptsPage() {
           documentation.
         </p>
 
-
         <div className="receipts-dataset-status">
 
           <span>
@@ -353,6 +356,34 @@ export default function ReadingReceiptsPage() {
 
 
       {/* ================================================
+          CHAPTER 01 — THE ARCHIVE
+          ================================================ */}
+
+      <div className="receipts-chapter">
+
+        <div className="receipts-chapter-number">
+          01
+        </div>
+
+        <div className="receipts-chapter-copy">
+
+          <span>
+            THE ARCHIVE
+          </span>
+
+          <strong>
+            What&apos;s on the shelves.
+            What&apos;s already been read.
+          </strong>
+
+        </div>
+
+        <div className="receipts-chapter-line" />
+
+      </div>
+
+
+      {/* ================================================
           LIBRARY SNAPSHOT
           ================================================ */}
 
@@ -361,6 +392,7 @@ export default function ReadingReceiptsPage() {
         <div className="receipts-section-heading">
 
           <div>
+
             <p className="eyebrow">
               RECEIPT 001 // THE LIBRARY
             </p>
@@ -368,6 +400,7 @@ export default function ReadingReceiptsPage() {
             <h2>
               Library Snapshot
             </h2>
+
           </div>
 
           <span>
@@ -380,6 +413,7 @@ export default function ReadingReceiptsPage() {
         <div className="receipts-library-strip">
 
           <div>
+
             <span>
               TOTAL LIBRARY
             </span>
@@ -389,10 +423,12 @@ export default function ReadingReceiptsPage() {
                 totalBooks
               )}
             </strong>
+
           </div>
 
 
           <div>
+
             <span>
               TBR
             </span>
@@ -402,10 +438,12 @@ export default function ReadingReceiptsPage() {
                 tbrBooks.length
               )}
             </strong>
+
           </div>
 
 
           <div>
+
             <span>
               READ
             </span>
@@ -415,10 +453,12 @@ export default function ReadingReceiptsPage() {
                 readBooks.length
               )}
             </strong>
+
           </div>
 
 
           <div>
+
             <span>
               CURRENT
             </span>
@@ -428,10 +468,12 @@ export default function ReadingReceiptsPage() {
                 currentReads.length
               )}
             </strong>
+
           </div>
 
 
           <div>
+
             <span>
               DNF
             </span>
@@ -441,6 +483,7 @@ export default function ReadingReceiptsPage() {
                 dnfBooks.length
               )}
             </strong>
+
           </div>
 
         </div>
@@ -457,6 +500,7 @@ export default function ReadingReceiptsPage() {
         <div className="receipts-section-heading">
 
           <div>
+
             <p className="eyebrow">
               RECEIPT 002 // LIFETIME
             </p>
@@ -464,6 +508,7 @@ export default function ReadingReceiptsPage() {
             <h2>
               The Evidence
             </h2>
+
           </div>
 
           <span>
@@ -514,17 +559,98 @@ export default function ReadingReceiptsPage() {
 
       </section>
 
-        <ReadingTimeline
-        records={library}
-        />
 
-        <RatingDistribution
-        records={library}
-        />
+      {/* ================================================
+          CHAPTER 02 — THE READING LAB
+          ================================================ */}
 
-        <PageAnalytics
+      <div className="receipts-chapter">
+
+        <div className="receipts-chapter-number">
+          02
+        </div>
+
+        <div className="receipts-chapter-copy">
+
+          <span>
+            THE READING LAB
+          </span>
+
+          <strong>
+            Patterns, pages, ratings,
+            rereads, and reading behavior.
+          </strong>
+
+        </div>
+
+        <div className="receipts-chapter-line" />
+
+      </div>
+
+
+      <ReadingTimeline
         records={library}
-        />
+      />
+
+      <RatingDistribution
+        records={library}
+      />
+
+      <PageAnalytics
+        records={library}
+      />
+
+      <ReadingBehavior
+        records={library}
+      />
+
+
+      {/* ================================================
+          CHAPTER 03 — THE SLAY SCIENCE
+          ================================================ */}
+
+      <div className="receipts-chapter">
+
+        <div className="receipts-chapter-number">
+          03
+        </div>
+
+        <div className="receipts-chapter-copy">
+
+          <span>
+            THE SLAY SCIENCE
+          </span>
+
+          <strong>
+            The crown, the chemistry,
+            and the books that hit different.
+          </strong>
+
+        </div>
+
+        <div className="receipts-chapter-line" />
+
+      </div>
+
+
+      <SlayMetrics
+        records={library}
+      />
+
+      <SlayProfile
+        records={library}
+      />
+
+      <BrainChemistryAnalytics
+        books={library.map(
+          ({ book }) => ({
+            id: book.id,
+            title: book.title,
+            authors: book.authors,
+          })
+        )}
+      />
+
 
       {/* ================================================
           DATA NOTE
@@ -558,4 +684,3 @@ export default function ReadingReceiptsPage() {
     </main>
   );
 }
-

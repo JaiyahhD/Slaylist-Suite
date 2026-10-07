@@ -9390,3 +9390,2185 @@ button.current-rotation-update-button:hover {
   }
 }
 
+/* =========================================================
+   READING RECEIPTS — PRETTY SMART™ ANALYTICS SYSTEM
+   ========================================================= */
+
+.receipts-page {
+  --receipt-ink: #09070d;
+  --receipt-blackberry: #160a18;
+  --receipt-deep-plum: #260d29;
+  --receipt-plum: #3b123e;
+
+  --receipt-pink: #ff3eaa;
+  --receipt-hot-pink: #ff5fbd;
+  --receipt-bubblegum: #ff91d3;
+  --receipt-blush: #f6b8dc;
+
+  --receipt-violet: #8f63ff;
+  --receipt-lavender: #b8a1ff;
+  --receipt-orchid: #d58cff;
+
+  --receipt-ice: #83ddff;
+  --receipt-blue: #6da9ff;
+
+  --receipt-chrome: #c9c8d8;
+  --receipt-silver: #e7e5ef;
+  --receipt-white: #faf8ff;
+
+  min-height: 100vh;
+  padding: clamp(2rem, 5vw, 5rem);
+  color: var(--receipt-white);
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(255, 62, 170, 0.17),
+      transparent 27rem
+    ),
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(143, 99, 255, 0.16),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 50% 75%,
+      rgba(131, 221, 255, 0.08),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      #09070d 0%,
+      #160a18 42%,
+      #09070d 100%
+    );
+}
+
+
+/* =========================================================
+   SHARED RECEIPTS TYPOGRAPHY
+   ========================================================= */
+
+.receipts-page .eyebrow,
+.receipts-eyebrow,
+.receipts-analysis-kicker {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--receipt-bubblegum);
+}
+
+.receipts-page h1,
+.receipts-page h2,
+.receipts-page h3,
+.receipts-page p {
+  margin-top: 0;
+}
+
+.receipts-page h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.receipts-page h3 {
+  margin-bottom: 0;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.receipts-page small {
+  color: rgba(216, 203, 216, 0.68);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.receipts-hero {
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto 3.25rem;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 145, 211, 0.22);
+  border-radius: 34px;
+
+  background:
+    radial-gradient(
+      circle at 82% 15%,
+      rgba(131, 221, 255, 0.12),
+      transparent 22rem
+    ),
+    radial-gradient(
+      circle at 15% 100%,
+      rgba(255, 62, 170, 0.18),
+      transparent 24rem
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.08),
+      rgba(143, 99, 255, 0.08),
+      rgba(38, 13, 41, 0.72)
+    );
+
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.receipts-hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  top: -125px;
+  right: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background: rgba(255, 62, 170, 0.16);
+  filter: blur(35px);
+}
+
+.receipts-hero::after {
+  content: "01  //  DATA LAB";
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: rgba(131, 221, 255, 0.48);
+}
+
+.receipts-hero h1 {
+  max-width: 900px;
+  margin: 0.55rem 0 1rem;
+  font-size: clamp(3.2rem, 8vw, 7.2rem);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+}
+
+.receipts-hero h1 span {
+  background:
+    linear-gradient(
+      90deg,
+      var(--receipt-pink),
+      var(--receipt-bubblegum),
+      var(--receipt-lavender),
+      var(--receipt-ice)
+    );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.receipts-hero-copy {
+  max-width: 720px;
+  margin-bottom: 1.7rem;
+  color: #d8cbd8;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.receipts-dataset-status {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(131, 221, 255, 0.18);
+  border-radius: 999px;
+
+  background: rgba(9, 7, 13, 0.52);
+  backdrop-filter: blur(16px);
+
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.receipts-dataset-status span {
+  color: #978a9a;
+}
+
+.receipts-dataset-status strong {
+  color: var(--receipt-ice);
+}
+
+.receipts-dataset-status i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--receipt-pink);
+  box-shadow: 0 0 12px rgba(255, 62, 170, 0.8);
+}
+
+
+/* =========================================================
+   MAJOR SECTIONS
+   ========================================================= */
+
+.receipts-section {
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto 2.5rem;
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(38, 13, 41, 0.34)
+    );
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.receipts-section::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 0;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 62, 170, 0.48),
+      rgba(143, 99, 255, 0.38),
+      rgba(131, 221, 255, 0.34),
+      transparent
+    );
+}
+
+.receipts-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.65rem;
+}
+
+.receipts-section-heading > span,
+.receipts-analysis-badge {
+  flex-shrink: 0;
+  padding: 0.45rem 0.7rem;
+
+  border: 1px solid rgba(255, 145, 211, 0.2);
+  border-radius: 999px;
+
+  background: rgba(255, 62, 170, 0.07);
+
+  color: var(--receipt-blush);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.receipts-section-copy {
+  max-width: 620px;
+  margin: 0;
+  color: #a99daa;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   LIBRARY SNAPSHOT
+   ========================================================= */
+
+.receipts-library-strip {
+  display: grid;
+  grid-template-columns: 1.35fr repeat(4, 1fr);
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 22px;
+
+  background: rgba(9, 7, 13, 0.42);
+}
+
+.receipts-library-strip > div {
+  position: relative;
+  min-width: 0;
+  padding: 1.35rem;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.receipts-library-strip > div:last-child {
+  border-right: 0;
+}
+
+.receipts-library-strip > div:first-child {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.13),
+      rgba(143, 99, 255, 0.09)
+    );
+}
+
+.receipts-library-strip span {
+  display: block;
+  margin-bottom: 0.35rem;
+
+  color: #978a9a;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.receipts-library-strip strong {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+
+/* =========================================================
+   STAT CARDS
+   ========================================================= */
+
+.receipts-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.receipts-stat-card {
+  position: relative;
+  min-width: 0;
+  padding: 1.3rem;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(22, 10, 24, 0.72)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.receipts-stat-card::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -42px;
+  bottom: -45px;
+  border-radius: 50%;
+
+  background: rgba(255, 62, 170, 0.11);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.receipts-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 145, 211, 0.2);
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.22),
+    0 0 28px rgba(255, 62, 170, 0.045);
+}
+
+.receipts-stat-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.receipts-stat-topline span,
+.receipts-stat-label {
+  color: #a99daa;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.receipts-stat-topline i {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+
+  border: 1px solid rgba(255, 145, 211, 0.15);
+  border-radius: 9px;
+
+  background: rgba(255, 62, 170, 0.08);
+  color: var(--receipt-bubblegum);
+  font-style: normal;
+}
+
+.receipts-stat-value {
+  display: block;
+  margin: 0.35rem 0 0.45rem;
+
+  font-size: clamp(1.8rem, 4vw, 2.85rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.receipts-stat-card p,
+.receipts-stat-detail {
+  display: block;
+  margin: 0;
+
+  color: #978a9a;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   GLASS CARD VARIANTS
+   ========================================================= */
+
+.receipts-page .glass-pink {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.18),
+      rgba(38, 13, 41, 0.78)
+    );
+}
+
+.receipts-page .glass-violet {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(143, 99, 255, 0.18),
+      rgba(38, 13, 41, 0.78)
+    );
+}
+
+.receipts-page .glass-ice {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(131, 221, 255, 0.13),
+      rgba(38, 13, 41, 0.78)
+    );
+}
+
+.receipts-page .glass-mixed {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.17),
+      rgba(143, 99, 255, 0.12),
+      rgba(131, 221, 255, 0.09)
+    );
+}
+
+
+/* =========================================================
+   ANALYSIS CARDS
+   ========================================================= */
+
+.receipts-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.receipts-analysis-card {
+  min-width: 0;
+  padding: 1.35rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.038),
+      rgba(22, 10, 24, 0.68)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.receipts-analysis-grid + .receipts-analysis-card,
+.receipts-stat-grid + .receipts-analysis-card,
+.receipts-analysis-card + .receipts-analysis-card {
+  margin-top: 1rem;
+}
+
+.receipts-analysis-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.receipts-analysis-kicker {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.61rem;
+}
+
+.receipts-analysis-copy {
+  margin: 0;
+  color: #a99daa;
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   SIGNALS + PROFILE LISTS
+   ========================================================= */
+
+.receipts-signal-list,
+.receipts-profile-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.receipts-signal,
+.receipts-profile-row {
+  min-width: 0;
+  padding: 0.85rem 0.95rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 14px;
+
+  background: rgba(9, 7, 13, 0.38);
+}
+
+.receipts-signal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.receipts-signal > span {
+  min-width: 0;
+  color: #cfc2cf;
+  font-size: 0.82rem;
+}
+
+.receipts-signal > span > strong,
+.receipts-signal > span > small {
+  display: block;
+}
+
+.receipts-signal > span > strong {
+  overflow: hidden;
+  color: var(--receipt-white);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.receipts-signal > span > small {
+  margin-top: 0.22rem;
+}
+
+.receipts-signal > strong {
+  flex-shrink: 0;
+  color: var(--receipt-ice);
+}
+
+.receipts-profile-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.55rem;
+}
+
+.receipts-profile-row-top span {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--receipt-white);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.receipts-profile-row-top strong {
+  flex-shrink: 0;
+  color: var(--receipt-lavender);
+  font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   COMMON ANALYTICS BARS
+   Supports bars from Timeline / Ratings / Pages / Behavior
+   ========================================================= */
+
+.receipts-page [class*="bar-track"],
+.receipts-page [class*="progress-track"] {
+  position: relative;
+  height: 8px;
+  overflow: hidden;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.receipts-page [class*="bar-fill"],
+.receipts-page [class*="progress-fill"] {
+  height: 100%;
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--receipt-pink),
+      var(--receipt-violet),
+      var(--receipt-ice)
+    );
+
+  box-shadow: 0 0 14px rgba(143, 99, 255, 0.22);
+}
+
+
+/* =========================================================
+   BRAIN CHEMISTRY
+   ========================================================= */
+
+.receipts-section:has(.receipts-eyebrow) {
+  background:
+    radial-gradient(
+      circle at 92% 8%,
+      rgba(131, 221, 255, 0.095),
+      transparent 21rem
+    ),
+    radial-gradient(
+      circle at 8% 100%,
+      rgba(143, 99, 255, 0.11),
+      transparent 24rem
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.035),
+      rgba(38, 13, 41, 0.43)
+    );
+}
+
+.receipts-section:has(.receipts-eyebrow)
+  .receipts-eyebrow {
+  color: var(--receipt-ice);
+}
+
+.receipts-section:has(.receipts-eyebrow)
+  .receipts-analysis-card {
+  border-color: rgba(131, 221, 255, 0.095);
+}
+
+.receipts-section:has(.receipts-eyebrow)
+  .receipts-analysis-kicker {
+  color: var(--receipt-lavender);
+}
+
+
+/* =========================================================
+   FOOTNOTES + DATA LAB NOTE
+   ========================================================= */
+
+.receipts-footnote {
+  margin: 1.15rem 0 0;
+  padding-top: 1rem;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+
+  color: #7f7481;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.receipts-data-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 1.2rem 1.35rem;
+
+  border: 1px solid rgba(131, 221, 255, 0.11);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(131, 221, 255, 0.055),
+      rgba(143, 99, 255, 0.055)
+    );
+}
+
+.receipts-data-note > span {
+  font-size: 1.25rem;
+}
+
+.receipts-data-note strong {
+  display: block;
+  margin-bottom: 0.25rem;
+
+  color: var(--receipt-ice);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+}
+
+.receipts-data-note p {
+  margin: 0;
+  color: #978a9a;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   RESPONSIVE FOUNDATION
+   Full responsive QA happens in 61D.3
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .receipts-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .receipts-library-strip {
+    grid-template-columns: repeat(5, minmax(130px, 1fr));
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .receipts-page {
+    padding: 1rem;
+  }
+
+  .receipts-hero {
+    padding: 2rem 1.25rem;
+    border-radius: 24px;
+  }
+
+  .receipts-hero::after {
+    display: none;
+  }
+
+  .receipts-section {
+    padding: 1.15rem;
+    border-radius: 22px;
+  }
+
+  .receipts-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .receipts-section-copy {
+    max-width: none;
+  }
+
+  .receipts-stat-grid,
+  .receipts-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .receipts-library-strip {
+    grid-template-columns: repeat(5, minmax(115px, 1fr));
+  }
+
+  .receipts-dataset-status {
+    align-items: flex-start;
+    border-radius: 16px;
+  }
+
+  .receipts-analysis-header {
+    flex-direction: column;
+  }
+}
+
+/* =========================================================
+   READING RECEIPTS — ANALYTICS COMPONENT SYSTEM
+   Timeline • Ratings • Pages • Behavior
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   SHARED LEGACY ANALYTICS SECTION WRAPPERS
+   --------------------------------------------------------- */
+
+.receipts-timeline,
+.receipts-ratings,
+.receipts-pages,
+.receipts-behavior {
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto 2.5rem;
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 95% 5%,
+      rgba(143, 99, 255, 0.06),
+      transparent 22rem
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(38, 13, 41, 0.34)
+    );
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.receipts-timeline::before,
+.receipts-ratings::before,
+.receipts-pages::before,
+.receipts-behavior::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  right: 1.5rem;
+  top: 0;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 62, 170, 0.48),
+      rgba(143, 99, 255, 0.38),
+      rgba(131, 221, 255, 0.34),
+      transparent
+    );
+}
+
+
+/* ---------------------------------------------------------
+   ANALYTICS PANELS
+   --------------------------------------------------------- */
+
+.receipts-analytics-panel {
+  min-width: 0;
+  margin-top: 1rem;
+  padding: 1.35rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.038),
+      rgba(9, 7, 13, 0.42)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.receipts-analytics-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.receipts-analytics-heading h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.receipts-analytics-heading p,
+.receipts-analytics-heading span {
+  color: #978a9a;
+  font-size: 0.72rem;
+}
+
+.receipts-analytics-empty {
+  margin-top: 1rem;
+  padding: 1.4rem;
+
+  border: 1px dashed rgba(255, 145, 211, 0.18);
+  border-radius: 18px;
+
+  background: rgba(9, 7, 13, 0.3);
+
+  color: #978a9a;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.receipts-analytics-footnote {
+  margin: 1.15rem 0 0;
+  padding-top: 1rem;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+
+  color: #7f7481;
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
+
+.receipts-timeline {
+  background:
+    radial-gradient(
+      circle at 92% 5%,
+      rgba(131, 221, 255, 0.07),
+      transparent 24rem
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(38, 13, 41, 0.34)
+    );
+}
+
+.receipts-year-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.receipts-year-row {
+  display: grid;
+  grid-template-columns: 75px minmax(0, 1fr) 60px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.receipts-year-row > span:first-child {
+  color: var(--receipt-white);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.receipts-year-row > span:last-child,
+.receipts-year-row > strong {
+  color: var(--receipt-ice);
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.receipts-bar-track {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.receipts-bar-fill {
+  height: 100%;
+  min-width: 2px;
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--receipt-pink),
+      var(--receipt-violet),
+      var(--receipt-ice)
+    );
+
+  box-shadow:
+    0 0 16px rgba(143, 99, 255, 0.22);
+}
+
+.receipts-month-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.receipts-month-cell {
+  min-width: 0;
+  padding: 0.9rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+
+  background: rgba(9, 7, 13, 0.38);
+
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.receipts-month-cell:hover {
+  transform: translateY(-2px);
+  border-color: rgba(131, 221, 255, 0.17);
+  background: rgba(131, 221, 255, 0.035);
+}
+
+.receipts-month-cell span {
+  display: block;
+  color: #978a9a;
+  font-size: 0.61rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.receipts-month-cell strong {
+  display: block;
+  margin-top: 0.35rem;
+
+  color: var(--receipt-white);
+  font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   RATINGS
+   ========================================================= */
+
+.receipts-rating-summary,
+.receipts-page-summary,
+.receipts-behavior-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.receipts-rating-summary > div,
+.receipts-page-summary > div,
+.receipts-behavior-summary > div {
+  min-width: 0;
+  padding: 1.15rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 62, 170, 0.055),
+      rgba(22, 10, 24, 0.66)
+    );
+}
+
+.receipts-rating-summary span,
+.receipts-page-summary span,
+.receipts-behavior-summary span {
+  display: block;
+
+  color: #978a9a;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.receipts-rating-summary strong,
+.receipts-page-summary strong,
+.receipts-behavior-summary strong {
+  display: block;
+  margin-top: 0.45rem;
+
+  color: var(--receipt-white);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  line-height: 1;
+}
+
+.receipts-rating-list {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.receipts-rating-row {
+  display: grid;
+  grid-template-columns: 75px minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.receipts-rating-label {
+  color: var(--receipt-bubblegum);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.receipts-rating-count {
+  color: #a99daa;
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+
+/* =========================================================
+   PAGE ANALYTICS
+   ========================================================= */
+
+.receipts-length-extremes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.receipts-length-extremes > div {
+  min-width: 0;
+  padding: 1.25rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(143, 99, 255, 0.07),
+      rgba(9, 7, 13, 0.42)
+    );
+}
+
+.receipts-length-extremes span {
+  display: block;
+  margin-bottom: 0.45rem;
+
+  color: var(--receipt-lavender);
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.receipts-length-extremes strong {
+  display: block;
+
+  overflow: hidden;
+  color: var(--receipt-white);
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.receipts-length-extremes p {
+  margin: 0.35rem 0 0;
+
+  color: #978a9a;
+  font-size: 0.73rem;
+}
+
+.receipts-page-range-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.receipts-page-range-row {
+  display: grid;
+  grid-template-columns: 95px minmax(0, 1fr) 90px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.receipts-page-range-row > span:first-child {
+  color: #cfc2cf;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.receipts-page-range-count {
+  color: var(--receipt-ice);
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+
+/* =========================================================
+   READING BEHAVIOR
+   ========================================================= */
+
+.receipts-reread-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.receipts-reread-card {
+  min-width: 0;
+  padding: 1rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.065);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 62, 170, 0.06),
+      rgba(9, 7, 13, 0.4)
+    );
+}
+
+.receipts-reread-card strong {
+  display: block;
+
+  overflow: hidden;
+  color: var(--receipt-white);
+  font-size: 0.83rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.receipts-reread-card span,
+.receipts-reread-card p {
+  color: #978a9a;
+  font-size: 0.7rem;
+}
+
+.receipts-format-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.receipts-format-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) 90px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.receipts-format-row > span:first-child {
+  color: #cfc2cf;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.receipts-format-count {
+  color: var(--receipt-ice);
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+
+/* =========================================================
+   SLAY METERS
+   ========================================================= */
+
+.receipts-meter {
+  width: 100%;
+  height: 9px;
+  margin-top: 1rem;
+  overflow: hidden;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.receipts-meter-fill {
+  height: 100%;
+  min-width: 2px;
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--receipt-pink),
+      var(--receipt-violet),
+      var(--receipt-ice)
+    );
+
+  box-shadow:
+    0 0 18px rgba(255, 62, 170, 0.2);
+}
+
+.receipts-meter-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+
+  color: #978a9a;
+  font-size: 0.67rem;
+}
+
+
+/* =========================================================
+   INTERNAL DATA NOTE
+   ========================================================= */
+
+.receipts-behavior .receipts-data-note {
+  margin-top: 1rem;
+}
+
+
+/* =========================================================
+   ANALYTICS RESPONSIVE FOUNDATION
+   Final QA remains 61D.3
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .receipts-month-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .receipts-rating-summary,
+  .receipts-page-summary,
+  .receipts-behavior-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .receipts-reread-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .receipts-timeline,
+  .receipts-ratings,
+  .receipts-pages,
+  .receipts-behavior {
+    padding: 1.15rem;
+    border-radius: 22px;
+  }
+
+  .receipts-month-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .receipts-rating-summary,
+  .receipts-page-summary,
+  .receipts-behavior-summary,
+  .receipts-length-extremes,
+  .receipts-reread-list {
+    grid-template-columns: 1fr;
+  }
+
+  .receipts-year-row {
+    grid-template-columns: 52px minmax(0, 1fr) 45px;
+    gap: 0.65rem;
+  }
+
+  .receipts-rating-row {
+    grid-template-columns: 58px minmax(0, 1fr) 72px;
+    gap: 0.65rem;
+  }
+
+  .receipts-page-range-row {
+    grid-template-columns: 72px minmax(0, 1fr) 58px;
+    gap: 0.65rem;
+  }
+
+  .receipts-format-row {
+    grid-template-columns: 82px minmax(0, 1fr) 58px;
+    gap: 0.65rem;
+  }
+
+  .receipts-analytics-panel {
+    padding: 1rem;
+  }
+}
+
+/* =========================================================
+   READING RECEIPTS — REPORT CHAPTERS
+   ========================================================= */
+
+.receipts-chapter {
+  display: grid;
+  grid-template-columns: auto auto minmax(60px, 1fr);
+  align-items: center;
+  gap: 1rem;
+
+  max-width: 1500px;
+  margin: 3.75rem auto 1.35rem;
+}
+
+.receipts-chapter-number {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+
+  border: 1px solid rgba(255, 145, 211, 0.2);
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.13),
+      rgba(143, 99, 255, 0.08)
+    );
+
+  color: var(--receipt-bubblegum);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 24px rgba(255, 62, 170, 0.05);
+}
+
+.receipts-chapter-copy {
+  display: grid;
+  gap: 0.22rem;
+}
+
+.receipts-chapter-copy span {
+  color: var(--receipt-ice);
+  font-size: 0.67rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.receipts-chapter-copy strong {
+  max-width: 460px;
+
+  color: #b8abb9;
+  font-size: 0.77rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.receipts-chapter-line {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 62, 170, 0.45),
+      rgba(143, 99, 255, 0.28),
+      rgba(131, 221, 255, 0.16),
+      transparent
+    );
+}
+
+@media (max-width: 720px) {
+  .receipts-chapter {
+    grid-template-columns: auto 1fr;
+    margin-top: 2.75rem;
+  }
+
+  .receipts-chapter-line {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================================================
+   RECEIPTS — COUNT + PERCENT STACK FIX
+   ========================================================= */
+
+.receipts-rating-count,
+.receipts-page-range-count,
+.receipts-format-count {
+  display: grid;
+  justify-items: end;
+  gap: 0.15rem;
+}
+
+.receipts-rating-count strong,
+.receipts-page-range-count strong,
+.receipts-format-count strong {
+  display: block;
+  color: var(--receipt-white);
+  font-size: 0.74rem;
+  line-height: 1;
+}
+
+.receipts-rating-count span,
+.receipts-page-range-count span,
+.receipts-format-count span {
+  display: block;
+  color: var(--receipt-ice);
+  font-size: 0.64rem;
+  line-height: 1;
+}
+
+/* =========================================================
+   BOOKWAVE — VISUAL FOUNDATION
+   STEP 62A.2
+   ========================================================= */
+
+.bookwave-page {
+  --bw-pink: #ff3eaa;
+  --bw-hot-pink: #ff5fbd;
+  --bw-bubblegum: #ff91d3;
+  --bw-violet: #8f63ff;
+  --bw-lavender: #b8a1ff;
+  --bw-ice: #83ddff;
+  --bw-blue: #6da9ff;
+  --bw-plum: #260d29;
+  --bw-deep-plum: #160a18;
+  --bw-ink: #09070d;
+  --bw-white: #faf8ff;
+  --bw-muted: #b8aabb;
+  --bw-border: rgba(255, 255, 255, 0.1);
+
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--bw-white);
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(255, 62, 170, 0.16),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 88% 28%,
+      rgba(131, 221, 255, 0.11),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(143, 99, 255, 0.1),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      #09070d 0%,
+      #160a18 45%,
+      #09070d 100%
+    );
+}
+
+/* ---------- HERO ---------- */
+
+.bookwave-hero {
+  position: relative;
+  min-height: 38rem;
+  display: grid;
+  place-items: center;
+  padding: 8rem 2rem 6rem;
+  isolation: isolate;
+}
+
+.bookwave-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    );
+  background-size: 42px 42px;
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 90%
+  );
+}
+
+.bookwave-hero::after {
+  content: "";
+  position: absolute;
+  width: min(58rem, 88vw);
+  height: min(58rem, 88vw);
+  border: 1px solid rgba(255, 145, 211, 0.08);
+  border-radius: 50%;
+  z-index: -2;
+  box-shadow:
+    0 0 0 5rem rgba(143, 99, 255, 0.018),
+    0 0 0 10rem rgba(131, 221, 255, 0.012);
+}
+
+.bookwave-hero-glow {
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bookwave-hero-glow-pink {
+  left: -10rem;
+  top: 3rem;
+  background: rgba(255, 62, 170, 0.22);
+}
+
+.bookwave-hero-glow-blue {
+  right: -10rem;
+  bottom: 0;
+  background: rgba(131, 221, 255, 0.16);
+}
+
+.bookwave-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(58rem, 100%);
+  text-align: center;
+}
+
+.bookwave-kicker,
+.bookwave-eyebrow,
+.bookwave-mini-label,
+.bookwave-empty-code {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.bookwave-kicker {
+  color: var(--bw-ice);
+  margin-bottom: 1.25rem;
+}
+
+.bookwave-hero h1 {
+  margin: 0;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 0.84;
+  letter-spacing: -0.075em;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.bookwave-hero h1 span {
+  color: transparent;
+  background: linear-gradient(
+    135deg,
+    var(--bw-hot-pink),
+    var(--bw-bubblegum),
+    var(--bw-violet),
+    var(--bw-ice)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.bookwave-tagline {
+  margin: 1.8rem 0 0;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-weight: 750;
+  color: var(--bw-bubblegum);
+}
+
+.bookwave-intro {
+  max-width: 43rem;
+  margin: 1rem auto 0;
+  color: var(--bw-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.bookwave-hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.bookwave-primary-action,
+.bookwave-secondary-action {
+  min-height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.3rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.bookwave-primary-action {
+  color: #10080f;
+  background: linear-gradient(
+    135deg,
+    var(--bw-hot-pink),
+    var(--bw-bubblegum)
+  );
+  box-shadow: 0 0 2rem rgba(255, 62, 170, 0.22);
+}
+
+.bookwave-secondary-action {
+  color: var(--bw-white);
+  border: 1px solid rgba(184, 161, 255, 0.3);
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px);
+}
+
+.bookwave-primary-action:hover,
+.bookwave-secondary-action:hover {
+  transform: translateY(-2px);
+}
+
+.bookwave-secondary-action:hover {
+  border-color: rgba(131, 221, 255, 0.55);
+}
+
+/* ---------- SIGNAL ---------- */
+
+.bookwave-signal {
+  position: absolute;
+  bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  height: 2.6rem;
+}
+
+.bookwave-signal span {
+  display: block;
+  width: 0.22rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    to top,
+    var(--bw-pink),
+    var(--bw-violet),
+    var(--bw-ice)
+  );
+  box-shadow: 0 0 0.6rem rgba(255, 95, 189, 0.25);
+}
+
+.bookwave-signal span:nth-child(1),
+.bookwave-signal span:nth-child(9) {
+  height: 25%;
+}
+
+.bookwave-signal span:nth-child(2),
+.bookwave-signal span:nth-child(8) {
+  height: 45%;
+}
+
+.bookwave-signal span:nth-child(3),
+.bookwave-signal span:nth-child(7) {
+  height: 70%;
+}
+
+.bookwave-signal span:nth-child(4),
+.bookwave-signal span:nth-child(6) {
+  height: 92%;
+}
+
+.bookwave-signal span:nth-child(5) {
+  height: 55%;
+}
+
+/* ---------- SHARED SECTIONS ---------- */
+
+.bookwave-console,
+.bookwave-library,
+.bookwave-manifesto {
+  width: min(92rem, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.bookwave-console,
+.bookwave-library {
+  padding-block: 4rem;
+}
+
+.bookwave-eyebrow {
+  color: var(--bw-ice);
+}
+
+.bookwave-console-header,
+.bookwave-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.bookwave-console-header h2,
+.bookwave-section-heading h2 {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  letter-spacing: -0.04em;
+}
+
+.bookwave-section-heading > p {
+  max-width: 31rem;
+  margin: 0;
+  color: var(--bw-muted);
+  line-height: 1.65;
+}
+
+/* ---------- CONSOLE ---------- */
+
+.bookwave-status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--bw-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.bookwave-status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--bw-ice);
+  box-shadow: 0 0 0.8rem var(--bw-ice);
+}
+
+.bookwave-now-playing {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(15rem, 0.7fr);
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.4rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 145, 211, 0.16);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.09),
+      rgba(143, 99, 255, 0.07),
+      rgba(131, 221, 255, 0.04)
+    ),
+    rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.22);
+}
+
+.bookwave-now-playing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.025),
+    transparent
+  );
+}
+
+.bookwave-now-art {
+  width: 6rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 1.2rem;
+  color: var(--bw-white);
+  font-size: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(
+      circle,
+      rgba(9, 7, 13, 0.3) 0 15%,
+      transparent 16%
+    ),
+    conic-gradient(
+      from 45deg,
+      var(--bw-pink),
+      var(--bw-violet),
+      var(--bw-ice),
+      var(--bw-pink)
+    );
+  box-shadow: 0 0 2rem rgba(143, 99, 255, 0.15);
+}
+
+.bookwave-mini-label {
+  color: var(--bw-lavender);
+}
+
+.bookwave-now-copy h3 {
+  margin: 0.4rem 0 0;
+  font-size: 1.3rem;
+}
+
+.bookwave-now-copy p {
+  margin: 0.45rem 0 0;
+  color: var(--bw-muted);
+  line-height: 1.55;
+}
+
+.bookwave-frequency {
+  display: grid;
+  grid-template-columns: auto minmax(4rem, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--bw-muted);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.bookwave-frequency-line {
+  height: 0.25rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bookwave-frequency-line div {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--bw-pink),
+    var(--bw-violet),
+    var(--bw-ice)
+  );
+}
+
+/* ---------- LIBRARY EMPTY STATE ---------- */
+
+.bookwave-library {
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.bookwave-empty {
+  min-height: 27rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 1px solid var(--bw-border);
+  border-radius: 1.8rem;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(143, 99, 255, 0.1),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.018);
+}
+
+.bookwave-empty-orbit {
+  width: 8rem;
+  height: 8rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(131, 221, 255, 0.14);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1.2rem rgba(255, 62, 170, 0.025),
+    0 0 0 2.4rem rgba(143, 99, 255, 0.018);
+}
+
+.bookwave-empty-disc {
+  width: 5.4rem;
+  height: 5.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--bw-white);
+  font-size: 0.85rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    radial-gradient(
+      circle,
+      #09070d 0 12%,
+      rgba(255, 255, 255, 0.09) 13% 15%,
+      transparent 16%
+    ),
+    conic-gradient(
+      var(--bw-pink),
+      var(--bw-violet),
+      var(--bw-ice),
+      var(--bw-hot-pink),
+      var(--bw-pink)
+    );
+  box-shadow: 0 0 2.2rem rgba(255, 62, 170, 0.18);
+}
+
+.bookwave-empty-code {
+  color: var(--bw-ice);
+  margin-top: 1rem;
+}
+
+.bookwave-empty h3 {
+  margin: 0.7rem 0 0;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+
+.bookwave-empty > p {
+  max-width: 39rem;
+  margin: 0.8rem auto 0;
+  color: var(--bw-muted);
+  line-height: 1.7;
+}
+
+.bookwave-empty-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+
+.bookwave-empty-tags span {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(184, 161, 255, 0.16);
+  border-radius: 999px;
+  color: var(--bw-lavender);
+  background: rgba(143, 99, 255, 0.055);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- FORMULA ---------- */
+
+.bookwave-manifesto {
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+  padding: 4.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.bookwave-equation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  font-size: clamp(1.4rem, 4vw, 3.2rem);
+  font-weight: 950;
+  letter-spacing: -0.045em;
+}
+
+.bookwave-equation strong {
+  color: var(--bw-muted);
+  font-weight: 400;
+}
+
+.bookwave-equation-result {
+  color: transparent;
+  background: linear-gradient(
+    135deg,
+    var(--bw-pink),
+    var(--bw-violet),
+    var(--bw-ice)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.bookwave-manifesto > p {
+  max-width: 40rem;
+  margin: 1.2rem auto 0;
+  color: var(--bw-muted);
+  line-height: 1.7;
+}
+
+/* ---------- RESPONSIVE FOUNDATION ---------- */
+
+@media (max-width: 900px) {
+  .bookwave-now-playing {
+    grid-template-columns: auto 1fr;
+  }
+
+  .bookwave-frequency {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .bookwave-hero {
+    min-height: 34rem;
+    padding: 6rem 1.25rem 5rem;
+  }
+
+  .bookwave-hero h1 {
+    font-size: clamp(3.5rem, 20vw, 5.5rem);
+  }
+
+  .bookwave-console,
+  .bookwave-library,
+  .bookwave-manifesto {
+    width: min(100% - 1.5rem, 92rem);
+  }
+
+  .bookwave-console-header,
+  .bookwave-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .bookwave-now-playing {
+    grid-template-columns: 1fr;
+  }
+
+  .bookwave-now-art {
+    width: 5rem;
+  }
+
+  .bookwave-frequency {
+    grid-column: auto;
+  }
+
+  .bookwave-empty {
+    min-height: 25rem;
+    padding: 2.5rem 1.2rem;
+  }
+
+  .bookwave-equation {
+    gap: 0.55rem;
+  }
+
+  .bookwave-manifesto {
+    padding-inline: 1rem;
+  }
+}
+
