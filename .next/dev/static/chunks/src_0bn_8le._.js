@@ -668,6 +668,730 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
+"[project]/src/components/rotation/PostReadRitual.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>PostReadRitual
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/supabase/client.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+function PostReadRitual({ bookId, bookTitle, readingNumber = 1, onClose }) {
+    _s();
+    const [rating, setRating] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [certifiedSlay, setCertifiedSlay] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [brainChemistry, setBrainChemistry] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [reaction, setReaction] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [review, setReview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [containsSpoilers, setContainsSpoilers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [saving, setSaving] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [success, setSuccess] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const handleStarClick = (event, starNumber)=>{
+        const bounds = event.currentTarget.getBoundingClientRect();
+        const clickPosition = event.clientX - bounds.left;
+        const clickedHalf = clickPosition < bounds.width / 2;
+        const nextRating = clickedHalf ? starNumber - 0.5 : starNumber;
+        setRating(nextRating);
+    };
+    /* =====================================================
+     SAVE VERDICT
+     ===================================================== */ const handleSaveVerdict = async ()=>{
+        setSaving(true);
+        setError("");
+        setSuccess("");
+        try {
+            const { data: { user }, error: userError } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].auth.getUser();
+            if (userError || !user) {
+                setError("Your session could not be verified. Please log in again.");
+                return;
+            }
+            const recordId = `${user.id}:${bookId}:${readingNumber}`;
+            const updatedAt = new Date().toISOString();
+            /* -----------------------------------------------
+           UPDATE READING RECORD
+           ----------------------------------------------- */ const { error: recordError } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("reading_records").update({
+                rating,
+                certified_slay: certifiedSlay,
+                brain_chemistry: brainChemistry,
+                reaction: reaction.trim() || null,
+                updated_at: updatedAt
+            }).eq("id", recordId).eq("owner_id", user.id);
+            if (recordError) {
+                setError(`Could not save your verdict: ${recordError.message}`);
+                return;
+            }
+            /* -----------------------------------------------
+           SAVE REVIEW ONLY IF ONE EXISTS
+           ----------------------------------------------- */ if (review.trim()) {
+                const { data: existingReview, error: existingReviewError } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("reviews").select("id").eq("owner_id", user.id).eq("reading_record_id", recordId).maybeSingle();
+                if (existingReviewError) {
+                    setError(`Your verdict was saved, but the review could not be checked: ${existingReviewError.message}`);
+                    return;
+                }
+                if (existingReview) {
+                    const { error: reviewUpdateError } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("reviews").update({
+                        rating,
+                        body: review.trim(),
+                        contains_spoilers: containsSpoilers,
+                        updated_at: updatedAt
+                    }).eq("id", existingReview.id).eq("owner_id", user.id);
+                    if (reviewUpdateError) {
+                        setError(`Your verdict was saved, but the review could not be updated: ${reviewUpdateError.message}`);
+                        return;
+                    }
+                } else {
+                    const { error: reviewInsertError } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("reviews").insert({
+                        owner_id: user.id,
+                        book_id: bookId,
+                        reading_record_id: recordId,
+                        rating,
+                        body: review.trim(),
+                        contains_spoilers: containsSpoilers,
+                        created_at: updatedAt,
+                        updated_at: updatedAt
+                    });
+                    if (reviewInsertError) {
+                        setError(`Your verdict was saved, but the review could not be created: ${reviewInsertError.message}`);
+                        return;
+                    }
+                }
+            }
+            setSuccess("Verdict saved ✦");
+            window.dispatchEvent(new CustomEvent("slaylist:verdict-saved", {
+                detail: {
+                    bookId,
+                    readingNumber
+                }
+            }));
+            window.setTimeout(()=>{
+                onClose?.();
+            }, 650);
+        } finally{
+            setSaving(false);
+        }
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "post-read-ritual",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "post-read-ritual-heading",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "eyebrow",
+                        children: "READING LAB // FINAL RESULTS"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 258,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        children: "The Post-Read Ritual"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 262,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: "The experiment is complete. Time to record the damage."
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 266,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 257,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "post-read-ritual-book",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        children: "COMPLETED SPECIMEN"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 274,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                        children: bookTitle
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 278,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 273,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: "post-read-ritual-section",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "post-read-ritual-label",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "01"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 293,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        children: "Final Rating"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 297,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 292,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                children: rating !== null ? `${rating} / 5` : "UNRATED"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 302,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 290,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "post-read-stars",
+                        "aria-label": "Choose rating",
+                        children: [
+                            1,
+                            2,
+                            3,
+                            4,
+                            5
+                        ].map((starNumber)=>{
+                            const isFull = rating !== null && rating >= starNumber;
+                            const isHalf = rating !== null && rating === starNumber - 0.5;
+                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                className: `post-read-star ` + `${isFull ? "is-full" : ""} ` + `${isHalf ? "is-half" : ""}`,
+                                "aria-label": `Rate ${starNumber - 0.5} or ${starNumber} stars`,
+                                disabled: saving,
+                                onClick: (event)=>handleStarClick(event, starNumber),
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "post-read-star-empty",
+                                        children: "☆"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 350,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "post-read-star-full",
+                                        children: "★"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 354,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, starNumber, true, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 327,
+                                columnNumber: 17
+                            }, this);
+                        })
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 311,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "post-read-rating-hint",
+                        children: "Click the left half of a star for a half-star rating."
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 364,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 288,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: "post-read-ritual-section",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "post-read-ritual-label",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    children: "02"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                    lineNumber: 381,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                    children: "Special Status"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                    lineNumber: 385,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                            lineNumber: 380,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 378,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "post-read-toggle-grid",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                className: `post-read-toggle ` + `${certifiedSlay ? "is-selected" : ""}`,
+                                "aria-pressed": certifiedSlay,
+                                disabled: saving,
+                                onClick: ()=>setCertifiedSlay((current)=>!current),
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "post-read-toggle-icon",
+                                        children: "✦"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 414,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                children: "Certified Slay"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                                lineNumber: 419,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
+                                                children: "Crown-worthy. No explanation needed."
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                                lineNumber: 423,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 418,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 395,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                className: `post-read-toggle ` + `${brainChemistry ? "is-selected" : ""}`,
+                                "aria-pressed": brainChemistry,
+                                disabled: saving,
+                                onClick: ()=>setBrainChemistry((current)=>!current),
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "post-read-toggle-icon",
+                                        children: "⚗"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 450,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                children: "Brain Chemistry"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                                lineNumber: 455,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
+                                                children: "I am chemically different after reading this."
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                                lineNumber: 459,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 454,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 431,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 393,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 376,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: "post-read-ritual-section",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "post-read-ritual-label",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "03"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 480,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        children: "Immediate Reaction"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 484,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 479,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
+                                children: "OPTIONAL"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 489,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 477,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        type: "text",
+                        className: "post-read-input",
+                        value: reaction,
+                        disabled: saving,
+                        onChange: (event)=>setReaction(event.target.value),
+                        placeholder: "WTF did I just read...",
+                        maxLength: 180
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 496,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "post-read-character-count",
+                        children: [
+                            reaction.length,
+                            " / 180"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 510,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 475,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: "post-read-ritual-section",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "post-read-ritual-label",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: "04"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 526,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        children: "The Verdict"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                        lineNumber: 530,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 525,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
+                                children: "OPTIONAL"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 535,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 523,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+                        className: "post-read-textarea",
+                        value: review,
+                        disabled: saving,
+                        onChange: (event)=>setReview(event.target.value),
+                        placeholder: "Give the official verdict...",
+                        rows: 7
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 542,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                        className: "post-read-spoiler-toggle",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                type: "checkbox",
+                                checked: containsSpoilers,
+                                disabled: saving,
+                                onChange: (event)=>setContainsSpoilers(event.target.checked)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 558,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                children: "This review contains spoilers"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                                lineNumber: 571,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 556,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 521,
+                columnNumber: 7
+            }, this),
+            error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "finish-read-error",
+                children: error
+            }, void 0, false, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 585,
+                columnNumber: 9
+            }, this),
+            success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "finish-read-success",
+                children: success
+            }, void 0, false, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 591,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "post-read-ritual-actions",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        type: "button",
+                        className: "post-read-save",
+                        disabled: saving,
+                        onClick: handleSaveVerdict,
+                        children: saving ? "SAVING VERDICT..." : "SAVE MY VERDICT ✦"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 603,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        type: "button",
+                        className: "post-read-later",
+                        disabled: saving,
+                        onClick: onClose,
+                        children: "I'LL DO THIS LATER"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                        lineNumber: 616,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 601,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "post-read-ritual-note",
+                children: "Your book is already marked complete. Rating and reviewing are optional."
+            }, void 0, false, {
+                fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+                lineNumber: 628,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/rotation/PostReadRitual.tsx",
+        lineNumber: 255,
+        columnNumber: 5
+    }, this);
+}
+_s(PostReadRitual, "U2aPBavU509Qwz3HTJdZqvjo8Jw=");
+_c = PostReadRitual;
+var _c;
+__turbopack_context__.k.register(_c, "PostReadRitual");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/src/components/rotation/PostReadRitualLauncher.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>PostReadRitualLauncher
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$rotation$2f$PostReadRitual$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/rotation/PostReadRitual.tsx [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+function PostReadRitualLauncher() {
+    _s();
+    const [finishedBook, setFinishedBook] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "PostReadRitualLauncher.useEffect": ()=>{
+            const handleReadingFinished = {
+                "PostReadRitualLauncher.useEffect.handleReadingFinished": (event)=>{
+                    const finishedEvent = event;
+                    if (!finishedEvent.detail?.bookId || !finishedEvent.detail?.bookTitle) {
+                        return;
+                    }
+                    setFinishedBook({
+                        bookId: finishedEvent.detail.bookId,
+                        bookTitle: finishedEvent.detail.bookTitle,
+                        readingNumber: finishedEvent.detail.readingNumber ?? 1
+                    });
+                }
+            }["PostReadRitualLauncher.useEffect.handleReadingFinished"];
+            window.addEventListener("slaylist:reading-finished", handleReadingFinished);
+            return ({
+                "PostReadRitualLauncher.useEffect": ()=>{
+                    window.removeEventListener("slaylist:reading-finished", handleReadingFinished);
+                }
+            })["PostReadRitualLauncher.useEffect"];
+        }
+    }["PostReadRitualLauncher.useEffect"], []);
+    if (!finishedBook) {
+        return null;
+    }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "post-read-ritual-backdrop",
+        role: "presentation",
+        onMouseDown: ()=>setFinishedBook(null),
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "post-read-ritual-dialog",
+            role: "dialog",
+            "aria-modal": "true",
+            "aria-label": `Post-read ritual for ${finishedBook.bookTitle}`,
+            onMouseDown: (event)=>event.stopPropagation(),
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    type: "button",
+                    className: "post-read-ritual-close",
+                    "aria-label": "Close post-read ritual",
+                    onClick: ()=>setFinishedBook(null),
+                    children: "×"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/rotation/PostReadRitualLauncher.tsx",
+                    lineNumber: 90,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$rotation$2f$PostReadRitual$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                    bookId: finishedBook.bookId,
+                    bookTitle: finishedBook.bookTitle,
+                    readingNumber: finishedBook.readingNumber,
+                    onClose: ()=>setFinishedBook(null)
+                }, void 0, false, {
+                    fileName: "[project]/src/components/rotation/PostReadRitualLauncher.tsx",
+                    lineNumber: 101,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/rotation/PostReadRitualLauncher.tsx",
+            lineNumber: 79,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/rotation/PostReadRitualLauncher.tsx",
+        lineNumber: 72,
+        columnNumber: 5
+    }, this);
+}
+_s(PostReadRitualLauncher, "lfwjB0hArI/0zfBht4xv042WkPc=");
+_c = PostReadRitualLauncher;
+var _c;
+__turbopack_context__.k.register(_c, "PostReadRitualLauncher");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
 "[project]/src/components/rotation/UpdateProgressButton.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -1026,4 +1750,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }),
 ]);
 
-//# sourceMappingURL=src_0w2njyq._.js.map
+//# sourceMappingURL=src_0bn_8le._.js.map

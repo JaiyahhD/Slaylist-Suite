@@ -8761,3 +8761,632 @@ button.current-rotation-update-button:hover {
 .current-rotation-actions a:hover {
   color: var(--bubblegum);
 }
+
+/* =========================================================
+   POST-READ RITUAL
+   ========================================================= */
+
+.post-read-ritual {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 145, 211, 0.18);
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(131, 221, 255, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(255, 62, 170, 0.1),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(38, 13, 41, 0.96),
+      rgba(9, 7, 13, 0.98)
+    );
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.post-read-ritual-heading {
+  margin-bottom: 1.4rem;
+}
+
+.post-read-ritual-heading h2 {
+  margin: 0.3rem 0 0.45rem;
+  color: var(--text-primary);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.post-read-ritual-heading h2::after {
+  content: " ✦";
+  color: var(--electric-pink);
+}
+
+.post-read-ritual-heading > p:last-child {
+  max-width: 520px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   COMPLETED BOOK
+   ========================================================= */
+
+.post-read-ritual-book {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem 1rem 1.35rem;
+  overflow: hidden;
+  border: 1px solid rgba(131, 221, 255, 0.16);
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(131, 221, 255, 0.08),
+      rgba(143, 99, 255, 0.08),
+      rgba(255, 62, 170, 0.07)
+    );
+}
+
+.post-read-ritual-book::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--ice-blue),
+      var(--ultraviolet),
+      var(--electric-pink)
+    );
+}
+
+.post-read-ritual-book span {
+  color: var(--ice-blue);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.post-read-ritual-book strong {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.post-read-ritual-section {
+  margin-top: 0.8rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(143, 99, 255, 0.035)
+    );
+}
+
+.post-read-ritual-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.post-read-ritual-label > div {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.post-read-ritual-label > div > span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid rgba(255, 62, 170, 0.22);
+  border-radius: 8px;
+
+  background:
+    rgba(255, 62, 170, 0.08);
+
+  color: var(--electric-pink);
+  font-size: 0.56rem;
+  font-weight: 900;
+}
+
+.post-read-ritual-label h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.post-read-ritual-label > strong {
+  color: var(--bubblegum);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.post-read-ritual-label > small {
+  color: var(--text-muted);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+   HALF-STAR RATING
+   ========================================================= */
+
+.post-read-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.post-read-star {
+  position: relative;
+  width: 44px;
+  height: 48px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.post-read-star-empty,
+.post-read-star-full {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 2.35rem;
+  line-height: 1;
+}
+
+.post-read-star-empty {
+  color: rgba(231, 229, 239, 0.24);
+}
+
+.post-read-star-full {
+  color: var(--electric-pink);
+  opacity: 0;
+  text-shadow:
+    0 0 16px rgba(255, 62, 170, 0.38);
+}
+
+.post-read-star.is-full
+.post-read-star-full {
+  opacity: 1;
+}
+
+.post-read-star.is-half
+.post-read-star-full {
+  opacity: 1;
+  clip-path:
+    inset(0 50% 0 0);
+}
+
+.post-read-star:hover {
+  transform: translateY(-2px);
+}
+
+.post-read-rating-hint {
+  margin: 0.55rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   CERTIFIED SLAY + BRAIN CHEMISTRY
+   ========================================================= */
+
+.post-read-toggle-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.post-read-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 82px;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  background:
+    rgba(9, 7, 13, 0.55);
+
+  color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.post-read-toggle:hover {
+  transform: translateY(-1px);
+  border-color:
+    rgba(255, 145, 211, 0.24);
+}
+
+.post-read-toggle.is-selected {
+  border-color:
+    rgba(255, 62, 170, 0.42);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 170, 0.16),
+      rgba(143, 99, 255, 0.11),
+      rgba(131, 221, 255, 0.06)
+    );
+
+  box-shadow:
+    inset 0 0 24px
+      rgba(255, 62, 170, 0.05);
+}
+
+.post-read-toggle-icon {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(255, 145, 211, 0.18);
+  border-radius: 11px;
+
+  color: var(--bubblegum);
+  font-size: 1.15rem;
+
+  background:
+    rgba(255, 62, 170, 0.07);
+}
+
+.post-read-toggle > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.post-read-toggle strong {
+  color: var(--text-primary);
+  font-size: 0.74rem;
+}
+
+.post-read-toggle small {
+  color: var(--text-muted);
+  font-size: 0.6rem;
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.post-read-input,
+.post-read-textarea {
+  width: 100%;
+  border: 1px solid rgba(184, 161, 255, 0.15);
+  border-radius: 12px;
+  outline: none;
+
+  background:
+    rgba(5, 3, 8, 0.58);
+
+  color: var(--text-primary);
+  font: inherit;
+
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.post-read-input {
+  min-height: 44px;
+  padding: 0 0.85rem;
+}
+
+.post-read-textarea {
+  min-height: 145px;
+  padding: 0.85rem;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.post-read-input::placeholder,
+.post-read-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.post-read-input:focus,
+.post-read-textarea:focus {
+  border-color:
+    rgba(255, 62, 170, 0.4);
+
+  box-shadow:
+    0 0 0 3px
+      rgba(255, 62, 170, 0.06);
+}
+
+.post-read-character-count {
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.55rem;
+  text-align: right;
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   SPOILER TOGGLE
+   ========================================================= */
+
+.post-read-spoiler-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.66rem;
+  cursor: pointer;
+}
+
+.post-read-spoiler-toggle input {
+  width: 15px;
+  height: 15px;
+  accent-color:
+    var(--electric-pink);
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.post-read-ritual-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.post-read-save,
+.post-read-later {
+  min-height: 43px;
+  padding: 0.7rem 1rem;
+  border-radius: 11px;
+  font-size: 0.61rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.post-read-save {
+  flex: 1;
+  border: 1px solid rgba(255, 62, 170, 0.38);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--electric-pink),
+      var(--ultraviolet)
+    );
+
+  color: var(--chrome-white);
+
+  box-shadow:
+    0 8px 28px
+      rgba(255, 62, 170, 0.16);
+}
+
+.post-read-save:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 10px 32px
+      rgba(255, 62, 170, 0.24);
+}
+
+.post-read-later {
+  border: 1px solid rgba(131, 221, 255, 0.17);
+  background: rgba(131, 221, 255, 0.04);
+  color: var(--ice-blue);
+}
+
+.post-read-later:hover {
+  transform: translateY(-1px);
+  border-color:
+    rgba(131, 221, 255, 0.35);
+}
+
+.post-read-ritual-note {
+  margin: 0.8rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.58rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .post-read-ritual {
+    padding: 1rem;
+    border-radius: 19px;
+  }
+
+  .post-read-toggle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-read-ritual-actions {
+    flex-direction: column;
+  }
+
+  .post-read-later {
+    width: 100%;
+  }
+
+  .post-read-stars {
+    gap: 0.15rem;
+  }
+
+  .post-read-star {
+    width: 39px;
+  }
+
+  .post-read-star-empty,
+  .post-read-star-full {
+    font-size: 2rem;
+  }
+}
+
+/* =========================================================
+   POST-READ RITUAL // OVERLAY
+   ========================================================= */
+
+.post-read-ritual-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 2rem;
+
+  overflow-y: auto;
+
+  background:
+    rgba(5, 3, 8, 0.84);
+
+  backdrop-filter:
+    blur(14px);
+}
+
+.post-read-ritual-dialog {
+  position: relative;
+
+  width: min(800px, 100%);
+  max-height: calc(100vh - 4rem);
+
+  overflow-y: auto;
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 40px 100px
+      rgba(0, 0, 0, 0.55);
+}
+
+.post-read-ritual-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(255, 145, 211, 0.2);
+
+  border-radius: 10px;
+
+  background:
+    rgba(9, 7, 13, 0.82);
+
+  color:
+    var(--bubblegum);
+
+  font-size: 1.25rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.post-read-ritual-close:hover {
+  transform: rotate(4deg);
+
+  border-color:
+    rgba(255, 62, 170, 0.5);
+
+  background:
+    rgba(255, 62, 170, 0.1);
+}
+
+@media (max-width: 640px) {
+  .post-read-ritual-backdrop {
+    align-items: start;
+
+    padding:
+      1rem;
+  }
+
+  .post-read-ritual-dialog {
+    max-height: none;
+  }
+}
+

@@ -9,8 +9,12 @@ import type {
 import goodreadsLibrary from "@/data/goodreads-library.json";
 
 import CurrentRotationClient from "@/components/rotation/CurrentRotationClient";
+
 import CurrentRotationCardGuard from "@/components/rotation/CurrentRotationCardGuard";
+
 import CurrentRotationCount from "@/components/rotation/CurrentRotationCount";
+
+import PostReadRitualLauncher from "@/components/rotation/PostReadRitualLauncher";
 
 /* =========================================================
    TYPES
@@ -418,6 +422,8 @@ export default function CurrentRotationPage() {
         )}
 
       </section>
+
+<PostReadRitualLauncher />
 
     </main>
   );
