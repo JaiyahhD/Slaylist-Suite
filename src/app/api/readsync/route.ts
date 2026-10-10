@@ -1,28 +1,53 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { createHash } from "node:crypto";
 
 export const runtime = "nodejs";
 
-const allowedGenres = [
-  "Romance",
-  "Dark Romance",
-  "Fantasy",
-  "Thriller",
-  "Mystery",
+type RequestType = "buddy_read" | "interest";
+
+const ALLOWED_GENRES = [
   "Street Lit",
-  "Contemporary Fiction",
+  "Thriller",
+  "Fantasy",
+  "Mystery",
+  "Romance",
+  "Spice",
+  "Contemporary",
   "Horror",
-  "Young Adult",
+  "Sci-Fi",
   "Historical Fiction",
+  "Nonfiction",
   "Other",
 ];
 
-function clean(value: unknown, max = 500): string {
+function cleanText(value: unknown, maxLength = 500): string {
   return typeof value === "string"
-    ? value.trim().slice(0, max)
+    ? value.trim().slice(0, maxLength)
     : "";
 }
+
+function validEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+
+function getClientHash(request: NextRequest): string | null {
+  const ip =
+    process.env.NODE_ENV === "production"
+      ? request.headers.get("x-nf-client-connection-ip")
+      : "local-development";
+
+  if (!ip) {
+    return null;
+  }
+
+  return createHash("sha256")
+    .update(ip.trim())
+    .digest("hex");
+}
+
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,106 +55,152 @@ export async function POST(request: NextRequest) {
 
     if (origin && origin !== request.nextUrl.origin) {
       return NextResponse.json(
-        { error: "Request origin not allowed." },
+        { error: "Invalid request origin." },
         { status: 403 }
       );
     }
 
     const body = await request.json();
 
-    // Honeypot: ordinary visitors never fill this field.
+    // Hidden honeypot field: silently reject automated submissions.
     if (body.website) {
       return NextResponse.json({ success: true });
     }
 
-    const requestType = clean(body.requestType, 30);
-    const name = clean(body.name, 100);
-    const email = clean(body.email, 254);
-    const bookTitle = clean(body.bookTitle, 200);
-    const bookAuthor = clean(body.bookAuthor, 150);
-    const preferredStart = clean(body.preferredStart, 100);
-    const readingPace = clean(body.readingPace, 100);
-    const message = clean(body.message, 1500);
+    const requestType = cleanText(body.requestType, 30) as RequestType;
+    const bestieName = cleanText(body.bestieName, 100);
+    const contactEmail = cleanText(body.contactEmail, 254);
+    const contactPreference = cleanText(body.contactPreference, 100);
+    const bookTitle = cleanText(body.bookTitle, 200);
+    const bookAuthor = cleanText(body.bookAuthor, 200);
+    const preferredStart = cleanText(body.preferredStart, 100);
+    const readingPace = cleanText(body.readingPace, 100);
+    const message = cleanText(body.message, 2000);
 
-    const genres = Array.isArray(body.genres)
-      ? body.genres
+    const favoriteGenres = Array.isArray(body.favoriteGenres)
+      ? body.favoriteGenres
           .filter(
             (genre: unknown): genre is string =>
               typeof genre === "string" &&
-              allowedGenres.includes(genre)
+              ALLOWED_GENRES.includes(genre)
           )
-          .slice(0, 10)
+          .slice(0, 12)
       : [];
 
     if (
       !["buddy_read", "interest"].includes(requestType) ||
-      name.length < 2 ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+      !bestieName ||
+      !validEmail(contactEmail) ||
+      (requestType === "buddy_read" && !bookTitle)
     ) {
       return NextResponse.json(
-        { error: "Please provide your name and a valid email." },
+        { error: "Please check the required fields." },
         { status: 400 }
       );
     }
 
-    if (requestType === "buddy_read" && !bookTitle) {
-      return NextResponse.json(
-        { error: "Please enter the book you want to read." },
-        { status: 400 }
-      );
-    }
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-    const supabaseUrl =
-      process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const serviceKey =
-      process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !serviceRoleKey) {
+      console.error("ReadSync server configuration is missing.");
 
-    if (!supabaseUrl || !serviceKey) {
-      console.error("ReadSync Supabase configuration missing.");
       return NextResponse.json(
         { error: "ReadSync is temporarily unavailable." },
         { status: 503 }
       );
     }
 
-    const admin = createClient(supabaseUrl, serviceKey, {
+    const supabase = createClient(supabaseUrl, serviceRoleKey, {
       auth: {
         autoRefreshToken: false,
         persistSession: false,
       },
     });
 
-    const { error: databaseError } = await admin
+    // Enforce a 60-second cooldown before saving or emailing.
+    const clientHash = getClientHash(request);
+
+    if (!clientHash) {
+      return NextResponse.json(
+        { error: "Unable to verify request. Please try again." },
+        { status: 400 }
+      );
+    }
+
+    const { data: allowed, error: limitError } = await supabase.rpc(
+      "check_readsync_rate_limit",
+      { p_client_hash: clientHash }
+    );
+
+    if (limitError) {
+      console.error("ReadSync rate limit check failed:", limitError.message);
+
+      return NextResponse.json(
+        { error: "ReadSync is temporarily unavailable." },
+        { status: 503 }
+      );
+    }
+
+    if (!allowed) {
+      return NextResponse.json(
+        {
+          error:
+            "Please wait about a minute before sending another request. 💗",
+        },
+        { status: 429 }
+      );
+    }
+
+    const { error: insertError } = await supabase
       .from("readsync_requests")
       .insert({
         request_type: requestType,
-        bestie_name: name,
-        contact_email: email,
-        contact_preference: "Email",
-        book_title: bookTitle || null,
-        book_author: bookAuthor || null,
-        favorite_genres: genres,
+        bestie_name: bestieName,
+        contact_email: contactEmail,
+        contact_preference: contactPreference || null,
+        book_title: requestType === "buddy_read" ? bookTitle : null,
+        book_author: requestType === "buddy_read" ? bookAuthor || null : null,
+        favorite_genres: favoriteGenres,
         preferred_start: preferredStart || null,
         reading_pace: readingPace || null,
         message: message || null,
       });
 
-    if (databaseError) {
-      console.error("ReadSync save failed:", databaseError.message);
+    if (insertError) {
+      console.error("ReadSync database error:", insertError.message);
 
       return NextResponse.json(
-        { error: "We couldn't save your request. Please retry." },
+        { error: "Unable to submit your request. Please try again." },
         { status: 500 }
       );
     }
 
+    // The notification address and API key stay server-side.
     const resendKey = process.env.RESEND_API_KEY;
-    const notificationEmail =
-      process.env.READSYNC_NOTIFICATION_EMAIL;
+    const notificationEmail = process.env.READSYNC_NOTIFICATION_EMAIL;
 
     if (resendKey && notificationEmail) {
+      const subject =
+        requestType === "buddy_read"
+          ? `💗 New Buddy Read Request: ${bookTitle}`
+          : "💗 New Booked & Bestie'd Interest";
+
+      const details = [
+        `Request type: ${requestType}`,
+        `Name: ${bestieName}`,
+        `Email: ${contactEmail}`,
+        `Contact preference: ${contactPreference || "Not provided"}`,
+        `Book: ${bookTitle || "Not applicable"}`,
+        `Author: ${bookAuthor || "Not provided"}`,
+        `Genres: ${favoriteGenres.join(", ") || "Not provided"}`,
+        `Preferred start: ${preferredStart || "Not provided"}`,
+        `Reading pace: ${readingPace || "Not provided"}`,
+        `Message: ${message || "None"}`,
+      ].join("\n");
+
       try {
-        const notification = await fetch(
+        const emailResponse = await fetch(
           "https://api.resend.com/emails",
           {
             method: "POST",
@@ -140,49 +211,35 @@ export async function POST(request: NextRequest) {
             body: JSON.stringify({
               from: "ReadSync <onboarding@resend.dev>",
               to: [notificationEmail],
-              subject:
-                requestType === "buddy_read"
-                  ? "New ReadSync Buddy Read Request"
-                  : "New Booked & Bestie'd Interest Form",
-              text: [
-                `Type: ${requestType}`,
-                `Bestie: ${name}`,
-                `Email: ${email}`,
-                `Book: ${bookTitle || "Not specified"}`,
-                `Author: ${bookAuthor || "Not specified"}`,
-                `Genres: ${genres.join(", ") || "Not specified"}`,
-                `Preferred start: ${preferredStart || "Flexible"}`,
-                `Reading pace: ${readingPace || "Flexible"}`,
-                "",
-                "Message:",
-                message || "No additional message.",
-              ].join("\n"),
+              subject,
+              text: details,
             }),
           }
         );
 
-        if (!notification.ok) {
+        if (!emailResponse.ok) {
           console.error(
             "ReadSync email delivery failed:",
-            notification.status
+            emailResponse.status,
+            await emailResponse.text()
           );
         }
       } catch (emailError) {
-        console.error(
-          "ReadSync email notification error:",
-          emailError
-        );
+        console.error("ReadSync email error:", emailError);
       }
     }
 
     return NextResponse.json({
       success: true,
-      message: "Your request has been received!",
+      message:
+        "Your request is officially in the books! I'll review it and reach out if we're a match. 💗",
     });
-  } catch {
+  } catch (error) {
+    console.error("ReadSync unexpected error:", error);
+
     return NextResponse.json(
-      { error: "Unable to process your request." },
-      { status: 400 }
+      { error: "Something went wrong. Please try again." },
+      { status: 500 }
     );
   }
 }
