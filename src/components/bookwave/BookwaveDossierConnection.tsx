@@ -211,7 +211,7 @@ export default function BookwaveDossierConnection({
         </a>
 
         <Link
-          href="/bookwave"
+          href="/bookwave#bookwave-library"
           className="bookwave-dossier-suite-link"
         >
           VIEW IN BOOKWAVE →

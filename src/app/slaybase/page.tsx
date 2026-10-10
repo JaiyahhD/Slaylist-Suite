@@ -1459,10 +1459,15 @@ useEffect(() => {
                       <div className="book-tags">
 
                         {bookwaveBookIds.has(book.id) && (
-                          <span className="bookwave-library-tag">
-                            ◉ BOOKWAVE
-                          </span>
-                        )}
+                        <Link
+                          href="/bookwave#bookwave-library"
+                          className="bookwave-library-tag"
+                          title={`Open ${book.title}'s Bookwave`}
+                          onClick={(event) => event.stopPropagation()}
+                        >
+                          ◉ BOOKWAVE
+                        </Link>
+)}
 
                         {book.certifiedSlay && (
                         <span>
