@@ -12815,3 +12815,130 @@ button.current-rotation-update-button:hover {
   }
 }
 
+
+/* =========================================
+   BOOKWAVE — NOW TRANSMITTING LIVE STATES
+   STEP 62E.1
+========================================= */
+
+.bookwave-now-art {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.bookwave-now-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.bookwave-featured-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.bookwave-featured-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.bookwave-featured-actions a:hover {
+  transform: translateY(-2px);
+}
+
+.bookwave-featured-actions .bookwave-spotify-button {
+  background: linear-gradient(
+    135deg,
+    #ff3eaa,
+    #8f63ff
+  );
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(255, 62, 170, 0.2);
+}
+
+.bookwave-featured-actions .bookwave-dossier-button {
+  background: rgba(131, 221, 255, 0.08);
+  color: #c7edff;
+  border: 1px solid rgba(131, 221, 255, 0.28);
+}
+
+.bookwave-featured-actions .bookwave-dossier-button:hover {
+  border-color: #83ddff;
+  box-shadow: 0 6px 22px rgba(131, 221, 255, 0.12);
+}
+
+.bookwave-now-copy {
+  min-width: 0;
+}
+
+.bookwave-now-copy h3,
+.bookwave-now-copy p {
+  overflow-wrap: anywhere;
+}
+
+.bookwave-now-copy strong {
+  color: #ff91d3;
+}
+
+.bookwave-status-dot {
+  animation: bookwave-signal-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes bookwave-signal-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 rgba(255, 62, 170, 0);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(255, 62, 170, 0.75);
+  }
+}
+
+@media (max-width: 640px) {
+  .bookwave-featured-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bookwave-featured-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .bookwave-now-art {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookwave-status-dot {
+    animation: none;
+  }
+
+  .bookwave-featured-actions a {
+    transition: none;
+  }
+}
+
+

@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import BookwaveNowTransmitting from "./BookwaveNowTransmitting";
 
+import BookwaveSpotifyPlayer from "./BookwaveSpotifyPlayer";
+
 import {
   FormEvent,
   useCallback,
@@ -898,6 +900,11 @@ setEditingWaveId(null);
                           {wave.description}
                         </p>
                       )}
+
+                      <BookwaveSpotifyPlayer
+                      spotifyUrl={wave.spotifyUrl}
+                      playlistName={wave.playlistName}
+                    />
 
                       <div className="bookwave-card-actions">
                 <a
