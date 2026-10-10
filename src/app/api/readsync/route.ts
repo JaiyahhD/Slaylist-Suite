@@ -22,6 +22,12 @@ const ALLOWED_GENRES = [
   "Other",
 ];
 
+const ALLOWED_ORIGINS = new Set([
+  "https://slaylistsuite.netlify.app",
+  "http://localhost:3000",
+  "http://localhost:3001",
+]);
+
 function cleanText(value: unknown, maxLength = 500): string {
   return typeof value === "string"
     ? value.trim().slice(0, maxLength)
@@ -31,7 +37,6 @@ function cleanText(value: unknown, maxLength = 500): string {
 function validEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
-
 
 function getClientHash(request: NextRequest): string | null {
   const ip =
@@ -48,12 +53,12 @@ function getClientHash(request: NextRequest): string | null {
     .digest("hex");
 }
 
-
 export async function POST(request: NextRequest) {
   try {
+    // Allow submissions from the live website and local development.
     const origin = request.headers.get("origin");
 
-    if (origin && origin !== request.nextUrl.origin) {
+    if (!origin || !ALLOWED_ORIGINS.has(origin)) {
       return NextResponse.json(
         { error: "Invalid request origin." },
         { status: 403 }
@@ -62,15 +67,23 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
 
-    // Hidden honeypot field: silently reject automated submissions.
+    // Hidden honeypot field for basic bot protection.
     if (body.website) {
       return NextResponse.json({ success: true });
     }
 
-    const requestType = cleanText(body.requestType, 30) as RequestType;
+    const requestType = cleanText(
+      body.requestType,
+      30
+    ) as RequestType;
+
     const bestieName = cleanText(body.bestieName, 100);
     const contactEmail = cleanText(body.contactEmail, 254);
-    const contactPreference = cleanText(body.contactPreference, 100);
+    const contactPreference = cleanText(
+      body.contactPreference,
+      100
+    );
+
     const bookTitle = cleanText(body.bookTitle, 200);
     const bookAuthor = cleanText(body.bookAuthor, 200);
     const preferredStart = cleanText(body.preferredStart, 100);
@@ -87,6 +100,7 @@ export async function POST(request: NextRequest) {
           .slice(0, 12)
       : [];
 
+    // Validate required fields.
     if (
       !["buddy_read", "interest"].includes(requestType) ||
       !bestieName ||
@@ -99,11 +113,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseUrl =
+      process.env.NEXT_PUBLIC_SUPABASE_URL;
+
+    const serviceRoleKey =
+      process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (!supabaseUrl || !serviceRoleKey) {
-      console.error("ReadSync server configuration is missing.");
+      console.error(
+        "ReadSync server configuration is missing."
+      );
 
       return NextResponse.json(
         { error: "ReadSync is temporarily unavailable." },
@@ -111,30 +130,44 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabase = createClient(supabaseUrl, serviceRoleKey, {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-      },
-    });
+    const supabase = createClient(
+      supabaseUrl,
+      serviceRoleKey,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      }
+    );
 
     // Enforce a 60-second cooldown before saving or emailing.
     const clientHash = getClientHash(request);
 
     if (!clientHash) {
+      console.error(
+        "ReadSync: trusted visitor IP header is missing."
+      );
+
       return NextResponse.json(
-        { error: "Unable to verify request. Please try again." },
+        {
+          error:
+            "Unable to verify request. Please try again.",
+        },
         { status: 400 }
       );
     }
 
-    const { data: allowed, error: limitError } = await supabase.rpc(
-      "check_readsync_rate_limit",
-      { p_client_hash: clientHash }
-    );
+    const { data: allowed, error: limitError } =
+      await supabase.rpc("check_readsync_rate_limit", {
+        p_client_hash: clientHash,
+      });
 
     if (limitError) {
-      console.error("ReadSync rate limit check failed:", limitError.message);
+      console.error(
+        "ReadSync rate limit check failed:",
+        limitError.message
+      );
 
       return NextResponse.json(
         { error: "ReadSync is temporarily unavailable." },
@@ -152,15 +185,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Save the submission privately in Supabase.
     const { error: insertError } = await supabase
       .from("readsync_requests")
       .insert({
         request_type: requestType,
         bestie_name: bestieName,
         contact_email: contactEmail,
-        contact_preference: contactPreference || null,
-        book_title: requestType === "buddy_read" ? bookTitle : null,
-        book_author: requestType === "buddy_read" ? bookAuthor || null : null,
+        contact_preference:
+          contactPreference || null,
+        book_title:
+          requestType === "buddy_read"
+            ? bookTitle
+            : null,
+        book_author:
+          requestType === "buddy_read"
+            ? bookAuthor || null
+            : null,
         favorite_genres: favoriteGenres,
         preferred_start: preferredStart || null,
         reading_pace: readingPace || null,
@@ -168,17 +209,25 @@ export async function POST(request: NextRequest) {
       });
 
     if (insertError) {
-      console.error("ReadSync database error:", insertError.message);
+      console.error(
+        "ReadSync database error:",
+        insertError.message
+      );
 
       return NextResponse.json(
-        { error: "Unable to submit your request. Please try again." },
+        {
+          error:
+            "Unable to submit your request. Please try again.",
+        },
         { status: 500 }
       );
     }
 
-    // The notification address and API key stay server-side.
+    // Send a private email notification through Resend.
     const resendKey = process.env.RESEND_API_KEY;
-    const notificationEmail = process.env.READSYNC_NOTIFICATION_EMAIL;
+
+    const notificationEmail =
+      process.env.READSYNC_NOTIFICATION_EMAIL;
 
     if (resendKey && notificationEmail) {
       const subject =
@@ -190,12 +239,20 @@ export async function POST(request: NextRequest) {
         `Request type: ${requestType}`,
         `Name: ${bestieName}`,
         `Email: ${contactEmail}`,
-        `Contact preference: ${contactPreference || "Not provided"}`,
+        `Contact preference: ${
+          contactPreference || "Not provided"
+        }`,
         `Book: ${bookTitle || "Not applicable"}`,
         `Author: ${bookAuthor || "Not provided"}`,
-        `Genres: ${favoriteGenres.join(", ") || "Not provided"}`,
-        `Preferred start: ${preferredStart || "Not provided"}`,
-        `Reading pace: ${readingPace || "Not provided"}`,
+        `Genres: ${
+          favoriteGenres.join(", ") || "Not provided"
+        }`,
+        `Preferred start: ${
+          preferredStart || "Not provided"
+        }`,
+        `Reading pace: ${
+          readingPace || "Not provided"
+        }`,
         `Message: ${message || "None"}`,
       ].join("\n");
 
@@ -225,8 +282,15 @@ export async function POST(request: NextRequest) {
           );
         }
       } catch (emailError) {
-        console.error("ReadSync email error:", emailError);
+        console.error(
+          "ReadSync email error:",
+          emailError
+        );
       }
+    } else {
+      console.warn(
+        "ReadSync notification settings are missing."
+      );
     }
 
     return NextResponse.json({
@@ -235,10 +299,16 @@ export async function POST(request: NextRequest) {
         "Your request is officially in the books! I'll review it and reach out if we're a match. 💗",
     });
   } catch (error) {
-    console.error("ReadSync unexpected error:", error);
+    console.error(
+      "ReadSync unexpected error:",
+      error
+    );
 
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      {
+        error:
+          "Something went wrong. Please try again.",
+      },
       { status: 500 }
     );
   }
