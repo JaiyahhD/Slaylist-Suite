@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import BookwaveNowTransmitting from "./BookwaveNowTransmitting";
+
 import {
   FormEvent,
   useCallback,
@@ -383,8 +385,18 @@ setEditingWaveId(null);
   }
 
   return (
-    <>
-      <section className="bookwave-manager">
+  <>
+    <BookwaveNowTransmitting
+      wave={bookwaves[0] ?? null}
+      book={
+        bookwaves.length > 0
+          ? booksById.get(bookwaves[0].bookId) ?? null
+          : null
+      }
+      loading={libraryState === "loading"}
+    />
+
+    <section className="bookwave-manager">
         <div className="bookwave-manager-heading">
           <div>
             <span className="bookwave-eyebrow">

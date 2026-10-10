@@ -81,52 +81,6 @@ export default function BookwavePage() {
         </div>
       </section>
 
-      <section className="bookwave-console">
-        <div className="bookwave-console-header">
-          <div>
-            <span className="bookwave-eyebrow">
-              NOW TRANSMITTING
-            </span>
-
-            <h2>My Reading Frequency</h2>
-          </div>
-
-          <span className="bookwave-status">
-            <span className="bookwave-status-dot" />
-            SYSTEM READY
-          </span>
-        </div>
-
-        <div className="bookwave-now-playing">
-          <div className="bookwave-now-art">
-            <span>♫</span>
-          </div>
-
-          <div className="bookwave-now-copy">
-            <span className="bookwave-mini-label">
-              BOOKWAVE // NO SIGNAL YET
-            </span>
-
-            <h3>Nothing on the airwaves.</h3>
-
-            <p>
-              Once a playlist is attached to a book,
-              its soundtrack can live here.
-            </p>
-          </div>
-
-          <div className="bookwave-frequency">
-            <span>00:00</span>
-
-            <div className="bookwave-frequency-line">
-              <div />
-            </div>
-
-            <span>∞</span>
-          </div>
-        </div>
-      </section>
-
       <BookwaveManager books={books} />
 
       <section className="bookwave-manifesto">
