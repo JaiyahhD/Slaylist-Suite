@@ -316,12 +316,6 @@ function cancelEditing() {
   ) {
     event.preventDefault();
 
-    if (!authChecked || !isOwner) {
-      setSaveState("error");
-      setMessage("Only the Suite owner can manage Bookwaves.");
-      return;
-    }
-
     if (!selectedBook) {
       return;
     }
@@ -450,8 +444,7 @@ setEditingWaveId(null);
       loading={libraryState === "loading"}
     />
 
-    {authChecked && isOwner && (
-      <section className="bookwave-manager">
+    <section className="bookwave-manager">
         <div className="bookwave-manager-heading">
           <div>
             <span className="bookwave-eyebrow">
@@ -808,7 +801,6 @@ setEditingWaveId(null);
           )}
         </div>
       </section>
-      )}
 
       
 <section
@@ -1033,8 +1025,7 @@ setEditingWaveId(null);
                     </Link>
                   )}
 
-                  {authChecked && isOwner && (
-                    <div className="bookwave-manage-actions">
+                  <div className="bookwave-manage-actions">
                     <button
                       type="button"
                       className="bookwave-edit-button"
@@ -1055,12 +1046,7 @@ setEditingWaveId(null);
                             `Delete "${wave.playlistName}" from Bookwave? This cannot be undone.`
                           );
 
-                        if (!confirmed) return;    
-                          if (!authChecked || !isOwner) {
-                            setLibraryMessage("Only the Suite owner can delete Bookwaves.");
-                            return;
-                          }
-
+                        if (!confirmed) return;
 
                         setDeletingWaveId(wave.id);
                         setLibraryMessage("");
@@ -1107,7 +1093,6 @@ setEditingWaveId(null);
                         : "× DELETE"}
                     </button>
                   </div>
-                    )}
                 </div>
               </div>
             </article>
