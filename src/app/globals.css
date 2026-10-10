@@ -12942,3 +12942,227 @@ button.current-rotation-update-button:hover {
 }
 
 
+
+/* =========================================
+   BOOKWAVE — SPOTIFY PLAYER
+   STEP 62E.2
+========================================= */
+
+.bookwave-player-shell {
+  width: 100%;
+  min-width: 0;
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px solid rgba(143, 99, 255, 0.26);
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(38, 13, 41, 0.92),
+    rgba(14, 10, 25, 0.96)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+.bookwave-player-heading,
+.bookwave-player-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bookwave-player-heading {
+  margin-bottom: 14px;
+}
+
+.bookwave-player-indicator {
+  color: #83ddff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.bookwave-player-shell iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+  border-radius: 16px;
+  background: #121212;
+}
+
+.bookwave-player-footer {
+  margin-top: 14px;
+}
+
+.bookwave-player-footer span {
+  color: #978a9a;
+  font-size: 0.72rem;
+}
+
+.bookwave-player-footer a {
+  color: #ff91d3;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.bookwave-player-footer a:hover {
+  color: #83ddff;
+  text-decoration: underline;
+}
+
+.bookwave-player-error {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 95, 189, 0.28);
+  border-radius: 12px;
+  background: rgba(255, 62, 170, 0.07);
+  color: #ff91d3;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .bookwave-player-shell {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .bookwave-player-heading,
+  .bookwave-player-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bookwave-player-shell iframe {
+    height: 352px;
+  }
+}
+
+
+
+/* =========================================
+   BOOKWAVE — FREQUENCY LIBRARY POLISH
+   STEP 62E.3
+========================================= */
+
+/* Give each playlist its own polished station card */
+
+.bookwave-live-grid {
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.bookwave-live-card {
+  min-width: 0;
+  overflow: hidden;
+  align-content: start;
+}
+
+.bookwave-live-copy {
+  min-width: 0;
+  width: 100%;
+  align-items: stretch;
+}
+
+.bookwave-live-copy > .bookwave-mini-label,
+.bookwave-live-copy > h3,
+.bookwave-live-book,
+.bookwave-live-vibe,
+.bookwave-live-description {
+  align-self: flex-start;
+  max-width: 100%;
+}
+
+.bookwave-live-copy > h3,
+.bookwave-live-book strong,
+.bookwave-live-book span {
+  overflow-wrap: anywhere;
+}
+
+/* Let Spotify breathe without overflowing its card */
+
+.bookwave-live-copy > .bookwave-player-shell {
+  width: 100%;
+  min-width: 0;
+  margin: 1.25rem 0;
+}
+
+.bookwave-live-copy .bookwave-player-shell iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 352px;
+}
+
+/* Keep all navigation and management controls together */
+
+.bookwave-card-actions {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.bookwave-card-actions .bookwave-spotify-button {
+  margin-top: 0;
+}
+
+.bookwave-manage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+/* Mobile: give the Spotify embed the full card width */
+
+@media (max-width: 680px) {
+  .bookwave-live-card {
+    min-width: 0;
+  }
+
+  .bookwave-live-copy {
+    min-width: 0;
+  }
+
+  .bookwave-live-copy > .bookwave-player-shell {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .bookwave-live-grid {
+    gap: 1.25rem;
+  }
+
+  .bookwave-live-copy {
+    padding: 1.1rem;
+  }
+
+  .bookwave-live-copy > .bookwave-player-shell {
+    margin: 1rem 0;
+  }
+
+  .bookwave-card-actions,
+  .bookwave-manage-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bookwave-card-actions > *,
+  .bookwave-manage-actions > * {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+

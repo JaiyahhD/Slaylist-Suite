@@ -74,6 +74,10 @@ const isEditing = editingWaveId !== null;
 const [bookwaves, setBookwaves] = useState<
   Bookwave[]
 >([]);
+const [frequencySearch, setFrequencySearch] = useState("");
+const [frequencySort, setFrequencySort] = useState<
+  "newest" | "oldest" | "alphabetical"
+>("newest");
 const [libraryState, setLibraryState] =
   useState<LibraryState>("loading");
 
@@ -121,6 +125,43 @@ const [deletingWaveId, setDeletingWaveId] =
       ),
     [books]
   );
+
+  
+const visibleBookwaves = useMemo(() => {
+  const query = frequencySearch.trim().toLowerCase();
+
+  const filtered = bookwaves.filter((wave) => {
+    if (!query) return true;
+
+    const book = booksById.get(wave.bookId);
+
+    const searchableText = [
+      wave.playlistName,
+      wave.vibe ?? "",
+      wave.description ?? "",
+      book?.title ?? "",
+      ...(book?.authors ?? []),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return searchableText.includes(query);
+  });
+
+  return filtered.sort((a, b) => {
+    if (frequencySort === "alphabetical") {
+      return a.playlistName.localeCompare(b.playlistName);
+    }
+
+    const difference =
+      new Date(a.createdAt).getTime() -
+      new Date(b.createdAt).getTime();
+
+    return frequencySort === "oldest"
+      ? difference
+      : -difference;
+  });
+}, [bookwaves, booksById, frequencySearch, frequencySort]);
 
   const loadBookwaves = useCallback(
     async (showLoading = true) => {
@@ -756,250 +797,306 @@ setEditingWaveId(null);
         </div>
       </section>
 
-      <section
-        className="bookwave-library"
-        id="bookwave-library"
+      
+<section
+  className="bookwave-library"
+  id="bookwave-library"
+>
+  <div className="bookwave-section-heading">
+    <div>
+      <span className="bookwave-eyebrow">
+        THE FREQUENCY LIBRARY
+      </span>
+      <h2>Bookwaves</h2>
+    </div>
+
+    <p>
+      Books and their musical counterparts collect
+      here as the archive grows.
+    </p>
+  </div>
+
+  {libraryState === "ready" && bookwaves.length > 0 && (
+    <div className="bookwave-browse-toolbar">
+      <label className="bookwave-browse-search">
+        <span>SEARCH FREQUENCIES</span>
+        <input
+          type="search"
+          value={frequencySearch}
+          onChange={(event) =>
+            setFrequencySearch(event.target.value)
+          }
+          placeholder="Playlist, book, author, or vibe..."
+        />
+      </label>
+
+      <label className="bookwave-browse-sort">
+        <span>SORT FREQUENCIES</span>
+        <select
+          value={frequencySort}
+          onChange={(event) =>
+            setFrequencySort(
+              event.target.value as
+                | "newest"
+                | "oldest"
+                | "alphabetical"
+            )
+          }
+        >
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="alphabetical">
+            Playlist A–Z
+          </option>
+        </select>
+      </label>
+
+      <div
+        className="bookwave-browse-count"
+        aria-live="polite"
       >
-        <div className="bookwave-section-heading">
-          <div>
-            <span className="bookwave-eyebrow">
-              THE FREQUENCY LIBRARY
-            </span>
+        <strong>{visibleBookwaves.length}</strong>
+        <span>
+          OF {bookwaves.length} FREQUENCIES
+        </span>
+      </div>
+    </div>
+  )}
 
-            <h2>Bookwaves</h2>
+  {libraryState === "loading" && (
+    <div className="bookwave-empty">
+      <span className="bookwave-empty-code">
+        SCANNING FREQUENCIES...
+      </span>
+      <h3>Loading the airwaves.</h3>
+    </div>
+  )}
+
+  {libraryState === "error" && (
+    <div className="bookwave-empty">
+      <span className="bookwave-empty-code">
+        SIGNAL_ERROR
+      </span>
+      <h3>Transmission interrupted.</h3>
+      <p>{libraryMessage}</p>
+    </div>
+  )}
+
+  {libraryState === "ready" &&
+    bookwaves.length === 0 && (
+      <div className="bookwave-empty">
+        <div className="bookwave-empty-orbit">
+          <div className="bookwave-empty-disc">
+            <span>BW</span>
           </div>
-
-          <p>
-            Books and their musical counterparts
-            collect here as the archive grows.
-          </p>
         </div>
 
-        {libraryState === "loading" && (
-          <div className="bookwave-empty">
-            <span className="bookwave-empty-code">
-              SCANNING FREQUENCIES...
-            </span>
+        <span className="bookwave-empty-code">
+          SIGNAL_000 // AWAITING TRANSMISSION
+        </span>
 
-            <h3>Loading the airwaves.</h3>
-          </div>
-        )}
+        <h3>Your airwaves are quiet.</h3>
 
-        {libraryState === "error" && (
-          <div className="bookwave-empty">
-            <span className="bookwave-empty-code">
-              SIGNAL_ERROR
-            </span>
+        <p>
+          No Bookwaves have been created yet.
+          Lock onto a book above and attach its
+          Spotify soundtrack when you&apos;re ready.
+        </p>
 
-            <h3>Transmission interrupted.</h3>
+        <div className="bookwave-empty-tags">
+          <span>BOOK × MUSIC</span>
+          <span>PLAYLIST ARCHIVE</span>
+          <span>READING SOUNDTRACKS</span>
+        </div>
+      </div>
+    )}
 
-            <p>{libraryMessage}</p>
-          </div>
-        )}
+  {libraryState === "ready" &&
+    bookwaves.length > 0 &&
+    visibleBookwaves.length === 0 && (
+      <div className="bookwave-empty">
+        <span className="bookwave-empty-code">
+          FREQUENCY_NOT_FOUND
+        </span>
+        <h3>No matching Bookwaves.</h3>
+        <p>
+          Try another playlist, book title,
+          author, or vibe.
+        </p>
+        <button
+          type="button"
+          className="bookwave-edit-button"
+          onClick={() => setFrequencySearch("")}
+        >
+          CLEAR SEARCH
+        </button>
+      </div>
+    )}
 
-        {libraryState === "ready" &&
-          bookwaves.length === 0 && (
-            <div className="bookwave-empty">
-              <div className="bookwave-empty-orbit">
-                <div className="bookwave-empty-disc">
+  {libraryState === "ready" &&
+    visibleBookwaves.length > 0 && (
+      <div className="bookwave-live-grid">
+        {visibleBookwaves.map((wave) => {
+          const book = booksById.get(wave.bookId);
+
+          const artwork = wave.useBookCover
+            ? book?.coverUrl
+            : wave.customCoverUrl;
+
+          return (
+            <article
+              className="bookwave-live-card"
+              key={wave.id}
+            >
+              <div className="bookwave-live-cover">
+                {artwork ? (
+                  <img src={artwork} alt="" />
+                ) : (
                   <span>BW</span>
+                )}
+
+                <div className="bookwave-live-cover-signal">
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                  <span />
                 </div>
               </div>
 
-              <span className="bookwave-empty-code">
-                SIGNAL_000 // AWAITING TRANSMISSION
-              </span>
+              <div className="bookwave-live-copy">
+                <span className="bookwave-mini-label">
+                  NOW ON THE AIRWAVES
+                </span>
 
-              <h3>Your airwaves are quiet.</h3>
+                <h3>{wave.playlistName}</h3>
 
-              <p>
-                No Bookwaves have been created yet.
-                Lock onto a book above and attach its
-                Spotify soundtrack when you&apos;re
-                ready.
-              </p>
+                <div className="bookwave-live-book">
+                  <strong>
+                    {book?.title ??
+                      "Unknown Slaybase Book"}
+                  </strong>
 
-              <div className="bookwave-empty-tags">
-                <span>BOOK × MUSIC</span>
-                <span>PLAYLIST ARCHIVE</span>
-                <span>READING SOUNDTRACKS</span>
-              </div>
-            </div>
-          )}
+                  {book && book.authors.length > 0 && (
+                    <span>
+                      {book.authors.join(", ")}
+                    </span>
+                  )}
+                </div>
 
-        {libraryState === "ready" &&
-          bookwaves.length > 0 && (
-            <div className="bookwave-live-grid">
-              {bookwaves.map((wave) => {
-                const book =
-                  booksById.get(wave.bookId);
-
-                const artwork =
-                  wave.useBookCover
-                    ? book?.coverUrl
-                    : wave.customCoverUrl;
-
-                return (
-                  <article
-                    className="bookwave-live-card"
-                    key={wave.id}
-                  >
-                    <div className="bookwave-live-cover">
-                      {artwork ? (
-                        <img
-                          src={artwork}
-                          alt=""
-                        />
-                      ) : (
-                        <span>BW</span>
-                      )}
-
-                      <div className="bookwave-live-cover-signal">
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                      </div>
-                    </div>
-
-                    <div className="bookwave-live-copy">
-                      <span className="bookwave-mini-label">
-                        NOW ON THE AIRWAVES
-                      </span>
-
-                      <h3>
-                        {wave.playlistName}
-                      </h3>
-
-                      <div className="bookwave-live-book">
-                        <strong>
-                          {book?.title ??
-                            "Unknown Slaybase Book"}
-                        </strong>
-
-                        {book &&
-                          book.authors.length >
-                            0 && (
-                            <span>
-                              {book.authors.join(
-                                ", "
-                              )}
-                            </span>
-                          )}
-                      </div>
-
-                      {wave.vibe && (
-                        <p className="bookwave-live-vibe">
-                          {wave.vibe}
-                        </p>
-                      )}
-
-                      {wave.description && (
-                        <p className="bookwave-live-description">
-                          {wave.description}
-                        </p>
-                      )}
-
-                      <BookwaveSpotifyPlayer
-                      spotifyUrl={wave.spotifyUrl}
-                      playlistName={wave.playlistName}
-                    />
-
-                      <div className="bookwave-card-actions">
-                <a
-                  href={wave.spotifyUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bookwave-spotify-button"
-                >
-                  ▶ OPEN ON SPOTIFY
-                </a>
-
-                {book && (
-                  <Link
-                    href={`/books/${wave.bookId}`}
-                    className="bookwave-dossier-button"
-                  >
-                    ✦ OPEN BOOK DOSSIER
-                  </Link>
+                {wave.vibe && (
+                  <p className="bookwave-live-vibe">
+                    {wave.vibe}
+                  </p>
                 )}
 
-            <div className="bookwave-manage-actions">
-    <button
-        type="button"
-        className="bookwave-edit-button"
-        onClick={() => startEditing(wave)}
-        >
-  ✎ EDIT WAVE
-    </button>
+                {wave.description && (
+                  <p className="bookwave-live-description">
+                    {wave.description}
+                  </p>
+                )}
 
-    <button
-  type="button"
-  className="bookwave-delete-button"
-  disabled={deletingWaveId === wave.id}
-  onClick={async () => {
-    const confirmed = window.confirm(
-      `Delete "${wave.playlistName}" from Bookwave? This cannot be undone.`
-    );
+                <BookwaveSpotifyPlayer
+                  spotifyUrl={wave.spotifyUrl}
+                  playlistName={wave.playlistName}
+                />
 
-    if (!confirmed) {
-      return;
-    }
+                <div className="bookwave-card-actions">
+                  <a
+                    href={wave.spotifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bookwave-spotify-button"
+                  >
+                    ▶ OPEN ON SPOTIFY
+                  </a>
 
-    setDeletingWaveId(wave.id);
-    setLibraryMessage("");
+                  {book && (
+                    <Link
+                      href={`/books/${wave.bookId}`}
+                      className="bookwave-dossier-button"
+                    >
+                      ✦ OPEN BOOK DOSSIER
+                    </Link>
+                  )}
 
-    const {
-      data: { user },
-      error: userError,
-    } = await supabase.auth.getUser();
+                  <div className="bookwave-manage-actions">
+                    <button
+                      type="button"
+                      className="bookwave-edit-button"
+                      onClick={() => startEditing(wave)}
+                    >
+                      ✎ EDIT WAVE
+                    </button>
 
-    if (userError || !user) {
-      setLibraryMessage(
-        "Your session could not be verified. The Bookwave was not deleted."
-      );
-      setDeletingWaveId(null);
-      return;
-    }
+                    <button
+                      type="button"
+                      className="bookwave-delete-button"
+                      disabled={
+                        deletingWaveId === wave.id
+                      }
+                      onClick={async () => {
+                        const confirmed =
+                          window.confirm(
+                            `Delete "${wave.playlistName}" from Bookwave? This cannot be undone.`
+                          );
 
-    const { error } = await supabase
-      .from("bookwaves")
-      .delete()
-      .eq("id", wave.id)
-      .eq("owner_id", user.id);
+                        if (!confirmed) return;
 
-    if (error) {
-      setLibraryMessage(
-        error.message ||
-          "The Bookwave could not be deleted."
-      );
-      setDeletingWaveId(null);
-      return;
-    }
+                        setDeletingWaveId(wave.id);
+                        setLibraryMessage("");
 
-    if (editingWaveId === wave.id) {
-      cancelEditing();
-    }
+                        const {
+                          data: { user },
+                          error: userError,
+                        } =
+                          await supabase.auth.getUser();
 
-    await loadBookwaves(false);
-    setDeletingWaveId(null);
-  }}
->
-  {deletingWaveId === wave.id
-    ? "DELETING..."
-    : "× DELETE"}
-</button>
-        </div>
-        </div>
+                        if (userError || !user) {
+                          setLibraryMessage(
+                            "Your session could not be verified. The Bookwave was not deleted."
+                          );
+                          setDeletingWaveId(null);
+                          return;
+                        }
 
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          )}
-      </section>
+                        const { error } = await supabase
+                          .from("bookwaves")
+                          .delete()
+                          .eq("id", wave.id)
+                          .eq("owner_id", user.id);
+
+                        if (error) {
+                          setLibraryMessage(
+                            error.message ||
+                              "The Bookwave could not be deleted."
+                          );
+                          setDeletingWaveId(null);
+                          return;
+                        }
+
+                        if (editingWaveId === wave.id) {
+                          cancelEditing();
+                        }
+
+                        await loadBookwaves(false);
+                        setDeletingWaveId(null);
+                      }}
+                    >
+                      {deletingWaveId === wave.id
+                        ? "DELETING..."
+                        : "× DELETE"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    )}
+</section>
+
     </>
   );
 }
