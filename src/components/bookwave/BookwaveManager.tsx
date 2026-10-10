@@ -86,6 +86,37 @@ const [libraryMessage, setLibraryMessage] =
 
 const [deletingWaveId, setDeletingWaveId] =
   useState<string | null>(null);
+
+  
+const [isOwner, setIsOwner] = useState(false);
+const [authChecked, setAuthChecked] = useState(false);
+
+useEffect(() => {
+  let active = true;
+
+  async function checkOwner() {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (!active) return;
+
+    setIsOwner(!error && Boolean(data.user));
+    setAuthChecked(true);
+  }
+
+  void checkOwner();
+
+  const {
+    data: { subscription },
+  } = supabase.auth.onAuthStateChange(() => {
+    void checkOwner();
+  });
+
+  return () => {
+    active = false;
+    subscription.unsubscribe();
+  };
+}, []);
+
   const normalizedSearch = search
     .trim()
     .toLowerCase();
@@ -163,69 +194,38 @@ const visibleBookwaves = useMemo(() => {
   });
 }, [bookwaves, booksById, frequencySearch, frequencySort]);
 
-  const loadBookwaves = useCallback(
-    async (showLoading = true) => {
-      if (showLoading) {
-        setLibraryState("loading");
-      }
 
-      setLibraryMessage("");
+const loadBookwaves = useCallback(
+  async (showLoading = true) => {
+    if (showLoading) {
+      setLibraryState("loading");
+    }
 
-      const {
-        data: { user },
-        error: userError,
-      } = await supabase.auth.getUser();
+    setLibraryMessage("");
 
-      if (userError || !user) {
-        setBookwaves([]);
-        setLibraryState("error");
-        setLibraryMessage(
-          "Your Bookwave archive could not verify your session."
-        );
-        return;
-      }
+    const { data, error } = await supabase.rpc(
+      "get_public_bookwaves"
+    );
 
-      const { data, error } = await supabase
-        .from("bookwaves")
-        .select(
-          `
-            id,
-            owner_id,
-            book_id,
-            playlist_name,
-            spotify_url,
-            vibe,
-            description,
-            use_book_cover,
-            custom_cover_url,
-            created_at,
-            updated_at
-          `
-        )
-        .eq("owner_id", user.id)
-        .order("created_at", {
-          ascending: false,
-        });
+    if (error) {
+      setBookwaves([]);
+      setLibraryState("error");
+      setLibraryMessage(
+        error.message ||
+          "The Bookwave archive could not be loaded."
+      );
+      return;
+    }
 
-      if (error) {
-        setBookwaves([]);
-        setLibraryState("error");
-        setLibraryMessage(
-          error.message ||
-            "The Bookwave archive could not be loaded."
-        );
-        return;
-      }
+    const mapped = (
+      (data ?? []) as BookwaveRow[]
+    ).map(mapBookwaveRow);
 
-      const mapped = (
-        (data ?? []) as BookwaveRow[]
-      ).map(mapBookwaveRow);
-
-      setBookwaves(mapped);
-      setLibraryState("ready");
-    },
-    []
-  );
+    setBookwaves(mapped);
+    setLibraryState("ready");
+  },
+  []
+);
 
   useEffect(() => {
     void loadBookwaves();

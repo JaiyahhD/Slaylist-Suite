@@ -1,6 +1,6 @@
+
 export type Bookwave = {
   id: string;
-  ownerId: string;
 
   bookId: string;
   playlistName: string;
@@ -18,7 +18,6 @@ export type Bookwave = {
 
 export type BookwaveRow = {
   id: string;
-  owner_id: string;
 
   book_id: string;
   playlist_name: string;
@@ -39,7 +38,6 @@ export function mapBookwaveRow(
 ): Bookwave {
   return {
     id: row.id,
-    ownerId: row.owner_id,
 
     bookId: row.book_id,
     playlistName: row.playlist_name,
@@ -55,6 +53,4 @@ export function mapBookwaveRow(
     updatedAt: row.updated_at,
   };
 }
-
-
 
