@@ -13166,3 +13166,138 @@ button.current-rotation-update-button:hover {
   }
 }
 
+
+/* =========================================
+   BOOKWAVE — FREQUENCY BROWSING TOOLBAR
+   STEP 62E.3
+========================================= */
+
+.bookwave-browse-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.85fr) auto;
+  align-items: end;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 145, 211, 0.18);
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 18, 62, 0.8),
+    rgba(22, 10, 24, 0.94)
+  );
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.bookwave-browse-search,
+.bookwave-browse-sort {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.bookwave-browse-search > span,
+.bookwave-browse-sort > span {
+  color: #ff91d3;
+  font-size: 0.65rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+}
+
+.bookwave-browse-search input,
+.bookwave-browse-sort select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(143, 99, 255, 0.3);
+  border-radius: 12px;
+  outline: none;
+  color: #fff8fc;
+  background: rgba(9, 7, 13, 0.76);
+  font: inherit;
+  font-size: 0.82rem;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.bookwave-browse-search input::placeholder {
+  color: #9b8a9d;
+}
+
+.bookwave-browse-search input:focus,
+.bookwave-browse-sort select:focus {
+  border-color: #ff5fbd;
+  box-shadow: 0 0 0 3px rgba(255, 62, 170, 0.12);
+}
+
+.bookwave-browse-sort select {
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+.bookwave-browse-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(131, 221, 255, 0.22);
+  border-radius: 12px;
+  background: rgba(131, 221, 255, 0.055);
+  white-space: nowrap;
+}
+
+.bookwave-browse-count strong {
+  color: #83ddff;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.bookwave-browse-count span {
+  margin-top: 0.25rem;
+  color: #c9c8d8;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+@media (max-width: 900px) {
+  .bookwave-browse-toolbar {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .bookwave-browse-count {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+
+  .bookwave-browse-count span {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .bookwave-browse-toolbar {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .bookwave-browse-count {
+    grid-column: auto;
+  }
+
+  .bookwave-browse-search input,
+  .bookwave-browse-sort select {
+    font-size: 16px;
+  }
+}
+
+
