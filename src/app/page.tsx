@@ -33,7 +33,7 @@ export default function Home() {
       {/* HOMEPAGE BANNER */}
       <section className="suite-hero">
         <Image
-          src="/images/slaylist-suite-hero.png"
+          src="/images/leopard-slaylist.png"
           alt="Jaiyah's Slaylist Suite — books, playlists, vibes, and obsessions"
           width={1648}
           height={928}
