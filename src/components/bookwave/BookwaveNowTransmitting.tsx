@@ -90,7 +90,7 @@ export default function BookwaveNowTransmitting({
 
                 {book && (
                   <Link
-                    href={`/books/${book.id}`}
+                    href={`/slaybase/${book.id}`}
                     className="bookwave-dossier-button"
                   >
                     ✦ BOOK DOSSIER

@@ -77,7 +77,7 @@ export default function AdminStudio() {
   }
 
   return (
-    <>
+    <section className="admin-studio">
       <p className="eyebrow">
         OWNER ACCESS · THE CONTROL ROOM
       </p>
@@ -90,24 +90,11 @@ export default function AdminStudio() {
         Welcome backstage. Your Slaylist Suite, your rules.
       </p>
 
-      
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-          gap: 20,
-          marginTop: 30,
-          maxWidth: 1100,
-        }}
-      >
+      <div className="admin-studio-grid">
 
         {/* MANAGE SLAYBASE */}
-        <Link
-          href="/slaybase"
-          className="book-card"
-        >
+        <Link href="/slaybase" className="book-card">
           <h2>💿 Manage Slaybase</h2>
-
           <p className="muted">
             Browse your entire book collection and
             open individual Backstage Passes.
@@ -115,12 +102,8 @@ export default function AdminStudio() {
         </Link>
 
         {/* ADD NEW BOOK */}
-        <Link
-          href="/admin/books/new"
-          className="book-card"
-        >
+        <Link href="/admin/books/new" className="book-card">
           <h2>💗 Add New Book</h2>
-
           <p className="muted">
             Add a new book directly to The Slaybase,
             upload its cover, and organize its details.
@@ -128,12 +111,8 @@ export default function AdminStudio() {
         </Link>
 
         {/* EDIT BOOKS */}
-        <Link
-          href="/slaybase"
-          className="book-card"
-        >
+        <Link href="/slaybase" className="book-card">
           <h2>♡ Edit Books</h2>
-
           <p className="muted">
             Choose a book to update its cover,
             description, rating, reading status,
@@ -142,21 +121,30 @@ export default function AdminStudio() {
         </Link>
 
         {/* THE TAG VAULT */}
-        <Link
-          href="/admin/tags"
-          className="book-card"
-        >
+        <Link href="/admin/tags" className="book-card">
           <h2>✦ The Tag Vault</h2>
-
           <p className="muted">
             Create, rename, and organize your
             genres, tropes, and custom tags
             in one dedicated space.
           </p>
         </Link>
+
+        {/* BOOKWAVES MANAGEMENT */}
+        <Link href="/bookwave" className="book-card">
+          <h2>🎧 Manage Bookwaves</h2>
+          <p className="muted">
+            Head to your soundtrack station to create,
+            edit, and manage your book-inspired
+            Spotify playlists and artwork.
+          </p>
+          <span className="admin-card-action">
+            Open Soundtrack Station ♫
+          </span>
+        </Link>
+
       </div>
 
-      {/* SIGN OUT */}
       <button
         type="button"
         onClick={signOut}
@@ -172,6 +160,6 @@ export default function AdminStudio() {
       >
         Sign Out ♡
       </button>
-    </>
+    </section>
   );
 }

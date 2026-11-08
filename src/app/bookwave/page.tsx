@@ -1,1 +1,22 @@
-import Link from "next/link";export default function Bookwave(){return <><p className="eyebrow">YOUR SOUNDTRACK STATION</p><h1 className="page-title">Bookwave ♫</h1><div className="panel"><h2>Every good book deserves a soundtrack.</h2><p className="muted">This clean rebuild keeps the Bookwave destination. Your previous Spotify integrations and playlist management components are preserved in the source reference folder for the next migration step.</p><p>Until we reconnect the existing Spotify data, no fake play buttons or simulated audio are shown.</p><Link href="/slaybase" className="pill">Browse the books ↗</Link></div></>}
+
+import BookwaveManager from "@/components/bookwave/BookwaveManager";
+import { library } from "@/lib/library";
+
+export default function BookwavePage() {
+  const books = library.map((entry) => ({
+    id: entry.book.id,
+    title: entry.book.title,
+    authors: entry.book.authors,
+    coverUrl: entry.book.coverUrl ?? null,
+  }));
+
+  return (
+    <div className="bookwave-page">
+      <p className="eyebrow">YOUR SOUNDTRACK STATION</p>
+      <h1 className="page-title">My Bookwaves ♫</h1>
+
+      <BookwaveManager books={books} />
+    </div>
+  );
+}
+

@@ -1026,7 +1026,7 @@ setEditingWaveId(null);
 
                   {book && (
                     <Link
-                      href={`/books/${wave.bookId}`}
+                      href={`/slaybase/${wave.bookId}`}
                       className="bookwave-dossier-button"
                     >
                       ✦ OPEN BOOK DOSSIER

@@ -1910,3 +1910,901 @@ aside.side {
     max-height: 175px !important;
   }
 }
+
+
+/* ==========================================
+   SLAYLIST FM — MY BOOKWAVES LAYOUT CLEANUP
+   Keeps the original leopard background/theme
+   ========================================== */
+
+/* Page spacing */
+.bookwave-page {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.bookwave-page > .eyebrow {
+  margin-bottom: 6px;
+}
+
+.bookwave-page > .page-title {
+  margin: 0 0 28px;
+  line-height: 1.15;
+}
+
+/* Shared Bookwave panels */
+.bookwave-console,
+.bookwave-manager,
+.bookwave-library {
+  min-width: 0;
+  margin-bottom: 26px;
+  padding: 24px;
+  background: linear-gradient(
+    145deg,
+    rgba(42, 21, 20, 0.97),
+    rgba(18, 9, 12, 0.98)
+  );
+  border: 1px solid rgba(185, 130, 87, 0.65);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.bookwave-console-header,
+.bookwave-manager-heading,
+.bookwave-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.bookwave-console-header h2,
+.bookwave-manager-heading h2,
+.bookwave-section-heading h2 {
+  margin: 5px 0 0;
+  font-size: clamp(21px, 2.5vw, 28px);
+  color: #ffe7d6;
+}
+
+.bookwave-eyebrow,
+.bookwave-mini-label {
+  color: #ff9cc9;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+.bookwave-manager-heading p,
+.bookwave-section-heading p {
+  margin: 8px 0 0;
+  color: #d9bcb6;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Now Transmitting */
+.bookwave-status,
+.bookwave-manager-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  border: 1px solid #a87562;
+  border-radius: 999px;
+  background: #28171a;
+  color: #ffafd2;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.bookwave-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff69ad;
+  box-shadow: 0 0 10px #ff69ad;
+}
+
+.bookwave-now-playing {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr) 75px;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+  background: rgba(12, 7, 10, 0.55);
+  border: 1px solid rgba(255, 145, 189, 0.25);
+  border-radius: 16px;
+}
+
+.bookwave-now-art {
+  width: 155px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #633048, #241315);
+  color: #ff9cc9;
+  font-size: 60px;
+}
+
+.bookwave-now-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookwave-now-copy {
+  min-width: 0;
+}
+
+.bookwave-now-copy h3 {
+  margin: 9px 0;
+  color: #fff0e7;
+  font-size: clamp(21px, 2.5vw, 32px);
+  overflow-wrap: anywhere;
+}
+
+.bookwave-now-copy p {
+  margin: 6px 0;
+  color: #d9bcb6;
+  font-size: 13px;
+}
+
+.bookwave-featured-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.bookwave-frequency {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  color: #ff9cc9;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.bookwave-frequency-line {
+  width: 4px;
+  height: 80px;
+  border-radius: 10px;
+  background: #5b3442;
+  overflow: hidden;
+}
+
+.bookwave-frequency-line div {
+  width: 100%;
+  height: 55%;
+  border-radius: inherit;
+  background: #ff69ad;
+}
+
+/* Private DJ control deck */
+.bookwave-picker {
+  display: grid;
+  gap: 15px;
+}
+
+.bookwave-picker-label,
+.bookwave-field > span,
+.bookwave-browse-search > span,
+.bookwave-browse-sort > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #ff9cc9;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1px;
+}
+
+.bookwave-search-shell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid #a87562;
+  border-radius: 12px;
+  background: #261718;
+}
+
+.bookwave-search-icon {
+  color: #ff9cc9;
+  font-size: 23px;
+}
+
+.bookwave-search-shell input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff0e7;
+}
+
+.bookwave-search-results {
+  display: grid;
+  gap: 7px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid #a87562;
+  border-radius: 12px;
+  background: #1c1013;
+}
+
+.bookwave-search-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #2a191c;
+  color: #fff0e7;
+  text-align: left;
+}
+
+.bookwave-search-result:hover {
+  border-color: #ff91bf;
+}
+
+.bookwave-result-cover,
+.bookwave-selected-cover {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 65px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #563044;
+  color: #ffafd2;
+}
+
+.bookwave-result-cover img,
+.bookwave-selected-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookwave-result-copy {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.bookwave-result-copy strong,
+.bookwave-result-copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bookwave-result-copy span {
+  color: #d9bcb6;
+  font-size: 12px;
+}
+
+.bookwave-result-select {
+  color: #ff91bf;
+  font-size: 22px;
+}
+
+.bookwave-selected-book {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px;
+  background: #211316;
+  border: 1px solid #8e5d55;
+  border-radius: 14px;
+}
+
+.bookwave-selected-copy {
+  flex: 1;
+  min-width: 160px;
+}
+
+.bookwave-selected-copy h3 {
+  margin: 5px 0;
+}
+
+.bookwave-selected-copy p {
+  margin: 0;
+  color: #d9bcb6;
+}
+
+/* Form layout */
+.bookwave-create-form {
+  display: grid;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.bookwave-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bookwave-form-header h3 {
+  margin: 6px 0 0;
+}
+
+.bookwave-form-status {
+  color: #ffafd2;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.bookwave-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.bookwave-field {
+  display: block;
+  min-width: 0;
+}
+
+.bookwave-field-full {
+  grid-column: 1 / -1;
+}
+
+.bookwave-field input,
+.bookwave-field textarea,
+.bookwave-browse-search input,
+.bookwave-browse-sort select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #a87562;
+  border-radius: 11px;
+  outline: none;
+  background: #261718;
+  color: #fff0e7;
+  font: inherit;
+}
+
+.bookwave-field textarea {
+  resize: vertical;
+}
+
+.bookwave-field small {
+  display: block;
+  margin-top: 6px;
+  color: #c9a9a1;
+  font-size: 11px;
+}
+
+.bookwave-field input:focus,
+.bookwave-field textarea:focus,
+.bookwave-browse-search input:focus,
+.bookwave-browse-sort select:focus {
+  border-color: #ff91bf;
+  box-shadow: 0 0 0 3px #ff69ad22;
+}
+
+.bookwave-cover-settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 17px;
+  border: 1px solid #895e53;
+  border-radius: 14px;
+}
+
+.bookwave-cover-settings legend {
+  padding: 0 8px;
+  color: #ff9cc9;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1px;
+}
+
+.bookwave-cover-option {
+  flex: 1 1 200px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #704b49;
+  border-radius: 12px;
+  background: #211316;
+  color: #ffe7d6;
+  text-align: left;
+}
+
+.bookwave-cover-option-active {
+  border-color: #ff91bf;
+  background: #4b2638;
+}
+
+.bookwave-cover-option strong,
+.bookwave-cover-option small {
+  display: block;
+}
+
+.bookwave-cover-option small {
+  margin-top: 4px;
+  color: #d9bcb6;
+  font-size: 11px;
+}
+
+.bookwave-cover-radio {
+  display: grid;
+  place-items: center;
+  flex: 0 0 23px;
+  height: 23px;
+  border: 1px solid #ff91bf;
+  border-radius: 50%;
+  color: #ff91bf;
+}
+
+.bookwave-custom-cover-field {
+  flex: 1 1 100%;
+}
+
+.bookwave-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bookwave-form-message {
+  flex: 1;
+  color: #d9bcb6;
+  font-size: 12px;
+}
+
+/* Buttons */
+.bookwave-save-button,
+.bookwave-spotify-button,
+.bookwave-dossier-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 16px;
+  border: 1px solid #ffd1e7;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #ffb1d6, #ff69ad);
+  color: #230b15;
+  font-size: 12px;
+  font-weight: 850;
+  text-align: center;
+  text-decoration: none;
+}
+
+.bookwave-change-book,
+.bookwave-cancel-edit-button,
+.bookwave-edit-button,
+.bookwave-delete-button {
+  padding: 10px 13px;
+  border: 1px solid #a87562;
+  border-radius: 10px;
+  background: #2a191c;
+  color: #ffb9d9;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.bookwave-save-button:disabled,
+.bookwave-delete-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+/* Frequency library */
+.bookwave-browse-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px) auto;
+  align-items: end;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding: 17px;
+  background: #1b1013;
+  border: 1px solid #80574e;
+  border-radius: 14px;
+}
+
+.bookwave-browse-count {
+  display: grid;
+  gap: 3px;
+  justify-items: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #362026;
+  color: #ffafd2;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.bookwave-browse-count strong {
+  font-size: 20px;
+  color: #ffe7d6;
+}
+
+.bookwave-live-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.bookwave-live-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #a87562;
+  border-radius: 17px;
+  background: linear-gradient(145deg, #321b1d, #170d10);
+}
+
+.bookwave-live-cover {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 190px;
+  overflow: hidden;
+  background: #4c2837;
+  color: #ffafd2;
+  font-size: 42px;
+}
+
+.bookwave-live-cover > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.bookwave-live-cover-signal {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: end;
+  gap: 3px;
+  height: 22px;
+}
+
+.bookwave-live-cover-signal span {
+  width: 4px;
+  height: 40%;
+  border-radius: 4px;
+  background: #ff91bf;
+}
+
+.bookwave-live-cover-signal span:nth-child(2),
+.bookwave-live-cover-signal span:nth-child(4) {
+  height: 80%;
+}
+
+.bookwave-live-cover-signal span:nth-child(3) {
+  height: 100%;
+}
+
+.bookwave-live-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 12px;
+  padding: 19px;
+}
+
+.bookwave-live-copy h3 {
+  margin: 0;
+  color: #ffe7d6;
+  font-size: 21px;
+  overflow-wrap: anywhere;
+}
+
+.bookwave-live-book {
+  display: grid;
+  gap: 3px;
+  color: #ffafd2;
+  font-size: 13px;
+}
+
+.bookwave-live-book span {
+  color: #d9bcb6;
+  font-size: 12px;
+}
+
+.bookwave-live-vibe,
+.bookwave-live-description {
+  margin: 0;
+  color: #e5c9bf;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Real Spotify player */
+.bookwave-player-shell {
+  width: 100%;
+  min-width: 0;
+  margin-top: auto;
+  padding: 12px;
+  border: 1px solid #6c4648;
+  border-radius: 13px;
+  background: #170e12;
+}
+
+.bookwave-player-heading,
+.bookwave-player-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bookwave-player-heading {
+  margin-bottom: 10px;
+}
+
+.bookwave-player-indicator {
+  color: #ffafd2;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.bookwave-player-shell iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+.bookwave-player-footer {
+  margin-top: 10px;
+  color: #d9bcb6;
+  font-size: 10px;
+}
+
+.bookwave-player-footer a {
+  color: #ff9cc9;
+  font-weight: 800;
+}
+
+.bookwave-player-error {
+  color: #ffb9d9;
+  font-size: 12px;
+}
+
+.bookwave-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 4px;
+}
+
+.bookwave-manage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Empty, loading, and error states */
+.bookwave-empty,
+.bookwave-no-results {
+  padding: 32px 20px;
+  border: 1px dashed #a87562;
+  border-radius: 14px;
+  background: #211316;
+  color: #d9bcb6;
+  text-align: center;
+}
+
+.bookwave-empty h3 {
+  color: #ffe7d6;
+}
+
+.bookwave-empty-code {
+  color: #ff9cc9;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.bookwave-empty-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.bookwave-empty-tags span {
+  padding: 6px 10px;
+  border: 1px solid #895e53;
+  border-radius: 999px;
+  font-size: 10px;
+}
+
+/* Responsive layout */
+@media (max-width: 1100px) {
+  .bookwave-live-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bookwave-browse-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bookwave-browse-count {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 750px) {
+  .bookwave-console,
+  .bookwave-manager,
+  .bookwave-library {
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .bookwave-now-playing {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 14px;
+    padding: 13px;
+  }
+
+  .bookwave-now-art {
+    width: 100px;
+  }
+
+  .bookwave-frequency {
+    display: none;
+  }
+
+  .bookwave-form-grid,
+  .bookwave-browse-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .bookwave-browse-count {
+    grid-column: auto;
+  }
+
+  .bookwave-live-cover {
+    height: 160px;
+  }
+
+  .bookwave-live-copy {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 440px) {
+  .bookwave-now-playing {
+    grid-template-columns: 1fr;
+  }
+
+  .bookwave-now-art {
+    width: 125px;
+  }
+
+  .bookwave-featured-actions,
+  .bookwave-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
+/* ==========================================
+   BOOKWAVES — SHOW MORE BOOK COVER ARTWORK
+   ========================================== */
+
+.bookwave-live-cover {
+  height: 360px;
+  padding: 18px;
+  background: #241315;
+}
+
+.bookwave-live-cover > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Keep artwork balanced on smaller screens */
+@media (max-width: 750px) {
+  .bookwave-live-cover {
+    height: 290px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 440px) {
+  .bookwave-live-cover {
+    height: 260px;
+  }
+}
+
+
+/* ==========================================
+   ADMIN STUDIO — MANAGEMENT GRID
+   ========================================== */
+
+.admin-studio {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.admin-studio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  max-width: 1100px;
+}
+
+.admin-studio-grid .book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-studio-grid .book-card:hover {
+  transform: translateY(-3px);
+  border-color: #ff4fa3;
+}
+
+.admin-studio-grid .book-card h2 {
+  margin: 0;
+}
+
+.admin-studio-grid .book-card p {
+  margin: 0;
+}
+
+.admin-card-action {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 12px;
+  color: #ff92bb;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 750px) {
+  .admin-studio-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
