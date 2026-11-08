@@ -1,0 +1,30 @@
+
+# Dependencies
+node_modules/
+
+# Next.js generated files
+.next/
+out/
+
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+
+# TypeScript generated build info
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local Goodreads source imports
+/data/imports/
+goodreads_library_export.csv
+
+# Local Goodreads backups
+*goodreads*backup*.json
+goodreads-library.json.backup-*

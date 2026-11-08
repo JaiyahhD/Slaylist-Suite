@@ -1,0 +1,1 @@
+import SlaybaseClient from "@/components/SlaybaseClient";export default function Slaybase(){return <SlaybaseClient/>}
