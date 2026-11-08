@@ -2808,3 +2808,353 @@ aside.side {
     gap: 16px;
   }
 }
+
+
+/* ==========================================
+   ABOUT ME — Y2K LEOPARD IT-GIRL DOSSIER
+   ========================================== */
+
+.about-suite {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+  color: #fff0e8;
+}
+
+.about-hero {
+  padding: 48px 36px;
+  margin-bottom: 22px;
+  border: 1px solid #ff82b477;
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at top right,
+      #ff4fa322,
+      transparent 55%
+    ),
+    linear-gradient(135deg, #2a1219f2, #130b0ef5);
+}
+
+.about-hero h1 {
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.1;
+  margin: 16px 0;
+  color: #fff0e8;
+}
+
+.about-hero h1 span {
+  color: #ff78ae;
+}
+
+.about-hero-subtitle {
+  color: #ffb6d2;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 700;
+}
+
+.about-hero-tags,
+.about-chip-list,
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.about-hero-tags {
+  margin: 22px 0;
+}
+
+.about-hero-tags span,
+.about-chip-list span {
+  padding: 9px 13px;
+  border: 1px solid #ff8eb477;
+  border-radius: 999px;
+  background: #4b2137;
+  color: #ffe5ef;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.about-intro {
+  max-width: 900px;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.about-panel,
+.about-radio {
+  padding: 28px;
+  margin-bottom: 20px;
+  border: 1px solid #b77a805e;
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    #2b1418f5,
+    #180c10f5
+  );
+}
+
+.about-panel h2,
+.about-radio h2 {
+  font-size: clamp(23px, 2.8vw, 32px);
+  margin: 10px 0 18px;
+  color: #ffe7ec;
+}
+
+.about-panel h3 {
+  color: #ffb4d1;
+}
+
+.about-panel p,
+.about-radio p {
+  line-height: 1.75;
+}
+
+.about-track {
+  color: #ff83b4;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.about-profile-grid,
+.about-two-col,
+.about-author-grid,
+.about-favorites-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.about-profile-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-two-col > * {
+  min-width: 0;
+}
+
+.about-profile-grid > div,
+.about-author,
+.about-favorite {
+  padding: 20px;
+  border: 1px solid #ff83b444;
+  border-radius: 16px;
+  background: #4a22324d;
+}
+
+.about-profile-grid small,
+.about-author small,
+.about-favorite small {
+  display: block;
+  margin-bottom: 10px;
+  color: #ff91ba;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.about-profile-grid strong {
+  display: block;
+  font-size: 16px;
+}
+
+.about-author-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.about-author {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.about-author > span {
+  color: #ff7bac;
+  font-weight: 900;
+}
+
+.about-author strong {
+  overflow-wrap: anywhere;
+}
+
+.about-favorites-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.about-favorite > span {
+  color: #ff85b7;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.about-favorite h3 {
+  font-size: 18px;
+  margin: 18px 0 6px;
+}
+
+.about-favorite p {
+  font-size: 13px;
+  color: #e6c3c9;
+}
+
+.about-radio {
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      #ff4fa333,
+      transparent 50%
+    ),
+    linear-gradient(135deg, #4b1c35, #1b0c12);
+}
+
+.about-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  margin-top: 10px;
+  border: 1px solid #ff88b8;
+  border-radius: 999px;
+  background: #ff4fa3;
+  color: #210d17 !important;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.about-button:hover {
+  transform: translateY(-3px);
+}
+
+.about-outro {
+  text-align: center;
+}
+
+.about-outro .about-links {
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.about-signature {
+  margin-top: 30px;
+  color: #ff9dc4;
+  font-style: italic;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .about-author-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about-favorites-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 750px) {
+  .about-hero {
+    padding: 30px 20px;
+  }
+
+  .about-panel,
+  .about-radio {
+    padding: 20px;
+  }
+
+  .about-profile-grid,
+  .about-two-col,
+  .about-author-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-favorites-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 440px) {
+  .about-favorites-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================
+   ABOUT ME — JAIYAH PORTRAIT HERO
+   ========================================== */
+
+.about-hero-with-photo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+  overflow: hidden;
+  min-height: 470px;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.about-hero-photo {
+  position: relative;
+  align-self: end;
+  height: 100%;
+  min-height: 390px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.about-jaiyah-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 0 24px rgba(255, 105, 170, 0.16));
+}
+
+/* Tablet */
+@media (max-width: 1050px) {
+  .about-hero-with-photo {
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 12px;
+  }
+
+  .about-jaiyah-image {
+    max-height: 390px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 750px) {
+  .about-hero-with-photo {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .about-hero-photo {
+    min-height: 0;
+    height: auto;
+    max-width: 320px;
+    width: 100%;
+    margin: 15px auto -20px;
+  }
+
+  .about-jaiyah-image {
+    max-height: 350px;
+  }
+}

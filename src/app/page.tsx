@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import CurrentRotationCarousel from "@/components/CurrentRotationCarousel";
+import LiveCurrentRotation from "@/components/LiveCurrentRotation";
 import { read, current, certified, tbr } from "@/lib/library";
 
 export default function Home() {
@@ -86,7 +86,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <CurrentRotationCarousel entries={current} />
+          <LiveCurrentRotation />
         </section>
 
         <aside>
